@@ -13,7 +13,7 @@ const Admin = ({ baseurl }) => {
             const usersResponse = await axios.get(`${baseurl}/user`);
             const users = usersResponse.data;
             for (const user of users) {
-                if (user.id != 1) {
+                if (user.id !== 1) {
                     const updatedUser = { ...user, target: user.target + 1 };
                     await axios.post(`${baseurl}/user/update/${user.id}`, updatedUser);
                 }
@@ -31,7 +31,7 @@ const Admin = ({ baseurl }) => {
             const usersResponse = await axios.get(`${baseurl}/user`);
             const users = usersResponse.data;
             for (const user of users) {
-                if (user.id != 1) {
+                if (user.id !== 1) {
                     const updatedUser = { ...user, target: user.target - 1 };
                     await axios.post(`${baseurl}/user/update/${user.id}`, updatedUser);
                 }
