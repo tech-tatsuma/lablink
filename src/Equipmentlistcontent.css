@@ -1,0 +1,67 @@
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.scroll {
+    overflow-y: scroll;
+}
+
+table tr {
+    border-bottom: solid 1px #eee;
+    cursor: pointer;
+}
+
+table tr:hover {
+    background-color: #d4f0fd;
+}
+
+table th {
+    text-align: center;
+    width: 50%;
+    padding: 15px 0;
+}
+
+table td {
+    text-align: center;
+    width: 25%;
+    padding: 15px 0;
+}
+
+form {
+    width: 50%;
+    margin: 10% auto;
+    min-width: 9rem;
+}
+
+
+input {
+    float: left;
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    background: darken(#f9f9f9, 10%);
+    color: darken(#f9f9f9, 50%);
+}
+
+.contentbutton {
+    float: left;
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    background: darken(#f9f9f9, 10%);
+    color: darken(#f9f9f9, 50%);
+}
+
+.formmessage {
+    color: black;
+    margin: 0;
+    align-self: flex-start;
+}
