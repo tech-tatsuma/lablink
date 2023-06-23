@@ -47,8 +47,8 @@ const Equipmentview = ({ user_id, baseurl, monthpay }) => {
     useEffect(() => {
         const calctotal = async () => {
             try {
-                const equipmentRes = await axios.get(`${baseurl}/equipment/`);
-                const equipmentHistoryRes = await axios.get(`${baseurl}/equipment/history/`);
+                const equipmentRes = await axios.get(`${baseurl}/equipment`);
+                const equipmentHistoryRes = await axios.get(`${baseurl}/equipment/history`);
 
                 const equipmentPrices = equipmentRes.data.map(item => item.price);
                 const equipmentHistoryPrices = equipmentHistoryRes.data.map(item => item.price);

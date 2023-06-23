@@ -26,7 +26,7 @@ const Equipmentdetailview = ({ baseurl, isdetailValue, setisdetailvalue, setdeta
             "bought_date": detailvalue['bought_date']
         }
         try {
-            await axios.post(`${baseurl}/equipment/history/`, postdata).then(res => {
+            await axios.post(`${baseurl}/equipment/history`, postdata).then(res => {
                 axios.delete(`${baseurl}/equipment/${detailvalue['id']}`).then(res => {
                     setisdetailvalue(false);
                 })

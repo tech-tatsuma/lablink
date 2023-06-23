@@ -33,7 +33,7 @@ const Informationswitch = ({ switchview, setswitchview, user_id, baseurl }) => {
             const postdata = { "title": values.title, "content": values.content, "url": values.url, "created_at": state.curDT, "created_by": user_id };
             console.log(postdata);
             console.log(`${baseurl}/information/`);
-            axios.post(`${baseurl}/information/`, postdata).then((response) => {
+            axios.post(`${baseurl}/information`, postdata).then((response) => {
                 console.log(response.data);
                 setMessage("");
                 setswitchview(true);

@@ -35,7 +35,7 @@ const Equipmentviewswitch = ({ switchview, user_id, baseurl, setswitchview }) =>
             const postdata = { "name": values.bihinmei, "price": parseInt(values.cost), "buyer_id": parseInt(user_id), "bought_date": state.curDT };
             console.log(postdata);
             console.log(`${baseurl}/equipment/`);
-            axios.post(`${baseurl}/equipment/`, postdata).then((response) => {
+            axios.post(`${baseurl}/equipment`, postdata).then((response) => {
                 console.log(response.data);
                 setMessage("");
                 setswitchview(true);

@@ -5,7 +5,7 @@ import Information from "./Information";
 
 const Informationlistcontent = ({ user_id, baseurl, setisdetailvalue, setdetailevalue }) => {
     const [informationsValues, setinformationValues] = useState([]);
-    let fetchequipment = `/information/`;
+    let fetchequipment = `/information`;
     useEffect(() => {
         async function fetchequipmentdata() {
             console.log(baseurl + fetchequipment)
