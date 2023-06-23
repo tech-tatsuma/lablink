@@ -45,6 +45,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                 return null;
             }
         } catch (error) {
+            console.log('そもそも取れてないよー');
             console.error(error);
             localStorage.removeItem('access_token');
             localStorage.removeItem('T-lab_username');
