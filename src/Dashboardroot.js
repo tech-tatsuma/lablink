@@ -32,7 +32,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     async function getUserId(username) {
         try {
             console.log(baseurl + '/user')
-            const response = await axios.get("https://lablinkback.fly.dev" + '/user');
+            const response = await axios.get(baseurl + '/user');
             const users = response.data;
 
             const user = users.find(user => user.name === username);
@@ -72,6 +72,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                 //axiosを利用し、データを取得
                 axios.get(baseurl + requests.fetchloginuserinfo).then((res) => {
                     if (res.data) {
+                        console.log('ユーザー情報が取れています。')
                         setloginuser(res.data["name"]);
                         setisAdmin(res.data['is_admin']);
                     } else {
@@ -93,6 +94,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
     useEffect(() => {
         getUserId(username).then(id => {
+            console.log(user_id !== id);
             if (user_id !== id) {
                 console.log('user!==id');
                 localStorage.removeItem('access_token');
