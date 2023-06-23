@@ -78,6 +78,7 @@ const Loginform = ({ baseurl }) => {
         if (Object.keys(formErrors).length === 0) {
             const token = await login(formValues.username, formValues.password);
             if (token !== "") {
+                console.log('tokenはセットされています。');
                 saveToken(token, formValues.username);
                 setIsLoggedIn(true);
                 getUserId(formValues.username).then(id => {
@@ -92,7 +93,7 @@ const Loginform = ({ baseurl }) => {
                 setFormValues(initialValues);
                 setIsSubmit(false);
                 setIsLoggedIn(false);
-
+                console.log('tokenが空です');
             }
         } else {
             setFormValues(initialValues);

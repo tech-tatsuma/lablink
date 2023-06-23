@@ -73,8 +73,9 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                 axios.get(baseurl + requests.fetchloginuserinfo).then((res) => {
                     if (res.data) {
                         setloginuser(res.data["name"]);
-                        setisAdmin(res.data['is_admin'])
+                        setisAdmin(res.data['is_admin']);
                     } else {
+                        console.log('ユーザー情報が取れていません')
                         localStorage.removeItem('access_token');
                         localStorage.removeItem('T-lab_username');
                         navigate('/login');
@@ -93,6 +94,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     useEffect(() => {
         getUserId(username).then(id => {
             if (user_id !== id) {
+                console.log('user!==id');
                 localStorage.removeItem('access_token');
                 localStorage.removeItem('T-lab_username');
                 navigate('/login');
