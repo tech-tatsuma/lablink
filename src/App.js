@@ -102,7 +102,7 @@ export const Atofficechange = () => {
   useEffect(() => {
     const username = localStorage.getItem('T-lab_username');
     console.log('axios in appjs1');
-    axios.get(baseurl + '/user/').then(res => {
+    axios.get(baseurl + '/user').then(res => {
       const user = res.data.find(user => user.name === username);
       if (user) {
         axios.get(baseurl + `/user/get_user/${user.id}`).then(res => {

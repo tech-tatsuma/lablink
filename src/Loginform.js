@@ -47,7 +47,7 @@ const Loginform = ({ baseurl }) => {
     async function getUserId(username) {
         try {
             console.log('axios in loginformjs1')
-            const response = await axios.get(`${baseurl}/user/`);
+            const response = await axios.get(`${baseurl}/user`);
             const users = response.data;
 
             const user = users.find(user => user.name === username);

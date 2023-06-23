@@ -20,7 +20,7 @@ const Equipmentview = ({ user_id, baseurl, monthpay }) => {
         const fetchData = async () => {
             try {
                 console.log("axios in equipmentview1");
-                const response = await axios.get(`${baseurl}/user/`);
+                const response = await axios.get(`${baseurl}/user`);
                 const users = response.data;
                 let tempRecieveallmoney = recieveallmoney;
                 let tempPayduty = 0;

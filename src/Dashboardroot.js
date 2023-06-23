@@ -31,8 +31,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
     async function getUserId(username) {
         try {
-            console.log(baseurl + '/user/')
-            const response = await axios.get("https://lablinkback.fly.dev" + '/user/');
+            console.log(baseurl + '/user')
+            const response = await axios.get("https://lablinkback.fly.dev" + '/user');
             const users = response.data;
 
             const user = users.find(user => user.name === username);
