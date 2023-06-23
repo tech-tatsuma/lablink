@@ -40,6 +40,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
             if (user) {
                 return user.id;
             } else {
+                console.log('失敗');
+                console.log(response.data);
                 return null;
             }
         } catch (error) {
