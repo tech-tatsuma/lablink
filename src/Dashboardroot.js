@@ -97,7 +97,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
             console.log(user_id !== id);
             console.log(user_id);
             console.log(id);
-            if (user_id != id) {
+            if (Number(user_id) !== Number(id)) {
                 console.log('user!==id');
                 console.log(typeof(user_id));
                 console.log(typeof(id));
