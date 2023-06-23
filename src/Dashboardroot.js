@@ -95,6 +95,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     useEffect(() => {
         getUserId(username).then(id => {
             console.log(user_id !== id);
+            console.log(user_id);
+            console.log(id);
             if (user_id !== id) {
                 console.log('user!==id');
                 console.log(user_id);
