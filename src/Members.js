@@ -11,6 +11,7 @@ const Members = ({ baseurl }) => {
 
     useEffect(() => {
         async function fetchAllMembers() {
+            console.log('axios in memberjs')
             const res = await axios.get(baseurl + fetchallmember);
             if (res.data && Array.isArray(res.data)) {
                 res.data.sort((a, b) => a.id - b.id);

@@ -10,6 +10,7 @@ const Admin = ({ baseurl }) => {
     const updatetarget = async () => {
         setIsLoading(true);
         try {
+            console.log('axios in admin1');
             const usersResponse = await axios.get(`${baseurl}/user`);
             const users = usersResponse.data;
             for (const user of users) {
@@ -28,6 +29,7 @@ const Admin = ({ baseurl }) => {
     const resetreset = async () => {
         setIsLoading(true);
         try {
+            console.log('axios in admin2');
             const usersResponse = await axios.get(`${baseurl}/user`);
             const users = usersResponse.data;
             for (const user of users) {

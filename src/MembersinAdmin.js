@@ -11,6 +11,7 @@ const MembersinAdmin = ({ baseurl, update, setUpdate }) => {
 
     useEffect(() => {
         async function fetchAllMembers() {
+            console.log('axios in membersinadmin')
             const res = await axios.get(baseurl + fetchallmember);
             if (res.data && Array.isArray(res.data)) {
                 res.data.sort((a, b) => a.id - b.id);

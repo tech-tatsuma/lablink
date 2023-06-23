@@ -19,7 +19,7 @@ const Equipmentview = ({ user_id, baseurl, monthpay }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log("1");
+                console.log("axios in equipmentview1");
                 const response = await axios.get(`${baseurl}/user/`);
                 const users = response.data;
                 let tempRecieveallmoney = recieveallmoney;
