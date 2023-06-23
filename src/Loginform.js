@@ -130,11 +130,11 @@ const Loginform = ({ baseurl }) => {
                 <h1>Sign In</h1>
                 <form>
                     <div class="form-item">
-                        <label for="email"></label>
+                        <label></label>
                         <input type="text" name="username" required="required" placeholder="UserName" value={formValues.username} onChange={(e) => handleChange(e)} ></input>
                     </div>
                     <div class="form-item">
-                        <label for="password"></label>
+                        <label></label>
                         <input type="password" name="password" required="required" placeholder="Password" value={formValues.password} onChange={(e) => handleChange(e)}></input>
                     </div>
                     <div class="button-panel">
