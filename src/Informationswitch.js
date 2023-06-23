@@ -47,8 +47,8 @@ const Informationswitch = ({ switchview, setswitchview, user_id, baseurl }) => {
 
     };
 
-    if (switchview == true) {
-        if (isdetailValue == false) {
+    if (switchview === true) {
+        if (isdetailValue === false) {
             return (
                 <>
                     <Informationlistcontent user_id={user_id} baseurl={baseurl} setisdetailvalue={setisdetailvalue} setdetailevalue={setdetailevalue} />

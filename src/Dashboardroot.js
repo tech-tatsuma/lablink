@@ -88,7 +88,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
     useEffect(() => {
         getUserId(username).then(id => {
-            if (user_id != id) {
+            if (user_id !== id) {
                 localStorage.removeItem('access_token');
                 localStorage.removeItem('T-lab_username');
                 navigate('/login');

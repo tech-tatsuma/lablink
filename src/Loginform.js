@@ -76,7 +76,7 @@ const Loginform = ({ baseurl }) => {
         //エラーメッセージがなければログイン情報を発信する。
         if (Object.keys(formErrors).length === 0) {
             const token = await login(formValues.username, formValues.password);
-            if (token != "") {
+            if (token !== "") {
                 saveToken(token, formValues.username);
                 setIsLoggedIn(true);
                 getUserId(formValues.username).then(id => {

@@ -70,7 +70,7 @@ const Equipmentview = ({ user_id, baseurl, monthpay }) => {
     }, [totalcost, recieveallmoney]);
 
     const toggleswitchview = () => {
-        if (switchview == true) {
+        if (switchview === true) {
             setswitchview(false);
         } else {
             setswitchview(true);
@@ -78,7 +78,7 @@ const Equipmentview = ({ user_id, baseurl, monthpay }) => {
     };
 
     const toggleswitchlack = () => {
-        if (switchlack == true) {
+        if (switchlack === true) {
             setswitchlack(false);
         } else {
             setswitchlack(true);

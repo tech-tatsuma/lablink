@@ -14,7 +14,7 @@ const Dashboardview = ({ user_id, baseurl }) => {
     const [switchview, setswitchview] = useState(true);
     const navigate = useNavigate();
     const toggleswitchview = () => {
-        if (switchview == true) {
+        if (switchview === true) {
             setswitchview(false);
         } else {
             setswitchview(true);

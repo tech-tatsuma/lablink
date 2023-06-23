@@ -40,8 +40,8 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         navigate('/atofficechange/' + user_id)
     }
 
-    if (showNavigateValues == true) {
-        if (isAdmin == false) {
+    if (showNavigateValues === true) {
+        if (isAdmin === false) {
             return (
                 <>
                     {/* <!-- Sidebar --> */}

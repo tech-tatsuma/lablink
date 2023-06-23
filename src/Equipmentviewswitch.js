@@ -49,8 +49,8 @@ const Equipmentviewswitch = ({ switchview, user_id, baseurl, setswitchview }) =>
 
     };
 
-    if (switchview == true) {
-        if (isdetailValue == false) {
+    if (switchview === true) {
+        if (isdetailValue === false) {
             return (
                 <>
                     <Equipmentlistcontent user_id={user_id} baseurl={baseurl} setisdetailvalue={setisdetailvalue} setdetailevalue={setdetailevalue} />

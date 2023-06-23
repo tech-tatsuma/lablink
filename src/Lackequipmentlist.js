@@ -38,7 +38,7 @@ const Lackequipmentlist = ({ switchlack, user_id, baseurl, setswitchlack }) => {
         }
 
     };
-    if (switchlack == true) {
+    if (switchlack === true) {
         return (
             <>
                 <Equipmentlacklistcontent user_id={user_id} baseurl={baseurl} />
