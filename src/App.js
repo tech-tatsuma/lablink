@@ -63,7 +63,7 @@ const Home = () => {
 };
 //ユーザーログインのフォームです。
 const Login = () => {
-  let baseurl = "https://lablinkback.fly.dev:8080";
+  let baseurl = "https://lablinkback.fly.dev";
   return (
     <div>
       <Loginform baseurl={baseurl} />
@@ -75,7 +75,7 @@ const Login = () => {
 const Dashboard = () => {
   const params = useParams();
   const user_id = params.id;
-  let baseurl = "https://lablinkback.fly.dev:8080";
+  let baseurl = "https://lablinkback.fly.dev";
   return (
     <div>
       {/* dashboardにuser_idを渡す */}
@@ -97,7 +97,7 @@ export const Atofficechange = () => {
   };
 
 
-  let baseurl = "https://lablinkback.fly.dev:8080";
+  let baseurl = "https://lablinkback.fly.dev";
 
   useEffect(() => {
     const username = localStorage.getItem('T-lab_username');
