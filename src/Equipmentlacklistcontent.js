@@ -5,7 +5,7 @@ import Lackequipment from "./Lackequipment";
 
 const Equipmentlacklistcontent = ({ user_id, baseurl }) => {
     const [lackequipmentsValues, setlackequipmentsValues] = useState([]);
-    let fetchlackequipment = `/equipment/lack`;
+    let fetchlackequipment = `/lack`;
     const [redirectvar, setredirectvar] = useState(0);
 
     useEffect(() => {

@@ -25,7 +25,7 @@ const Lackequipmentlist = ({ switchlack, user_id, baseurl, setswitchlack }) => {
             const postdata = { "name": values.bihinmei };
             console.log(postdata);
             console.log(`${baseurl}/equipment/`);
-            axios.post(`${baseurl}/equipment/lack`, postdata).then((response) => {
+            axios.post(`${baseurl}/lack`, postdata).then((response) => {
                 console.log(response.data);
                 setMessage("");
                 setswitchlack(true);

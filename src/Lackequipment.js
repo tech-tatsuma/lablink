@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Lackequipment = ({ details, redirectvar, setredirectvar, baseurl }) => {
     const deletelack = () => {
-        axios.delete(`${baseurl}/equipment/lack/${details.id}`)
+        axios.delete(`${baseurl}/lack/${details.id}`)
             .then((response) => {
                 console.log(response);
                 setredirectvar(redirectvar + 1);
