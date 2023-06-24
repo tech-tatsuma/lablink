@@ -39,7 +39,7 @@ const Equipmentdetailview = ({ baseurl, isdetailValue, setisdetailvalue, setdeta
     useEffect(() => {
         async function getusername() {
             try {
-                await axios.get(`${baseurl}/user/get_user/${detailvalue['created_by']}`).then(res => {
+                await axios.get(`${baseurl}/user/get_user/${detailvalue['buyer_id']}`).then(res => {
                     console.log(res.data.name);
                     setusername(res.data.name);
                 })
