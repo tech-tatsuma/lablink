@@ -94,7 +94,7 @@ main section {
 
 .splash-screen img {
     animation: logo-fade-in 2s ease-out;
-    max-width: 30%;
+    max-width: 40%;
 }
 
 .slow-animation {

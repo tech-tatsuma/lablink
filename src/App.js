@@ -29,7 +29,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsSplashScreenVisible(false);
-    }, 3000);
+    }, 3500);
 
     return () => clearTimeout(timer);
   }, []);
