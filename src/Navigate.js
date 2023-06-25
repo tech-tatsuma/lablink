@@ -37,7 +37,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
     };
 
     const switchatoffice = () => {
-        navigate('/atofficechange/' + user_id)
+        navigate('/atofficechange')
     }
 
     if (showNavigateValues === true) {
