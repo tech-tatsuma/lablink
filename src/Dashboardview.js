@@ -22,7 +22,7 @@ const Dashboardview = ({ user_id, baseurl }) => {
     };
 
     const switchatoffice = () => {
-        navigate('/atofficechange/' + user_id)
+        navigate('/atofficechange')
     }
     return (
         <>
