@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 
 const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
@@ -25,8 +26,6 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
                     // データを更新
                     axios.post(baseurl + `/user/update/${id}`, updatedUserData)
                     .then(res => {
-                        // 画面をリダイレクト
-                        navigate(`/dashboard/inlab/${user_id}`)
                         setCounter(counter+1);
                     })
                     .catch(err => {
@@ -41,6 +40,15 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
     const handleClick = () => {
         switchstatus(details.id)
     }
+
+    useEffect(()=>{
+        const intervalId = setInterval(() => {
+            setCounter(counter+1);
+        }, 300000);
+
+        return () => clearInterval(intervalId);
+    },[]);
+    
     if (details.name=="Noriko Takemura"){
         if (!details.at_office) {
             return (
