@@ -6,6 +6,9 @@ import Loginform from "./Loginform"
 import Dashboardroot from "./Dashboardroot";
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import Dashboardinlabroot from "./Dashboardinlab/Dashboardinlabroot";
+import Logininlab from "./Dashboardinlab/Logininlab";
+import Attendancecontent from "./extern/Attendancecontent";
 
 const App = () => {
   return (
@@ -16,6 +19,9 @@ const App = () => {
         <Route exact path="/login" element={<Login />} />
         <Route path="/dashboard/:id" element={<Dashboard />} />
         <Route path="/atofficechange" element={<Atofficechange />} />
+        <Route path="/dashboard/inlab/:id" element={<Dashboardinlab />} />
+        <Route path="/inlab/login" element={<Logininlab />} />
+        <Route path="/attendance-info" element={<Attendance />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
@@ -71,6 +77,24 @@ const Login = () => {
   );
 };
 
+const Attendance = () => {
+  let baseurl = "https://lablinkback.fly.dev";
+  return (
+    <div>
+      <Attendancecontent baseurl={baseurl} />
+    </div>
+  )
+}
+
+const Logininlab = () => {
+  let baseurl = "https://lablinkback.fly.dev";
+  return (
+    <div>
+      <Logininlab baseurl={baseurl} />
+    </div>
+  )
+}
+
 //ユーザーのダッシュボードです。
 const Dashboard = () => {
   const params = useParams();
@@ -106,7 +130,6 @@ export const Atofficechange = () => {
       return null;
     };
 
-    console.log('axios in appjs1');
     axios.get(baseurl + '/user').then(res => {
       const user = res.data.find(user => user.name === username);
       if (user) {
@@ -165,3 +188,14 @@ const NotFound = () => {
   );
 }
 
+const Dashboardinlab = () => {
+  let baseurl = "https://lablinkback.fly.dev";
+  const params = useParams();
+  id = params.id;
+
+  return (
+    <div>
+      <Dashboardinlabroot user_id={id} baseurl={baseurl} />
+    </div>
+  )
+}

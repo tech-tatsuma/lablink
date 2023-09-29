@@ -1,50 +1,39 @@
-import React from 'react';
-import './css/sb-admin-2.css';
-import './css/sb-admin-2.min.css';
-import './vendor/fontawesome-free/css/all.min.css';
-import './Dashboardview.css';
-import Dashboardcontent from './Dashboardcontent';
-import { useState, useEffect } from 'react';
-import Navigate from './Navigate';
-import Tab from './Tab';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import './../css/sb-admin-2.css';
+import './../css/sb-admin-2.min.css';
+import './../Dashboardview.css';
+import './../vendor/fontawesome-free/css/all.min.css';
+import Dashboardinlabcontent from "./Dashboardinlabcontent";
 
-const Dashboardroot = ({ user_id, baseurl }) => {
-
+const Dashboardinlabroot = ({user_id, baseurl}) => {
+    // ユーザーネームを取得
     const username = localStorage.getItem('T-lab_username');
 
     const navigate = useNavigate();
-
-    const [isHomeValues, setisHomeValues] = useState(true);
-
-    const [showNavigateValues, setshowNavigateValues] = useState(false);
-    // ユーザーデータを格納する状態変数
+    // ログインユーザーの情報を格納する変数
     const [loginuser, setloginuser] = useState("");
-    // ユーザーがisadminかどうかを記憶する状態変数
-    const [isAdmin, setisAdmin] = useState(false);
-    // 管理者ページの表示を管理する状態変数
-    const [isAdminView, setisAdminView] = useState(false);
 
-    let monthpay = 500;
-
-
+    // ユーザーネームをAPI経由で取得するための関数
     async function getUserId(username) {
         try {
-            console.log(baseurl + '/user')
+            // ユーザーデータ全てを取得し、usersへ格納
             const response = await axios.get(baseurl + '/user');
             const users = response.data;
-
+            // usernameが一致するユーザーの情報をuserへ格納
             const user = users.find(user => user.name === username);
 
-            if (user) {
+            if (user) { //もしユーザーが見つかったらユーザーidを返す
                 return user.id;
-            } else {
+            } else { //もしユーザーが見つからなかったらnullを返す
                 console.log('失敗');
                 console.log(response.data);
                 return null;
             }
-        } catch (error) {
+
+        } catch (error) { //もしapiへのリクエストが失敗したらローカルストレージからユーザーデータを削除し、ログイン画面へ
             console.log('そもそも取れてないよー');
             console.error(error);
             localStorage.removeItem('access_token');
@@ -53,17 +42,6 @@ const Dashboardroot = ({ user_id, baseurl }) => {
         }
     };
 
-    const showNavigate = () => {
-        setshowNavigateValues(true);
-    };
-
-    const hideNavigate = () => {
-        setshowNavigateValues(false);
-    };
-
-    const requests = {
-        fetchloginuserinfo: `/user/get_user/${user_id}`
-    };
     // ユーザーIDからユーザーの情報を取得する
     useEffect(() => {
         //データを取得する非同期関数を定義し、その関数を実行する
@@ -72,11 +50,9 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                 //axiosを利用し、データを取得
                 axios.get(baseurl + requests.fetchloginuserinfo).then((res) => {
                     if (res.data) {
-                        console.log('ユーザー情報が取れています。')
                         setloginuser(res.data["name"]);
                         setisAdmin(res.data['is_admin']);
                     } else {
-                        console.log('ユーザー情報が取れていません')
                         localStorage.removeItem('access_token');
                         localStorage.removeItem('T-lab_username');
                         navigate('/login');
@@ -94,9 +70,6 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
     useEffect(() => {
         getUserId(username).then(id => {
-            console.log(user_id !== id);
-            console.log(user_id);
-            console.log(id);
             if (Number(user_id) !== Number(id)) {
                 console.log('user!==id');
                 console.log(typeof(user_id));
@@ -110,12 +83,9 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
     return (
         <>
-            {/* <!-- Page Wrapper --> */}
-            <div id="page-top">
+        {/* <!-- Page Wrapper --> */}
+        <div id="page-top">
                 <div id="wrapper">
-
-                    {/* <!-- Sidebar --> */}
-                    <Navigate user_id={user_id} setisHomeValues={setisHomeValues} showNavigateValues={showNavigateValues} setshowNavigateValues={setshowNavigateValues} isAdmin={isAdmin} setisAdminView={setisAdminView} />
 
                     {/* <!-- Content Wrapper --> */}
                     <div id="content-wrapper" className="d-flex flex-column">
@@ -125,9 +95,6 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
                             {/* <!-- Topbar --> */}
                             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                                {/* <!-- Sidebar Toggle (Topbar) --> */}
-                                <Tab showNavigateValues={showNavigateValues} showNavigate={showNavigate} />
 
 
                                 {/* <!-- Topbar Navbar --> */}
@@ -139,10 +106,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                                     {/* <!-- Nav Item - User Information --> */}
                                     <li className="nav-item dropdown no-arrow">
                                         <a className="nav-link dropdown-toggle" id="userDropdown" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={hideNavigate}>
-                                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">{loginuser}</span>
-                                            {/* <img class="img-profile rounded-circle" */}
-                                            {/* src="#" /> */}
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">Dashboard in Lab</span>
                                             <i className="fas fa-solid fa-user fa-2s text-gray-300"></i>
                                         </a>
                                     </li>
@@ -151,7 +116,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
                             </nav>
                             {/* ページのコンテンツ部分 */}
-                            <Dashboardcontent isHome={isHomeValues} isAdminView={isAdminView} user_id={user_id} baseurl={baseurl} monthpay={monthpay} />
+                            <Dashboardinlabcontent user_id={user_id} baseurl={baseurl} />
                         </div>
                     </div>
                 </div>
@@ -169,7 +134,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                 </a>
             </div>
         </>
-    );
-};
+    )
 
-export default Dashboardroot;
+}
+
+export default Dashboardinlabroot;
