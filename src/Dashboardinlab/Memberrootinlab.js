@@ -42,7 +42,7 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
     useEffect(()=>{
         const intervalId = setInterval(() => {
             setCounter(!counter);
-        }, 1000);
+        }, 10000);
 
         return () => clearInterval(intervalId);
     },[]);
