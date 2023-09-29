@@ -5,8 +5,6 @@ import {useNavigate} from "react-router-dom";
 
 const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
 
-    const navigate = useNavigate();
-
     // 状態を在室に変更するための関数
     async function switchstatus(id) {
             // ユーザーデータを全て取得
@@ -26,7 +24,7 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
                     // データを更新
                     axios.post(baseurl + `/user/update/${id}`, updatedUserData)
                     .then(res => {
-                        setCounter(counter+1);
+                        setCounter(!counter);
                     })
                     .catch(err => {
                         console.log('Error updating user Data. ',err)
@@ -43,7 +41,7 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
 
     useEffect(()=>{
         const intervalId = setInterval(() => {
-            setCounter(counter+1);
+            setCounter(!counter);
         }, 300000);
 
         return () => clearInterval(intervalId);

@@ -6,7 +6,7 @@ import Memberrootinlab from "./Memberrootinlab";
 const Membersinlab = ({baseurl, user_id}) => {
     // 全てのユーザー情報を取得し、リスト化する
     const [allmembersValues, setallmembersValues] = useState([]);
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(true);
 
     let fetchallmember = `/user`;
 
