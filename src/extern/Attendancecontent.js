@@ -27,8 +27,8 @@ const Attendancecontent = ({baseurl}) => {
                                     {/* <!-- Nav Item - User Information --> */}
                                     <li className="nav-item dropdown no-arrow">
                                         <a className="nav-link dropdown-toggle" id="userDropdown" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={hideNavigate}>
-                                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">{loginuser}</span>
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">在室状況</span>
                                             {/* <img class="img-profile rounded-circle" */}
                                             {/* src="#" /> */}
                                             <i className="fas fa-solid fa-user fa-2s text-gray-300"></i>

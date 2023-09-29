@@ -191,11 +191,11 @@ const NotFound = () => {
 const Dashboardinlab = () => {
   let baseurl = "https://lablinkback.fly.dev";
   const params = useParams();
-  const id = params.id;
+  const user_id = params.id;
 
   return (
     <div>
-      <Dashboardinlabroot user_id={id} baseurl={baseurl} />
+      <Dashboardinlabroot user_id={user_id} baseurl={baseurl} />
     </div>
   )
 }

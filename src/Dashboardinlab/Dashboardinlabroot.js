@@ -41,6 +41,9 @@ const Dashboardinlabroot = ({user_id, baseurl}) => {
             navigate('/login');
         }
     };
+    const requests = {
+        fetchloginuserinfo: `/user/get_user/${user_id}`
+    };
 
     // ユーザーIDからユーザーの情報を取得する
     useEffect(() => {
@@ -51,7 +54,6 @@ const Dashboardinlabroot = ({user_id, baseurl}) => {
                 axios.get(baseurl + requests.fetchloginuserinfo).then((res) => {
                     if (res.data) {
                         setloginuser(res.data["name"]);
-                        setisAdmin(res.data['is_admin']);
                     } else {
                         localStorage.removeItem('access_token');
                         localStorage.removeItem('T-lab_username');
