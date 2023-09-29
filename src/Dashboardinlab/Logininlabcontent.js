@@ -120,7 +120,7 @@ const Logininlabcontent = ({baseurl}) => {
             getUserId(username).then(id => {
                 if (id) {
                     console.log(`User ID is: ${id}`);
-                    navigate('/dashboard/' + id.toString());
+                    navigate('/dashboard/inlab/' + id.toString());
                 }
             });
         }
