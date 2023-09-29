@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 
-const Logininlab = ({baseurl}) => {
+const Logininlabcontent = ({baseurl}) => {
     //ユーザー情報を格納するオブジェクトを生成する
     const initialValues = { username: "", password: "" };
     //フォームに入力された値を格納する状態変数を準備する
@@ -151,4 +151,4 @@ const Logininlab = ({baseurl}) => {
 
 }
 
-export default Logininlab;
+export default Logininlabcontent;

@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import Dashboardinlabroot from "./Dashboardinlab/Dashboardinlabroot";
 import Logininlab from "./Dashboardinlab/Logininlab";
 import Attendancecontent from "./extern/Attendancecontent";
+import Logininlabcontent from "./Dashboardinlab/Logininlabcontent";
 
 const App = () => {
   return (
@@ -90,7 +91,7 @@ const Logininlab = () => {
   let baseurl = "https://lablinkback.fly.dev";
   return (
     <div>
-      <Logininlab baseurl={baseurl} />
+      <Logininlabcontent baseurl={baseurl} />
     </div>
   )
 }
