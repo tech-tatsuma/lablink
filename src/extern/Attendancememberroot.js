@@ -4,7 +4,7 @@ const Attendancememberroot = ({details}) => {
     // ここのif文で研究室の中にいるか否かを分岐させる
     if (!details.at_office) {
         return (
-            <div className="col-lg-6 mb-4">
+            <div className="col-lg-4 mb-4">
                 <div className="card bg-secondary text-white shadow">
                     <div className="card-body">
                         {details.name}
@@ -15,7 +15,7 @@ const Attendancememberroot = ({details}) => {
         )
     } else {
         return (
-            <div className="col-lg-6 mb-4">
+            <div className="col-lg-4 mb-4">
                 <div className="card bg-danger text-white shadow">
                     <div className="card-body">
                         {details.name}

@@ -25,10 +25,22 @@ const Attendancemembers = ({baseurl}) => {
 
     return (
         <div className="row">
-            {allmembersValues.map((member, index) =>
+        {allmembersValues.map((member, index) =>
+            <>
+            {/* Noriko Takemuraの前後に空のdivを配置 */}
+            {member.name === "Noriko Takemura" && (
+                <>
+                    <div className="col-lg-4 mb-4"></div>
+                    <Attendancememberroot key={index} details={member} />
+                    <div className="col-lg-4 mb-4"></div>
+                </>
+            )}
+            {member.name !== "Noriko Takemura" && (
                 <Attendancememberroot key={index} details={member} />
             )}
-        </div>
+        </>
+        )}
+    </div>
     );
 }
 

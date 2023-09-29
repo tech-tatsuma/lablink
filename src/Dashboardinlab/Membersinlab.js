@@ -6,6 +6,7 @@ import Memberrootinlab from "./Memberrootinlab";
 const Membersinlab = ({baseurl, user_id}) => {
     // 全てのユーザー情報を取得し、リスト化する
     const [allmembersValues, setallmembersValues] = useState([]);
+    const [counter, setCounter] = useState(0);
 
     let fetchallmember = `/user`;
 
@@ -21,6 +22,18 @@ const Membersinlab = ({baseurl, user_id}) => {
         };
         fetchAllMembers();
     }, []);
+    useEffect(() => {
+        async function fetchAllMembers() {
+            const res = await axios.get(baseurl + fetchallmember);
+            if (res.data && Array.isArray(res.data)) {
+                res.data.sort((a, b) => a.id - b.id);
+                setallmembersValues(res.data)
+            }
+            console.log("type: " + typeof (allmembersValues));
+            console.log("data: " + allmembersValues);
+        };
+        fetchAllMembers();
+    }, [counter]);
 
 
 
@@ -32,12 +45,12 @@ const Membersinlab = ({baseurl, user_id}) => {
                 {member.name === "Noriko Takemura" && (
                     <>
                         <div className="col-lg-4 mb-4"></div>
-                        <Memberrootinlab key={index} details={member} baseurl={baseurl} user_id={user_id}/>
+                        <Memberrootinlab key={index} details={member} baseurl={baseurl} user_id={user_id} counter={counter} setCounter={setCounter} />
                         <div className="col-lg-4 mb-4"></div>
                     </>
                 )}
                 {member.name !== "Noriko Takemura" && (
-                    <Memberrootinlab key={index} details={member} baseurl={baseurl} user_id={user_id}/>
+                    <Memberrootinlab key={index} details={member} baseurl={baseurl} user_id={user_id} counter={counter} setCounter={setCounter} />
                 )}
             </>
             )}

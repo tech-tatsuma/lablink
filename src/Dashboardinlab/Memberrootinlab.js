@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
-const Memberrootinlab = ({details, baseurl, user_id}) => {
+const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
 
     const navigate = useNavigate();
 
@@ -27,6 +27,7 @@ const Memberrootinlab = ({details, baseurl, user_id}) => {
                     .then(res => {
                         // 画面をリダイレクト
                         navigate(`/dashboard/inlab/${user_id}`)
+                        setCounter(counter+1);
                     })
                     .catch(err => {
                         console.log('Error updating user Data. ',err)

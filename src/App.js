@@ -180,7 +180,7 @@ const NotFound = () => {
             <h1>Not Found</h1>
           </div>
           <div class="image-area">
-            <img class="image" src="./img/home_background1.jpg" alt='武村研究室(takemura lab)の背景画像' />
+            <img class="image" src="/img/home_background1.jpg" alt='武村研究室(takemura lab)の背景画像' />
           </div>
         </header>
       </div>
