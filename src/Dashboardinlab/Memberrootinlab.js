@@ -54,7 +54,7 @@ const Memberrootinlab = ({details, baseurl, user_id}) => {
             )
         } else {
             return (
-                <div className="col-lg-4 mb-4">
+                <div className="col-lg-4 mb-4" onClick={handleClick}>
                     <div className="card bg-danger text-white shadow">
                         <div className="card-body">
                             {details.name}
@@ -79,7 +79,7 @@ const Memberrootinlab = ({details, baseurl, user_id}) => {
             )
         } else {
             return (
-                <div className="col-lg-4 mb-4">
+                <div className="col-lg-4 mb-4" onClick={handleClick}>
                     <div className="card bg-danger text-white shadow">
                         <div className="card-body">
                             {details.name}
