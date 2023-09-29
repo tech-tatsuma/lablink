@@ -42,10 +42,10 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
     useEffect(()=>{
         const intervalId = setInterval(() => {
             setCounter(!counter);
-        }, 300000);
+        }, 60000);
 
         return () => clearInterval(intervalId);
-    },[]);
+    },[counter]);
     
     if (details.name=="Noriko Takemura"){
         if (!details.at_office) {
