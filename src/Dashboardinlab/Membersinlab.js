@@ -31,9 +31,9 @@ const Membersinlab = ({baseurl, user_id}) => {
                 {/* Noriko Takemuraの前後に空のdivを配置 */}
                 {member.name === "Noriko Takemura" && (
                     <>
-                        <div className="col-lg-3 mb-4"></div>
+                        <div className="col-lg-4 mb-4"></div>
                         <Memberrootinlab key={index} details={member} baseurl={baseurl} user_id={user_id}/>
-                        <div className="col-lg-3 mb-4"></div>
+                        <div className="col-lg-4 mb-4"></div>
                     </>
                 )}
                 {member.name !== "Noriko Takemura" && (

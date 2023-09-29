@@ -22,7 +22,7 @@ const Attendanceview = ({baseurl}) => {
                 <div className="row">
 
                     {/* <!-- Content Column --> */}
-                    <div className="col-lg-6 mb-4">
+                    <div className="col-lg-12 mb-4">
 
                         <Attendancemembers baseurl={baseurl} />
 

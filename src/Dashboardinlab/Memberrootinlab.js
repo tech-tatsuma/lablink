@@ -43,7 +43,7 @@ const Memberrootinlab = ({details, baseurl, user_id}) => {
     if (details.name=="Noriko Takemura"){
         if (!details.at_office) {
             return (
-                <div className="col-lg-3 mb-4" onClick={handleClick}>
+                <div className="col-lg-4 mb-4" onClick={handleClick}>
                     <div className="card bg-secondary text-white shadow">
                         <div className="card-body">
                             {details.name}
@@ -54,7 +54,7 @@ const Memberrootinlab = ({details, baseurl, user_id}) => {
             )
         } else {
             return (
-                <div className="col-lg-3 mb-4">
+                <div className="col-lg-4 mb-4">
                     <div className="card bg-danger text-white shadow">
                         <div className="card-body">
                             {details.name}
@@ -68,7 +68,7 @@ const Memberrootinlab = ({details, baseurl, user_id}) => {
 
         if (!details.at_office) {
             return (
-                <div className="col-lg-3 mb-4" onClick={handleClick}>
+                <div className="col-lg-4 mb-4" onClick={handleClick}>
                     <div className="card bg-secondary text-white shadow">
                         <div className="card-body">
                             {details.name}
@@ -79,7 +79,7 @@ const Memberrootinlab = ({details, baseurl, user_id}) => {
             )
         } else {
             return (
-                <div className="col-lg-3 mb-4">
+                <div className="col-lg-4 mb-4">
                     <div className="card bg-danger text-white shadow">
                         <div className="card-body">
                             {details.name}
