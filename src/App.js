@@ -7,7 +7,6 @@ import Dashboardroot from "./Dashboardroot";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import Dashboardinlabroot from "./Dashboardinlab/Dashboardinlabroot";
-import Logininlab from "./Dashboardinlab/Logininlab";
 import Attendancecontent from "./extern/Attendancecontent";
 import Logininlabcontent from "./Dashboardinlab/Logininlabcontent";
 
