@@ -23,7 +23,7 @@ const Memberrootinlab = ({details, baseurl, user_id}) => {
                         "target": userData.target
                     };
                     // データを更新
-                    axios.post(baseurl + `user/update/${id}`, updatedUserData)
+                    axios.post(baseurl + `/user/update/${id}`, updatedUserData)
                     .then(res => {
                         // 画面をリダイレクト
                         navigate(`/dashboard/inlab/${user_id}`)
