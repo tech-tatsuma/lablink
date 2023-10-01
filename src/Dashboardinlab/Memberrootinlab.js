@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
+import 'Memberrootinlab.css';
 
 const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
 
@@ -53,8 +54,10 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
                 <div className="col-lg-4 mb-4" onClick={handleClick}>
                     <div className="card bg-secondary text-white shadow">
                         <div className="card-body">
+                            <div className="card-body-content">
                             {details.name}
                             <div className="text-white-50 small">not office</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,8 +67,10 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
                 <div className="col-lg-4 mb-4" onClick={handleClick}>
                     <div className="card bg-danger text-white shadow">
                         <div className="card-body">
+                            <div className="card-body-content">
                             {details.name}
                             <div className="text-white-50 small">at office</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -78,8 +83,10 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
                 <div className="col-lg-4 mb-4" onClick={handleClick}>
                     <div className="card bg-secondary text-white shadow">
                         <div className="card-body">
+                            <div className="card-body-content">
                             {details.name}
                             <div className="text-white-50 small">not office</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -89,8 +96,10 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
                 <div className="col-lg-4 mb-4" onClick={handleClick}>
                     <div className="card bg-danger text-white shadow">
                         <div className="card-body">
+                            <div className="card-body-content">
                             {details.name}
                             <div className="text-white-50 small">at office</div>
+                            </div>
                         </div>
                     </div>
                 </div>
