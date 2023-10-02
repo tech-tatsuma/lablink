@@ -23,12 +23,25 @@ const App = () => {
         <Route path="/inlab/login" element={<Logininlab />} />
         <Route path="/attendance-info" element={<Attendance />} />
         <Route path="/*" element={<NotFound />} />
+        <Route exect path='/qr-scanned' element={<QRScanned />} />
       </Routes>
     </div>
   );
 }
 //Appをエクスポートします。
 export default App;
+
+// QRコードがスキャンされたときにレンダリングされるコンポーネント
+const QRScanned = () => {
+  useEffect(() => {
+    // このコンポーネントがマウントされたとき、QRコードがスキャンされたとみなします
+    localStorage.setItem("qrScanned", "true");
+    // その後、/attendance-infoへリダイレクトします
+    window.location.href = "/attendance-info";
+  }, []);
+
+  return null; // このコンポーネントは視覚的に何もレンダリングしません
+};
 
 const Home = () => {
   const [isSplashScreenVisible, setIsSplashScreenVisible] = useState(true);
@@ -77,13 +90,27 @@ const Login = () => {
   );
 };
 
+// `/attendance-info`でローカルストレージのQRコード値をチェックするよう、Attendanceコンポーネントを更新
 const Attendance = () => {
+  const navigate = useNavigate();
   let baseurl = "https://lablinkback.fly.dev";
+  
+  useEffect(() => {
+    // ローカルストレージ内のqrScanned値が存在するかチェック
+    if (localStorage.getItem("qrScanned") !== "true") {
+      // 存在しない場合、このページからユーザーをリダイレクトします
+      navigate('/notfound');
+    } else {
+      // QRがスキャンされた場合、このコンポーネントをレンダリングし、次回の使用のためにローカルストレージからフラグを削除します
+      localStorage.removeItem("qrScanned");
+    }
+  }, []);
+
   return (
     <div>
       <Attendancecontent baseurl={baseurl} />
     </div>
-  )
+  );
 }
 
 const Logininlab = () => {
