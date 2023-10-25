@@ -34,3 +34,7 @@
     border-bottom-right-radius: 0.35rem!important;
   }
   
+  .summary-container {
+    height: 400px;  /* 適切な高さに設定 */
+    overflow-y: auto;  /* 縦方向にスクロール可能にする */
+  }
