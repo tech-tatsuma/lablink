@@ -25,6 +25,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     const [isAdmin, setisAdmin] = useState(false);
     // 管理者ページの表示を管理する状態変数
     const [isAdminView, setisAdminView] = useState(false);
+    // 論文要約ページの表示を管理する状態変数
+    const [isSummaryView, setisSummaryView] = useState(false);
 
     let monthpay = 500;
 
@@ -115,7 +117,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                 <div id="wrapper">
 
                     {/* <!-- Sidebar --> */}
-                    <Navigate user_id={user_id} setisHomeValues={setisHomeValues} showNavigateValues={showNavigateValues} setshowNavigateValues={setshowNavigateValues} isAdmin={isAdmin} setisAdminView={setisAdminView} />
+                    <Navigate user_id={user_id} setisHomeValues={setisHomeValues} showNavigateValues={showNavigateValues} setshowNavigateValues={setshowNavigateValues} isAdmin={isAdmin} setisAdminView={setisAdminView} isSummaryView={isSummaryView} setisSummaryView={isSummaryView} />
 
                     {/* <!-- Content Wrapper --> */}
                     <div id="content-wrapper" className="d-flex flex-column">
@@ -151,7 +153,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
                             </nav>
                             {/* ページのコンテンツ部分 */}
-                            <Dashboardcontent isHome={isHomeValues} isAdminView={isAdminView} user_id={user_id} baseurl={baseurl} monthpay={monthpay} />
+                            <Dashboardcontent isHome={isHomeValues} isAdminView={isAdminView} isSummaryView={isSummaryView} user_id={user_id} baseurl={baseurl} monthpay={monthpay} />
                         </div>
                     </div>
                 </div>

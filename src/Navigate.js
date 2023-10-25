@@ -6,23 +6,32 @@ import './Dashboardview.css';
 import { useNavigate } from "react-router-dom";
 import Atofficechange from "./App";
 
-const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView }) => {
+const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView }) => {
     // この関数が呼び出されるとホーム画面が呼び出される
     const trueHome = () => {
         // データの取得
         setisHomeValues(true);
         setisAdminView(false);
+        setisSummaryView(false);
     };
 
     // この関数が呼び出されると備品管理画面が表示される
     const falseHome = () => {
         setisHomeValues(false);
         setisAdminView(false);
+        setisSummaryView(false);
     };
 
     const trueisAdminview = () => {
         setisHomeValues(false);
         setisAdminView(true);
+        setisSummaryView(false);
+    };
+
+    const showsummary = () => {
+        setisHomeValues(false);
+        setisAdminView(false);
+        setisSummaryView(true);
     };
 
     const hideNavigate = () => {
@@ -154,9 +163,9 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <span>備品管理</span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" onClick={switchatoffice}>
-                                    <i className="fas fa-solid fa-person-booth"></i>
-                                    <span>在室スイッチ</span></a>
+                                <a className="nav-link" onClick={showsummary}>
+                                    <i className="fa-solid fa-graduation-cap"></i>
+                                    <span>論文要約</span></a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
