@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import './../css/sb-admin-2.css';
 import './../css/sb-admin-2.min.css';
 import './../vendor/fontawesome-free/css/all.min.css';
@@ -11,10 +11,24 @@ const Papersummarydashboard = () => {
     const [inputurl, setinputurl] = useState("");
     const [summary, setSummary] = useState("");
     const [loading, setLoading] = useState(false); // NEW: state for loading
+    const inputRef = useRef(null);
+    const buttonRef = useRef(null);
 
     const handleChange = (event) => {
         setinputurl(event.target.value);
     };
+
+    useEffect(() => {
+        if (inputRef.current && buttonRef.current) {
+          const inputHeight = inputRef.current.offsetHeight;
+          const buttonHeight = buttonRef.current.offsetHeight;
+    
+          const maxHeight = Math.max(inputHeight, buttonHeight);
+    
+          inputRef.current.style.height = `${maxHeight}px`;
+          buttonRef.current.style.height = `${maxHeight}px`;
+        }
+      }, []);
 
     const handleClick = async () => {
         setLoading(true); // Start loading
@@ -45,14 +59,14 @@ const Papersummarydashboard = () => {
                 <div className="row justify-content-center"> {/* Row to center horizontally */}
                     <div className="col-md-6"> {/* Column to define width */}
                         <div className="input-group">
-                            <input type="text" className="form-control bg-light border-0 small styled-input" 
+                            <input type="text" className="form-control bg-light border-0 small styled-input" ref={inputRef}
                                 placeholder="arxiv url" aria-label="Search" 
                                 aria-describedby="basic-addon2" 
                                 value={inputurl}
                                 onChange={handleChange} 
                                 disabled={loading} />
                             <div className="input-group-append">
-                                <button className="btn btn-primary" type="button" onClick={handleClick} disabled={loading}>
+                                <button className="btn btn-primary" ref={buttonRef} type="button" onClick={handleClick} disabled={loading}>
                                     <i className="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
