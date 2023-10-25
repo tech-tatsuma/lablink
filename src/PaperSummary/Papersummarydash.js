@@ -56,6 +56,12 @@ const Papersummarydashboard = () => {
                 </div> 
             }
             <div className="container"> {/* Container to hold the form and summary */}
+            <div className="row justify-content-center">
+                    <div className="col-md-6 text-center">
+                        <h1 className="text-secondary">論文要約</h1>
+                        <p className="text-secondary">論文掲載サイトarxivのURLを入力して、その要約をしてもらいましょう</p>
+                    </div>
+                </div>
                 <div className="row justify-content-center"> {/* Row to center horizontally */}
                     <div className="col-md-6"> {/* Column to define width */}
                     <div className="input-group">
@@ -66,7 +72,7 @@ const Papersummarydashboard = () => {
                                 onChange={handleChange} 
                                 disabled={loading} />
                         </div>
-                        <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+                        <div style={{ textAlign: 'center', margin: '1rem' }}>
                             <button className="btn btn-primary" 
                                     style={{ borderRadius: '0.35rem' }}
                                     onClick={handleClick} 
