@@ -59,7 +59,7 @@ const Papersummarydashboard = () => {
                 <div className="row justify-content-center"> {/* Row to center horizontally */}
                     <div className="col-md-6"> {/* Column to define width */}
                         <div className="input-group">
-                            <input type="text" className="form-control bg-light border-0 small styled-input" ref={inputRef}
+                            <input type="text" className="form-control bg-light border-0 small styled-input"
                                 placeholder="arxiv url" aria-label="Search" 
                                 aria-describedby="basic-addon2" 
                                 value={inputurl}
