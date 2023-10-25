@@ -33,10 +33,12 @@ const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, user_id, baseurl
             );
         }
     } else {
+        return (
         <>
             {/* 論文要約画面の呼び出しを行う */}
             <Papersummarydashboard />
         </>
+        );
     }
 };
 
