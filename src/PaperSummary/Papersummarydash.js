@@ -58,18 +58,15 @@ const Papersummarydashboard = () => {
             <div className="container"> {/* Container to hold the form and summary */}
                 <div className="row justify-content-center"> {/* Row to center horizontally */}
                     <div className="col-md-6"> {/* Column to define width */}
-                        <div className="form-control bg-light border-0 small styled-input"
-                            ref={inputRef}
-                            style={{ marginBottom: '1rem' }}>
-                            <input type="text" 
-                                placeholder="arxiv url" 
-                                aria-label="Search" 
+                    <div className="input-group">
+                            <input type="text" className="form-control bg-light border-0 small styled-input"
+                                placeholder="arxiv url" aria-label="Search" 
                                 aria-describedby="basic-addon2" 
                                 value={inputurl}
                                 onChange={handleChange} 
                                 disabled={loading} />
                         </div>
-                        <div style={{ textAlign: 'center' }}>
+                        <div style={{ textAlign: 'center', marginTop: '1rem' }}>
                             <button className="btn btn-primary" 
                                     style={{ borderRadius: '0.35rem' }}
                                     onClick={handleClick} 

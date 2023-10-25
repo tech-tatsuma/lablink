@@ -95,7 +95,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showsummary}>
-                                    <i className="fa-solid fa-graduation-cap"></i>
+                                    <i className="fas fa-solid fa-user-graduate"></i>
                                     <span>論文要約</span></a>
                             </li>
                             <li className="nav-item">
@@ -164,7 +164,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showsummary}>
-                                    <i className="fa-solid fa-graduation-cap"></i>
+                                    <i className="fas fa-solid fa-user-graduate"></i>
                                     <span>論文要約</span></a>
                             </li>
                             <li className="nav-item">
