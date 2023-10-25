@@ -13,6 +13,7 @@ const Papersummarydashboard = () => {
     const [loading, setLoading] = useState(false); // NEW: state for loading
     const inputRef = useRef(null);
     const buttonRef = useRef(null);
+    let summaryendpoint = 'https://lablinkback-papersum.fly.dev'
 
     const handleChange = (event) => {
         setinputurl(event.target.value);
@@ -34,7 +35,7 @@ const Papersummarydashboard = () => {
         setLoading(true); // Start loading
         console.log("Button clicked. Current input: ", inputurl);
         try {
-            const response = await axios.get(`/summarize?arxiv_url=${inputurl}`);
+            const response = await axios.get(`${summaryendpoint}/summarize?arxiv_url=${inputurl}`);
             if (response.data.summary) {
                 setSummary(response.data.summary);
                 setinputurl("");  // Reset the input field and its state variable
