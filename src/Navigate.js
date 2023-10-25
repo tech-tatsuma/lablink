@@ -94,9 +94,9 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <span>備品管理</span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" onClick={switchatoffice}>
-                                    <i className="fas fa-solid fa-person-booth"></i>
-                                    <span>在室スイッチ</span></a>
+                                <a className="nav-link" onClick={showsummary}>
+                                    <i className="fa-solid fa-graduation-cap"></i>
+                                    <span>論文要約</span></a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
