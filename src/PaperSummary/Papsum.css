@@ -48,6 +48,7 @@
     text-align: center;
     font-family: Arial;
     font-weight: bold;
+    z-index: 3;
   }
   .my-container span{
     display: block;
@@ -68,5 +69,10 @@
       margin-right: 95px;
       opacity: .1;
     }
+  }
+
+  .my-container p {
+    color: white;
+    z-index: 4;
   }
   
