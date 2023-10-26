@@ -53,8 +53,13 @@ const Papersummarydashboard = () => {
         <>
             { loading && 
                 <div className="overlay" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                    <div className="loader"></div>
-                </div> 
+                <div className="my-container">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <p>LOADING</p>
+                </div>
+            </div> 
             }
             <div className="container"> {/* Container to hold the form and summary */}
             <div className="row justify-content-center">
