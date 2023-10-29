@@ -4,6 +4,7 @@ import Dashboardview from "./Dashboardview";
 import Equipmentview from "./Equipmentview";
 import Admin from "./Admin";
 import Papersummarydashboard from "./PaperSummary/Papersummarydash";
+import Papersearchcontent from "./Papersearch/Papersearchcontent";
 
 const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, user_id, baseurl, monthpay }) => {
     if (isSearchpaper === false){
@@ -44,6 +45,7 @@ const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, u
 } else {
     return (
         <>
+        <Papersearchcontent />
         </>
     )
 }

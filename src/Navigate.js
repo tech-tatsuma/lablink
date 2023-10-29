@@ -126,7 +126,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showsearchpaper}>
-                                    <i className="fas fa-solid fa-magnifying-glass"></i>
+                                    <i className="fas fa-search fa-sm"></i>
                                     <span>論文検索</span></a>
                             </li>
                             <hr className="sidebar-divider" />
@@ -213,7 +213,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showsearchpaper}>
-                                    <i className="fas fa-solid fa-magnifying-glass"></i>
+                                    <i className="fas fa-search fa-sm"></i>
                                     <span>論文検索</span></a>
                             </li>
                             <hr className="sidebar-divider" />
