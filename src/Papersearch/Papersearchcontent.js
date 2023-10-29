@@ -70,7 +70,12 @@ const Papersearchcontent = () => {
                     </div>
                 </div>
                 <div className="row">
-                    {searchResults.map((result, index) => (
+                {searchResults.length === 0 ? (
+                    <div className="col-md-12" style={{ textAlign: 'center' }}>
+                        <p>Not Found</p>
+                    </div>
+                ) : (
+                    searchResults.map((result, index) => (
                         <div className="col-md-6" key={index}>
                             <div className="card">
                                 <div className="card-body">
@@ -80,8 +85,9 @@ const Papersearchcontent = () => {
                                 </div>
                             </div>
                         </div>
-                    ))}
-                </div>
+                    ))
+                )}
+            </div>
             </div>
         </>
     );
