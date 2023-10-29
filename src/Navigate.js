@@ -106,7 +106,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <span>備品管理</span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href='https://lablink.netlify.app//inlab/login'>
+                                <a className="nav-link" href='https://lablink.netlify.app/inlab/login'>
                                     <i className="fas fa-solid fa-chalkboard"></i>
                                     <span>研究室内ボード</span></a>
                             </li>
@@ -198,7 +198,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <span>備品管理</span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href='https://lablink.netlify.app//inlab/login'>
+                                <a className="nav-link" href='https://lablink.netlify.app/inlab/login'>
                                     <i className="fas fa-solid fa-chalkboard"></i>
                                     <span>研究室内ボード</span></a>
                             </li>
