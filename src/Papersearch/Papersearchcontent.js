@@ -78,7 +78,7 @@ const Papersearchcontent = () => {
                     </div>
                 ) : (
                     searchResults.map((result, index) => (
-                        <div className="col-md-6" key={index}>
+                        <div className="col-md-6 margin-bottom-md" key={index}>
                             <div className="card">
                                 <div className="card-body scrollable-card-body">
                                     <ReactMarkdown>

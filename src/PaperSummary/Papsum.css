@@ -14,8 +14,12 @@
 }
 
 .scrollable-card-body {
-  max-height: 400px;  /* 例として200pxを指定 */
-  overflow-y: auto;  /* 縦方向にスクロール許可 */
+  max-height: 600px;
+  overflow-y: auto;  
+}
+
+.margin-bottom-md {
+  margin-bottom: 50px;
 }
 
 .overlay {
