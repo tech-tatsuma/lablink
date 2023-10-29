@@ -85,7 +85,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <i className="fas fa-fw fa-tachometer-alt"></i>
                                 <span>Dashboard</span></a>
                         </li>
-                        
+
                         {/* ホーム画面を呼び出すか備品管理画面を呼び出すかの管理を行うタブバー */}
                         <div className="font-japanese">
                             {/* <!-- Divider --> */}
@@ -112,7 +112,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='https://www.notion.so/takemura-lab/Takemura-Lab-82850b93f7944170ad2f2dcd33c14831?pvs=4'>
-                                    <i className="fas fa-regular fa-image"></i>
+                                    <i className="fas fa-solid fa-book"></i>
                                     <span>Notion</span></a>
                             </li>
                             <hr className="sidebar-divider" />
@@ -126,7 +126,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showsearchpaper}>
-                                    <i className="fas fa-solid fa-user-graduate"></i>
+                                    <i className="fas fa-solid fa-magnifying-glass"></i>
                                     <span>論文検索</span></a>
                             </li>
                             <hr className="sidebar-divider" />
@@ -199,11 +199,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='https://www.notion.so/takemura-lab/Takemura-Lab-82850b93f7944170ad2f2dcd33c14831?pvs=4'>
-                                    <i className="fas fa-regular fa-image"></i>
+                                    <i className="fas fa-solid fa-book"></i>
                                     <span>Notion</span></a>
                             </li>
                             <hr className="sidebar-divider" />
-                            <div class="sidebar-heading">
+                            <div className="sidebar-heading">
                                 Paper
                             </div>
                             <li className="nav-item">
@@ -213,11 +213,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showsearchpaper}>
-                                    <i className="fas fa-solid fa-user-graduate"></i>
+                                    <i className="fas fa-solid fa-magnifying-glass"></i>
                                     <span>論文検索</span></a>
                             </li>
                             <hr className="sidebar-divider" />
-                            <div class="sidebar-heading">
+                            <div className="sidebar-heading">
                                 Account
                             </div>
                             <li className="nav-item">
