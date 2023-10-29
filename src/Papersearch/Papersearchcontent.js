@@ -56,7 +56,7 @@ const Papersearchcontent = () => {
                         <div className="input-group">
                             <input type="text" 
                                    className="form-control bg-light border-0 small styled-input"
-                                   placeholder="Search text" 
+                                   placeholder="Search Keyword" 
                                    value={inputText} 
                                    onChange={handleChange}
                                    disabled={loading} />

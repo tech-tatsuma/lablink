@@ -72,7 +72,7 @@ const Papersummarydashboard = () => {
                     <div className="col-md-6"> {/* Column to define width */}
                     <div className="input-group">
                             <input type="text" className="form-control bg-light border-0 small styled-input"
-                                placeholder="arxiv url" aria-label="Search" 
+                                placeholder="arXiv URL" aria-label="Search" 
                                 aria-describedby="basic-addon2" 
                                 value={inputurl}
                                 onChange={handleChange} 

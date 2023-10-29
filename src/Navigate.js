@@ -106,6 +106,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <span>備品管理</span></a>
                             </li>
                             <li className="nav-item">
+                                <a className="nav-link" href='https://lablink.netlify.app//inlab/login'>
+                                    <i className="fas fa-solid fa-chalkboard"></i>
+                                    <span>研究室内ボード</span></a>
+                            </li>
+                            <li className="nav-item">
                                 <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
                                     <i className="fas fa-regular fa-image"></i>
                                     <span>思い出</span></a>
@@ -191,6 +196,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <a className="nav-link" onClick={falseHome}>
                                     <i className="fas fa-fw fa-list"></i>
                                     <span>備品管理</span></a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href='https://lablink.netlify.app//inlab/login'>
+                                    <i className="fas fa-solid fa-chalkboard"></i>
+                                    <span>研究室内ボード</span></a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
