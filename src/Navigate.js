@@ -5,6 +5,7 @@ import './vendor/fontawesome-free/css/all.min.css';
 import './Dashboardview.css';
 import { useNavigate } from "react-router-dom";
 import Atofficechange from "./App";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper }) => {
     // この関数が呼び出されるとホーム画面が呼び出される
@@ -148,7 +149,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='http://131.206.57.161/'>
-                                    <i className="fas fa-brands fa-gitlab"></i>
+                                    <FontAwesomeIcon icon="fa-brands fa-gitlab" />
                                     <span>gitlab</span></a>
                             </li>
                             <hr className="sidebar-divider" />
@@ -262,7 +263,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='http://131.206.57.161/'>
-                                    <i className="fas fa-brands fa-gitlab"></i>
+                                    <FontAwesomeIcon icon="fa-brands fa-gitlab" />
                                     <span>gitlab</span></a>
                             </li>
                             <hr className="sidebar-divider" />
