@@ -5,7 +5,8 @@ import Equipmentview from "./Equipmentview";
 import Admin from "./Admin";
 import Papersummarydashboard from "./PaperSummary/Papersummarydash";
 
-const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, user_id, baseurl, monthpay }) => {
+const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, user_id, baseurl, monthpay }) => {
+    if (isSearchpaper === false){
     if (isSummaryView === false){
         if (isAdminView === false) {
             // もし受け取ったisHomeの値によって呼び出す関数を変更させる
@@ -40,6 +41,12 @@ const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, user_id, baseurl
         </>
         );
     }
+} else {
+    return (
+        <>
+        </>
+    )
+}
 };
 
 export default Dashboardcontent;

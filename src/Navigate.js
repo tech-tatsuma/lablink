@@ -6,13 +6,14 @@ import './Dashboardview.css';
 import { useNavigate } from "react-router-dom";
 import Atofficechange from "./App";
 
-const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView }) => {
+const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper }) => {
     // この関数が呼び出されるとホーム画面が呼び出される
     const trueHome = () => {
         // データの取得
         setisHomeValues(true);
         setisAdminView(false);
         setisSummaryView(false);
+        setisSearchpaper(false);
     };
 
     // この関数が呼び出されると備品管理画面が表示される
@@ -20,23 +21,34 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisHomeValues(false);
         setisAdminView(false);
         setisSummaryView(false);
+        setisSearchpaper(false);
     };
 
     const trueisAdminview = () => {
         setisHomeValues(false);
         setisAdminView(true);
         setisSummaryView(false);
+        setisSearchpaper(false);
     };
 
     const showsummary = () => {
         setisHomeValues(false);
         setisAdminView(false);
         setisSummaryView(true);
+        setisSearchpaper(false);
     };
+
+    const showsearchpaper = () => {
+        setisHomeValues(false);
+        setisAdminView(false);
+        setisSummaryView(false);
+        setisSearchpaper(true);
+    }
 
     const hideNavigate = () => {
         setshowNavigateValues(false);
     };
+
     const navigate = useNavigate();
 
     const movepage = () => {
@@ -79,10 +91,17 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
 
                         {/* <!-- Heading --> */}
                         <div className="sidebar-heading">
-                            menu
+                            Basic Menu
                         </div>
                         {/* ホーム画面を呼び出すか備品管理画面を呼び出すかの管理を行うタブバー */}
                         <div className="font-japanese">
+                            {/* <!-- Divider --> */}
+                            <hr className="sidebar-divider" />
+
+                            {/* <!-- Heading --> */}
+                            <div className="sidebar-heading">
+                                Basic Menu
+                            </div>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={trueHome}>
                                     <i className="fas fa-fw fa-home"></i>
@@ -94,15 +113,33 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <span>備品管理</span></a>
                             </li>
                             <li className="nav-item">
+                                <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
+                                    <i className="fas fa-regular fa-image"></i>
+                                    <span>思い出</span></a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href='https://www.notion.so/takemura-lab/Takemura-Lab-82850b93f7944170ad2f2dcd33c14831?pvs=4'>
+                                    <i className="fas fa-regular fa-image"></i>
+                                    <span>Notion</span></a>
+                            </li>
+                            <hr className="sidebar-divider" />
+                            <div class="sidebar-heading">
+                                Paper
+                            </div>
+                            <li className="nav-item">
                                 <a className="nav-link" onClick={showsummary}>
                                     <i className="fas fa-solid fa-user-graduate"></i>
                                     <span>論文要約</span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
-                                    <i className="fas fa-regular fa-image"></i>
-                                    <span>思い出</span></a>
+                                <a className="nav-link" onClick={showsearchpaper}>
+                                    <i className="fas fa-solid fa-user-graduate"></i>
+                                    <span>論文検索</span></a>
                             </li>
+                            <hr className="sidebar-divider" />
+                            <div class="sidebar-heading">
+                                Account
+                            </div>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={movepage}>
                                     <i className="fas fa-solid fa-user"></i>
@@ -143,15 +180,15 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <span>Dashboard</span></a>
                         </li>
 
-                        {/* <!-- Divider --> */}
-                        <hr className="sidebar-divider" />
-
-                        {/* <!-- Heading --> */}
-                        <div className="sidebar-heading">
-                            menu
-                        </div>
                         {/* ホーム画面を呼び出すか備品管理画面を呼び出すかの管理を行うタブバー */}
                         <div className="font-japanese">
+                            {/* <!-- Divider --> */}
+                            <hr className="sidebar-divider" />
+
+                            {/* <!-- Heading --> */}
+                            <div className="sidebar-heading">
+                                Basic Menu
+                            </div>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={trueHome}>
                                     <i className="fas fa-fw fa-home"></i>
@@ -163,15 +200,33 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <span>備品管理</span></a>
                             </li>
                             <li className="nav-item">
+                                <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
+                                    <i className="fas fa-regular fa-image"></i>
+                                    <span>思い出</span></a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href='https://www.notion.so/takemura-lab/Takemura-Lab-82850b93f7944170ad2f2dcd33c14831?pvs=4'>
+                                    <i className="fas fa-regular fa-image"></i>
+                                    <span>Notion</span></a>
+                            </li>
+                            <hr className="sidebar-divider" />
+                            <div class="sidebar-heading">
+                                Paper
+                            </div>
+                            <li className="nav-item">
                                 <a className="nav-link" onClick={showsummary}>
                                     <i className="fas fa-solid fa-user-graduate"></i>
                                     <span>論文要約</span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
-                                    <i className="fas fa-regular fa-image"></i>
-                                    <span>思い出</span></a>
+                                <a className="nav-link" onClick={showsearchpaper}>
+                                    <i className="fas fa-solid fa-user-graduate"></i>
+                                    <span>論文検索</span></a>
                             </li>
+                            <hr className="sidebar-divider" />
+                            <div class="sidebar-heading">
+                                Account
+                            </div>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={movepage}>
                                     <i className="fas fa-solid fa-user"></i>
