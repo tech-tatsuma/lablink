@@ -9,6 +9,7 @@ const Papersearchcontent = () => {
     const [inputText, setInputText] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [hasSearched, setHasSearched] = useState(false);
 
     const handleChange = (e) => {
         setInputText(e.target.value);
@@ -16,6 +17,7 @@ const Papersearchcontent = () => {
 
     const handleClick = async () => {
         setLoading(true);
+        setHasSearched(true);
         try {
             const res = await axios.get(`https://lablinkback-papersum.fly.dev/search?text=${inputText}`);
             if (res.data.result) {
@@ -70,7 +72,7 @@ const Papersearchcontent = () => {
                     </div>
                 </div>
                 <div className="row">
-                {searchResults.length === 0 ? (
+                {hasSearched && searchResults.length === 0 ? (
                     <div className="col-md-12" style={{ textAlign: 'center' }}>
                         <p>Not Found</p>
                     </div>
