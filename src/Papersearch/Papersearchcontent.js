@@ -80,7 +80,7 @@ const Papersearchcontent = () => {
                     searchResults.map((result, index) => (
                         <div className="col-md-6" key={index}>
                             <div className="card">
-                                <div className="card-body">
+                                <div className="card-body scrollable-card-body">
                                     <ReactMarkdown>
                                         {result}
                                     </ReactMarkdown>
