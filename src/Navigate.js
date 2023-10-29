@@ -114,7 +114,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
-                                    <i className="fas fa-regular fa-image"></i>
+                                    <i className="fas fa-fw fa-regular fa-image"></i>
                                     <span>思い出</span></a>
                             </li>
                             <hr className="sidebar-divider" />
@@ -123,12 +123,12 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </div>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showsummary}>
-                                    <i className="fas fa-solid fa-user-graduate"></i>
+                                    <i className="fas fa-fw fa-solid fa-user-graduate"></i>
                                     <span>論文要約</span></a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showsearchpaper}>
-                                    <i className="fas fa-search fa-sm"></i>
+                                    <i className="fas fa-fw fa-search fa-sm"></i>
                                     <span>論文検索</span></a>
                             </li>
                             {/* <!-- Divider --> */}
@@ -151,7 +151,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             <li className="nav-item">
                                 <a className="nav-link" href='http://131.206.57.161/'>
                                     <FontAwesomeIcon icon={faGitlab} />
-                                    <span>gitlab</span></a>
+                                    <span> GitLab</span></a>
                             </li>
                             <hr className="sidebar-divider" />
                             <div class="sidebar-heading">
@@ -223,7 +223,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
-                                    <i className="fas fa-regular fa-image"></i>
+                                    <i className="fas fa-fw fa-regular fa-image"></i>
                                     <span>思い出</span></a>
                             </li>
                             <hr className="sidebar-divider" />
@@ -232,12 +232,12 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </div>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showsummary}>
-                                    <i className="fas fa-solid fa-user-graduate"></i>
+                                    <i className="fas fa-fw fa-solid fa-user-graduate"></i>
                                     <span>論文要約</span></a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showsearchpaper}>
-                                    <i className="fas fa-search fa-sm"></i>
+                                    <i className="fas fa-fw fa-search fa-sm"></i>
                                     <span>論文検索</span></a>
                             </li>
                             {/* <!-- Divider --> */}
@@ -260,7 +260,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             <li className="nav-item">
                                 <a className="nav-link" href='http://131.206.57.161/'>
                                 <FontAwesomeIcon icon={faGitlab} />
-                                    <span>gitlab</span></a>
+                                    <span> GitLab</span></a>
                             </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
