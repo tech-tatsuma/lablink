@@ -149,7 +149,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='http://131.206.57.161/'>
-                                    <FontAwesomeIcon icon="fa-brands fa-gitlab" />
+                                    <FontAwesomeIcon icon={faGitlab} />
                                     <span>gitlab</span></a>
                             </li>
                             <hr className="sidebar-divider" />
@@ -225,11 +225,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <i className="fas fa-regular fa-image"></i>
                                     <span>思い出</span></a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href='https://www.notion.so/takemura-lab/Takemura-Lab-82850b93f7944170ad2f2dcd33c14831?pvs=4'>
-                                    <i className="fas fa-solid fa-book"></i>
-                                    <span>Notion</span></a>
-                            </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
                                 Paper
@@ -263,7 +258,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='http://131.206.57.161/'>
-                                    <FontAwesomeIcon icon="fa-brands fa-gitlab" />
+                                <FontAwesomeIcon icon={faGitlab} />
                                     <span>gitlab</span></a>
                             </li>
                             <hr className="sidebar-divider" />
