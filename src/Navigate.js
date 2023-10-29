@@ -85,14 +85,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <i className="fas fa-fw fa-tachometer-alt"></i>
                                 <span>Dashboard</span></a>
                         </li>
-
-                        {/* <!-- Divider --> */}
-                        <hr className="sidebar-divider" />
-
-                        {/* <!-- Heading --> */}
-                        <div className="sidebar-heading">
-                            Basic Menu
-                        </div>
+                        
                         {/* ホーム画面を呼び出すか備品管理画面を呼び出すかの管理を行うタブバー */}
                         <div className="font-japanese">
                             {/* <!-- Divider --> */}
