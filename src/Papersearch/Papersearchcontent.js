@@ -53,7 +53,7 @@ const Papersearchcontent = () => {
                     <div className="col-md-6">
                         <div className="input-group">
                             <input type="text" 
-                                   className="form-control bg-light border-0 small"
+                                   className="form-control bg-light border-0 small styled-input"
                                    placeholder="Search text" 
                                    value={inputText} 
                                    onChange={handleChange}
