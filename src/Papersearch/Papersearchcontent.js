@@ -48,7 +48,7 @@ const Papersearchcontent = () => {
                 <div className="row justify-content-center">
                     <div className="col-md-6 text-center">
                         <h1 className="text-secondary">論文検索</h1>
-                        <p className="text-secondary">キーワードを入力して論文の検索ができます</p>
+                        <p className="text-secondary">キーワードを入力して研究室メンバーが要約済みの論文の検索ができます</p>
                     </div>
                 </div>
                 <div className="row justify-content-center">
