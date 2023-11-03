@@ -31,6 +31,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     const [isSearchpaper, setisSearchpaper] = useState(false);
     // 暇つぶしページの表示を管理する状態変数
     const [isplayground, setisplayground] = useState(false);
+    // テトリスの表示を管理する状態変数
+    const [istetris, setistetris] = useState(false);
 
     let monthpay = 500;
 
@@ -121,7 +123,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                 <div id="wrapper">
 
                     {/* <!-- Sidebar --> */}
-                    <Navigate user_id={user_id} setisHomeValues={setisHomeValues} showNavigateValues={showNavigateValues} setshowNavigateValues={setshowNavigateValues} isAdmin={isAdmin} setisAdminView={setisAdminView} isSummaryView={isSummaryView} setisSummaryView={setisSummaryView} isSearchpaper={isSearchpaper} setisSearchpaper={setisSearchpaper} isplayground={isplayground} setisplayground={setisplayground} />
+                    <Navigate user_id={user_id} setisHomeValues={setisHomeValues} showNavigateValues={showNavigateValues} setshowNavigateValues={setshowNavigateValues} isAdmin={isAdmin} setisAdminView={setisAdminView} isSummaryView={isSummaryView} setisSummaryView={setisSummaryView} isSearchpaper={isSearchpaper} setisSearchpaper={setisSearchpaper} isplayground={isplayground} setisplayground={setisplayground} setistetris={setistetris} />
 
                     {/* <!-- Content Wrapper --> */}
                     <div id="content-wrapper" className="d-flex flex-column">
@@ -157,7 +159,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
                             </nav>
                             {/* ページのコンテンツ部分 */}
-                            <Dashboardcontent isHome={isHomeValues} isAdminView={isAdminView} isSummaryView={isSummaryView} isSearchpaper={isSearchpaper} isplayground={isplayground} user_id={user_id} baseurl={baseurl} monthpay={monthpay} />
+                            <Dashboardcontent isHome={isHomeValues} isAdminView={isAdminView} isSummaryView={isSummaryView} isSearchpaper={isSearchpaper} isplayground={isplayground} istetris={istetris} user_id={user_id} baseurl={baseurl} monthpay={monthpay} />
                         </div>
                     </div>
                 </div>
