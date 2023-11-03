@@ -1,5 +1,4 @@
 import React from "react";
-//URLを定義する場所を指定するためのインポート
 import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 import './App.css';
 import Loginform from "./Loginform"

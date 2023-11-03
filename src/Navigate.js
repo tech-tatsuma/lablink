@@ -7,8 +7,9 @@ import { useNavigate } from "react-router-dom";
 import Atofficechange from "./App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGitlab } from '@fortawesome/free-brands-svg-icons';
+import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 
-const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper }) => {
+const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper, isplayground, setisplayground }) => {
     // この関数が呼び出されるとホーム画面が呼び出される
     const trueHome = () => {
         // データの取得
@@ -16,6 +17,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisAdminView(false);
         setisSummaryView(false);
         setisSearchpaper(false);
+        setisplayground(false);
     };
 
     // この関数が呼び出されると備品管理画面が表示される
@@ -24,6 +26,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisAdminView(false);
         setisSummaryView(false);
         setisSearchpaper(false);
+        setisplayground(false);
     };
 
     const trueisAdminview = () => {
@@ -31,6 +34,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisAdminView(true);
         setisSummaryView(false);
         setisSearchpaper(false);
+        setisplayground(false);
     };
 
     const showsummary = () => {
@@ -38,6 +42,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisAdminView(false);
         setisSummaryView(true);
         setisSearchpaper(false);
+        setisplayground(false);
     };
 
     const showsearchpaper = () => {
@@ -45,6 +50,15 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisAdminView(false);
         setisSummaryView(false);
         setisSearchpaper(true);
+        setisplayground(false);
+    }
+
+    const showplayground = () => {
+        setisHomeValues(false);
+        setisAdminView(false);
+        setisSummaryView(false);
+        setisSearchpaper(false);
+        setisplayground(true);
     }
 
     const hideNavigate = () => {
@@ -116,6 +130,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
                                     <i className="fas fa-fw fa-regular fa-image"></i>
                                     <span>思い出</span></a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={showplayground}>
+                                    <FontAwesomeIcon icon={faGamepad} />
+                                    <span> ゲーム</span></a>
                             </li>
                             <hr className="sidebar-divider" />
                             <div class="sidebar-heading">

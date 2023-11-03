@@ -5,8 +5,10 @@ import Equipmentview from "./Equipmentview";
 import Admin from "./Admin";
 import Papersummarydashboard from "./PaperSummary/Papersummarydash";
 import Papersearchcontent from "./Papersearch/Papersearchcontent";
+import ChromeDinoGame from 'react-chrome-dino';
 
-const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, user_id, baseurl, monthpay }) => {
+const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, isplayground, user_id, baseurl, monthpay }) => {
+    if (isplayground === false){
     if (isSearchpaper === false){
     if (isSummaryView === false){
         if (isAdminView === false) {
@@ -49,6 +51,13 @@ const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, u
         </>
     )
 }
+    } else {
+        return (
+            <>
+            <ChromeDinoGame />
+            </>
+        )
+    }
 };
 
 export default Dashboardcontent;
