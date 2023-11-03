@@ -44,7 +44,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     // 猫のアニメーション状態
     const [catState, setCatState] = useState({
         position: 'left', // 'left', 'right', 'stopped'
-        reversed: false
+        reversed: false,
+        gif: 'gray_walk_8fps.gif' // 初期のGIF
     });
 
     useEffect(() => {
@@ -52,11 +53,11 @@ const Dashboardroot = ({ user_id, baseurl }) => {
             setCatState(prevState => {
                 switch (prevState.position) {
                     case 'left':
-                        return { ...prevState, position: 'stopped', reversed: false };
+                        return { ...prevState, position: 'stopped', reversed: false, gif: 'gray_with_ball_8fps.gif' };
                     case 'right':
-                        return { ...prevState, position: 'stopped', reversed: true };
+                        return { ...prevState, position: 'stopped', reversed: true, gif: 'gray_with_ball_8fps.gif' };
                     case 'stopped':
-                        return { position: prevState.reversed ? 'left' : 'right', reversed: !prevState.reversed };
+                        return { ...prevState, position: prevState.reversed ? 'left' : 'right', reversed: !prevState.reversed, gif: 'gray_walk_8fps.gif' };
                     default:
                         return prevState; // 念の為のデフォルトケース
                 }
