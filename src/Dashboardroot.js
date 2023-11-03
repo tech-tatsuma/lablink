@@ -34,40 +34,6 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
     let monthpay = 500;
 
-    // 新しいstate変数を追加します
-    const [catAnimation, setCatAnimation] = useState({
-        moving: true,
-        reversed: false
-    });
-    const [catImage, setCatImage] = useState("/img/gray_walk_8fps.gif");
-
-    // 猫のアニメーション状態
-    const [catState, setCatState] = useState({
-        position: 'left', // 'left', 'right', 'stopped'
-        reversed: false,
-        gif: 'gray_walk_8fps.gif' // 初期のGIF
-    });
-
-    useEffect(() => {
-        const updateCatAnimation = () => {
-            setCatState(prevState => {
-                switch (prevState.position) {
-                    case 'left':
-                        return { ...prevState, position: 'stopped', reversed: false, gif: 'gray_with_ball_8fps.gif' };
-                    case 'right':
-                        return { ...prevState, position: 'stopped', reversed: true, gif: 'gray_with_ball_8fps.gif' };
-                    case 'stopped':
-                        return { ...prevState, position: prevState.reversed ? 'left' : 'right', reversed: !prevState.reversed, gif: 'gray_walk_8fps.gif' };
-                    default:
-                        return prevState; // 念の為のデフォルトケース
-                }
-            });
-        };
-
-        const interval = setInterval(updateCatAnimation, 40000); // 40秒ごとに位置を更新
-        return () => clearInterval(interval);
-    }, []);
-
 
     async function getUserId(username) {
         try {
@@ -197,14 +163,15 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                 </div>
                 {/* <!-- End of Page Wrapper --> */}
                 <footer className="sticky-footer bg-white">
-            <div className="container my-auto">
-                {/* 中略 */}
-            </div>
-            {/* アニメーション要素にクラスを適用する */}
-            <div className={`cat-animation ${catState.position} ${catState.reversed ? "reversed" : ""}`}>
-                <img src="/img/gray_walk_8fps.gif" alt="Walking Cat" />
-            </div>
-        </footer>
+                <div className="container my-auto">
+                    <div className="copyright text-center my-auto">
+                        <span>Copyright &copy; Takemura Lab</span>
+                    </div>
+                </div>
+                <div className="cat-animation">
+                    <img className="cat-image" src="/img/gray_walk_8fps.gif" alt="Walking Cat" />
+                </div>
+                </footer>
                 {/* <!-- Scroll to Top Button--> */}
                 <a className="scroll-to-top rounded" href="#page-top">
                     <i className="fas fa-angle-up"></i>
