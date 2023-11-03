@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Atofficechange from "./App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGitlab } from '@fortawesome/free-brands-svg-icons';
-import { faDragon } from "@fortawesome/free-regular-svg-icons";
+import { faDragon } from "@fortawesome/free-solid-svg-icons";
 
 const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper, isplayground, setisplayground }) => {
     // この関数が呼び出されるとホーム画面が呼び出される
