@@ -21,7 +21,7 @@
 }
 
 .cat-animation {
-    position: fixed;
+    position: absolute;
     bottom: 10px;
     left: 0;
     animation: walkingCat 30s linear infinite;
