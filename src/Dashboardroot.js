@@ -34,6 +34,44 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
     let monthpay = 500;
 
+    // 新しいstate変数を追加します
+    const [catAnimation, setCatAnimation] = useState({
+        moving: true,
+        reversed: false
+    });
+    const [catImage, setCatImage] = useState("/img/gray_walk_8fps.gif");
+
+    useEffect(() => {
+        const catAnimationInterval = setInterval(() => {
+            setCatAnimation(prevState => {
+                if (prevState.moving) {
+                    // 歩くアニメーションが終わったらボールで遊ぶアニメーションに切り替えます
+                    setCatImage("/img/gray_with_ball_8fps.gif");
+                    return { moving: false, reversed: prevState.reversed };
+                } else {
+                    // ボールで遊ぶアニメーションが終わったら反転して歩くアニメーションに切り替えます
+                    setCatImage(prevState.reversed ? "/img/gray_walk_8fps.gif" : "/img/gray_walk_8fps_reversed.gif");
+                    return { moving: true, reversed: !prevState.reversed };
+                }
+            });
+        }, 30000); // 30秒ごとに状態を変更します。
+
+        const catAnimationTimeout = setTimeout(() => {
+            if (!catAnimation.moving) {
+                // ボールで遊ぶアニメーションを10秒間表示した後、状態を更新します
+                setCatAnimation(prevState => {
+                    return { ...prevState, moving: true };
+                });
+            }
+        }, 10000); // 10秒後に実行します
+
+        // コンポーネントがアンマウントされたときにタイマーをクリアします
+        return () => {
+            clearInterval(catAnimationInterval);
+            clearTimeout(catAnimationTimeout);
+        };
+    }, [catAnimation.moving]);
+
 
     async function getUserId(username) {
         try {
@@ -168,8 +206,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                         <span>Copyright &copy; Takemura Lab</span>
                     </div>
                 </div>
-                <div className="cat-animation">
-                    <img className="cat-image" src="/img/gray_walk_8fps.gif" alt="Walking Cat" />
+                <div className="cat-animation" style={{ transform: catAnimation.reversed ? 'scaleX(-1)' : 'scaleX(1)' }}>
+                <img className="cat-image" src={catImage} alt="Walking Cat" />
                 </div>
                 </footer>
                 {/* <!-- Scroll to Top Button--> */}
