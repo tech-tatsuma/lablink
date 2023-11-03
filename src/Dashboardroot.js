@@ -34,7 +34,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     //猫が動いているかどうかの状態
     const [isCatMoving, setIsCatMoving] = useState(true);
     // 猫の左の位置を保持する状態変数
-    const [catPositionaLeft, setCatPositionLeft] = useState(0);
+    const [catPositionLeft, setCatPositionLeft] = useState(0);
 
     //猫が動いているかどうかの状態を変更する関数
     const toggleCatAnimation = () => {
