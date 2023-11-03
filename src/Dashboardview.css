@@ -6,22 +6,25 @@
 }
 
 @keyframes walkingCat {
-    0% { 
-        transform: translateX(0) scaleX(1); /* 右に移動するときは反転しない */
+    0%, 100% { 
+        transform: translateX(0) scaleX(1); /* 最初と最後は元の位置にいて、反転していない */
+    }
+    49% { 
+        transform: translateX(calc(100vw - 100%)) scaleX(1); /* 右端に到達する直前までは反転せずに移動 */
     }
     50% { 
-        transform: translateX(calc(100vw - 100%)) scaleX(-1); /* 画面の幅まで移動し、反転させる */
+        transform: translateX(calc(100vw - 100%)) scaleX(-1); /* 右端で反転する */
     }
-    100% { 
-        transform: translateX(0) scaleX(1); /* 元の位置と向きに戻る */
+    99% {
+        transform: translateX(0) scaleX(-1); /* 左端に戻る途中は反転したまま */
     }
 }
 
 .cat-animation {
-    position: fixed; /* 画面に対して固定する */
+    position: fixed; /* 画面に対して固定 */
     bottom: 10px; /* フッターの高さに合わせる */
     left: 0; /* 左端からスタート */
-    animation: walkingCat 8s linear infinite; /* アニメーション時間を調整して歩行の速さを変更する */
+    animation: walkingCat 30s linear infinite; /* アニメーション時間を調整して歩行の速さを変更する */
 }
 
 /* 必要に応じて猫の画像サイズを調整 */
