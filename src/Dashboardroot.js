@@ -36,6 +36,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     // 猫の左の位置を保持する状態変数
     const [catPositionLeft, setCatPositionLeft] = useState(0);
 
+    const [catImageSrc, setCatImageSrc] = useState("/img/gray_walk_8fps.gif");
+
     //猫が動いているかどうかの状態を変更する関数
     const toggleCatAnimation = () => {
         setIsCatMoving(!isCatMoving);
@@ -46,6 +48,11 @@ const Dashboardroot = ({ user_id, baseurl }) => {
             const maxLeftPosition = window.innerWidth - 50;
             const randomLeftPosition = Math.floor(Math.random() * maxLeftPosition);
             setCatPositionLeft(randomLeftPosition);
+
+            const showLieImage = Math.random() < 0.3; // 約20%の確率
+            setCatImageSrc(showLieImage ? "/img/gray_lie_8fps.gif" : "/img/gray_with_ball_8fps.gif");
+          } else {
+            setCatImageSrc("/img/gray_walk_8fps.gif");
           }
     };
 
@@ -186,7 +193,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                     </div>
                 </div>
                 <div className={`cat-animation ${isCatMoving ? "cat-animation-moving" : "cat-animation-stationary"}`} style={{ left: isCatMoving ? 0 : catPositionLeft }}>
-                    <img className="cat-image" src={isCatMoving ? "/img/gray_walk_8fps.gif" : "/img/gray_with_ball_8fps.gif"} alt="Walking Cat" onClick={toggleCatAnimation} style={{ left: isCatMoving ? 0 : catPositionLeft }} />
+                    <img className="cat-image" src={catImageSrc} alt="Walking Cat" onClick={toggleCatAnimation} style={{ left: isCatMoving ? 0 : catPositionLeft }} />
                 </div>
                 </footer>
                 {/* <!-- Scroll to Top Button--> */}
