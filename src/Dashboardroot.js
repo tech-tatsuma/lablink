@@ -41,36 +41,31 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     });
     const [catImage, setCatImage] = useState("/img/gray_walk_8fps.gif");
 
+    // 猫のアニメーション状態
+    const [catState, setCatState] = useState({
+        position: 'left', // 'left', 'right', 'stopped'
+        reversed: false
+    });
+
     useEffect(() => {
-        const catAnimationInterval = setInterval(() => {
-            setCatAnimation(prevState => {
-                if (prevState.moving) {
-                    // 歩くアニメーションが終わったらボールで遊ぶアニメーションに切り替えます
-                    setCatImage("/img/gray_with_ball_8fps.gif");
-                    return { moving: false, reversed: prevState.reversed };
-                } else {
-                    // ボールで遊ぶアニメーションが終わったら反転して歩くアニメーションに切り替えます
-                    setCatImage(prevState.reversed ? "/img/gray_walk_8fps.gif" : "/img/gray_walk_8fps_reversed.gif");
-                    return { moving: true, reversed: !prevState.reversed };
+        const updateCatAnimation = () => {
+            setCatState(prevState => {
+                switch (prevState.position) {
+                    case 'left':
+                        return { ...prevState, position: 'stopped', reversed: false };
+                    case 'right':
+                        return { ...prevState, position: 'stopped', reversed: true };
+                    case 'stopped':
+                        return { position: prevState.reversed ? 'left' : 'right', reversed: !prevState.reversed };
+                    default:
+                        return prevState; // 念の為のデフォルトケース
                 }
             });
-        }, 30000); // 30秒ごとに状態を変更します。
-
-        const catAnimationTimeout = setTimeout(() => {
-            if (!catAnimation.moving) {
-                // ボールで遊ぶアニメーションを10秒間表示した後、状態を更新します
-                setCatAnimation(prevState => {
-                    return { ...prevState, moving: true };
-                });
-            }
-        }, 10000); // 10秒後に実行します
-
-        // コンポーネントがアンマウントされたときにタイマーをクリアします
-        return () => {
-            clearInterval(catAnimationInterval);
-            clearTimeout(catAnimationTimeout);
         };
-    }, [catAnimation.moving]);
+
+        const interval = setInterval(updateCatAnimation, 40000); // 40秒ごとに位置を更新
+        return () => clearInterval(interval);
+    }, []);
 
 
     async function getUserId(username) {
@@ -205,8 +200,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                 {/* 中略 */}
             </div>
             {/* アニメーション要素にクラスを適用する */}
-            <div className={`cat-animation ${catAnimation.reversed ? "cat-animation-reversed" : ""}`} style={{ bottom: '10px', left: catAnimation.reversed ? 'auto' : '0', right: catAnimation.reversed ? '0' : 'auto' }}>
-                <img className="cat-image" src={catImage} alt="Walking Cat" />
+            <div className={`cat-animation ${catState.position} ${catState.reversed ? "reversed" : ""}`}>
+                <img src="/img/gray_walk_8fps.gif" alt="Walking Cat" />
             </div>
         </footer>
                 {/* <!-- Scroll to Top Button--> */}
