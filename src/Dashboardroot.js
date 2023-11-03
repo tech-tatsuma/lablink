@@ -49,7 +49,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
             const randomLeftPosition = Math.floor(Math.random() * maxLeftPosition);
             setCatPositionLeft(randomLeftPosition);
 
-            const showLieImage = Math.random() < 0.5; // 約20%の確率
+            const showLieImage = Math.random() < 0.3; // 約20%の確率
             setCatImageSrc(showLieImage ? "/img/gray_lie_8fps.gif" : "/img/gray_with_ball_8fps.gif");
           } else {
             setCatImageSrc("/img/gray_walk_8fps.gif");
