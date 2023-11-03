@@ -8,9 +8,8 @@ import Atofficechange from "./App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGitlab } from '@fortawesome/free-brands-svg-icons';
 import { faDragon } from "@fortawesome/free-regular-svg-icons";
-import { faPuzzlePiece } from "@fortawesome/free-solid-svg-icons";
 
-const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper, isplayground, setisplayground, setistetris }) => {
+const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper, isplayground, setisplayground }) => {
     // この関数が呼び出されるとホーム画面が呼び出される
     const trueHome = () => {
         // データの取得
@@ -19,7 +18,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSummaryView(false);
         setisSearchpaper(false);
         setisplayground(false);
-        setistetris(false);
     };
 
     // この関数が呼び出されると備品管理画面が表示される
@@ -29,7 +27,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSummaryView(false);
         setisSearchpaper(false);
         setisplayground(false);
-        setistetris(false);
     };
 
     const trueisAdminview = () => {
@@ -38,7 +35,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSummaryView(false);
         setisSearchpaper(false);
         setisplayground(false);
-        setistetris(false);
     };
 
     const showsummary = () => {
@@ -47,7 +43,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSummaryView(true);
         setisSearchpaper(false);
         setisplayground(false);
-        setistetris(false);
     };
 
     const showsearchpaper = () => {
@@ -56,7 +51,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSummaryView(false);
         setisSearchpaper(true);
         setisplayground(false);
-        setistetris(false);
     }
 
     const showplayground = () => {
@@ -65,16 +59,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSummaryView(false);
         setisSearchpaper(false);
         setisplayground(true);
-        setistetris(false);
-    }
-
-    const showtetris = () => {
-        setisHomeValues(false);
-        setisAdminView(false);
-        setisSummaryView(false);
-        setisSearchpaper(false);
-        setisplayground(false);
-        setistetris(true);
     }
 
 
@@ -148,11 +132,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <i className="fas fa-fw fa-regular fa-image"></i>
                                     <span>思い出</span></a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" onClick={showplayground}>
-                                    <FontAwesomeIcon icon={faGamepad} />
-                                    <span> ゲーム</span></a>
-                            </li>
                             <hr className="sidebar-divider" />
                             <div class="sidebar-heading">
                                 Paper
@@ -175,11 +154,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <a className="nav-link" onClick={showplayground}>
                                     <FontAwesomeIcon icon={faDragon} />
                                     <span> 恐竜ちゃん</span></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" onClick={showtetris}>
-                                    <FontAwesomeIcon icon={faPuzzlePiece} />
-                                    <span> テトリス</span></a>
                             </li>
                             {/* <!-- Divider --> */}
                             <hr className="sidebar-divider" />
@@ -298,11 +272,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <a className="nav-link" onClick={showplayground}>
                                     <FontAwesomeIcon icon={faDragon} />
                                     <span> 恐竜ちゃん</span></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" onClick={showtetris}>
-                                    <FontAwesomeIcon icon={faPuzzlePiece} />
-                                    <span> テトリス</span></a>
                             </li>
                             {/* <!-- Divider --> */}
                             <hr className="sidebar-divider" />
