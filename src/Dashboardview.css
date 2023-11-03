@@ -6,14 +6,17 @@
 }
 
 @keyframes walkingCat {
-    0%, 100% { 
-        transform: translateX(0) scaleX(1); /* 最初と最後は元の位置と向き */
+    0% { 
+        transform: translateX(0) scaleX(1); /* 左端で正の向き */
     }
-    49.999%, 50% { 
-        transform: translateX(calc(100vw - 100%)) scaleX(-1); /* 反転の瞬間 */
+    50% { 
+        transform: translateX(calc(100vw - 100%)); /* 右端に移動するがまだ反転しない */
     }
-    50.001%, 100% { 
-        transform: translateX(0) scaleX(-1); /* 反転した状態で戻る */
+    50.001% { 
+        transform: translateX(calc(100vw - 100%)) scaleX(-1); /* 右端で反転 */
+    }
+    100% { 
+        transform: translateX(0) scaleX(-1); /* 左端に戻りつつ反転した状態を保持 */
     }
 }
 
