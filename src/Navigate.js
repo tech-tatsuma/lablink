@@ -245,6 +245,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <i className="fas fa-fw fa-regular fa-image"></i>
                                     <span>思い出</span></a>
                             </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={showplayground}>
+                                    <FontAwesomeIcon icon={faGamepad} />
+                                    <span> ゲーム</span></a>
+                            </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
                                 Paper
