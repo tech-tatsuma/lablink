@@ -58,8 +58,9 @@ const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, i
                 <div className="alert alert-info" role="alert">
                     <h4 className="alert-heading">走る恐竜ちゃん</h4>
                     <p>
-                        PC：キーボードの上矢印ボタンを押すと恐竜ちゃんが走り出します。ジャンプも上矢印です。<br />
+                           PC：キーボードの上矢印ボタンを押すと恐竜ちゃんが走り出します。ジャンプも上矢印です。<br />
                         スマホ：恐竜ちゃんをタップすると恐竜ちゃんが走り出します。ジャンプも画面タップです。画面は横向きにした方がプレーしやすいです。<br />
+                        <br />
                         恐竜ちゃんが走り出したらタイミングよくジャンプして障害物を避けましょう。たまにはこんなゲームで息抜きしちゃお！！
                     </p>
                 </div>
