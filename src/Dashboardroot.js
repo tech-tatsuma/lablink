@@ -163,11 +163,14 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                 </div>
                 {/* <!-- End of Page Wrapper --> */}
                 <footer className="sticky-footer bg-white">
-                    <div className="container my-auto">
-                        <div className="copyright text-center my-auto">
-                            <span>Copyright &copy; Takemura Lab</span>
-                        </div>
+                <div className="container my-auto">
+                    <div className="copyright text-center my-auto">
+                        <span>Copyright &copy; Takemura Lab</span>
                     </div>
+                </div>
+                <div className="cat-animation">
+                    <img className="cat-image" src="/img/gray_walk_8fps.gif" alt="Walking Cat" />
+                </div>
                 </footer>
                 {/* <!-- Scroll to Top Button--> */}
                 <a className="scroll-to-top rounded" href="#page-top">

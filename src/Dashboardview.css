@@ -4,3 +4,28 @@
 .font-japanese {
     font-family: "M PLUS Rounded 1c";
 }
+
+@keyframes walkingCat {
+    0% { 
+        transform: translateX(0) scaleX(1); /* 右に移動するときは反転しない */
+    }
+    50% { 
+        transform: translateX(calc(100vw - 100%)) scaleX(-1); /* 画面の幅まで移動し、反転させる */
+    }
+    100% { 
+        transform: translateX(0) scaleX(1); /* 元の位置と向きに戻る */
+    }
+}
+
+.cat-animation {
+    position: fixed; /* 画面に対して固定する */
+    bottom: 10px; /* フッターの高さに合わせる */
+    left: 0; /* 左端からスタート */
+    animation: walkingCat 8s linear infinite; /* アニメーション時間を調整して歩行の速さを変更する */
+}
+
+/* 必要に応じて猫の画像サイズを調整 */
+.cat-image {
+    width: 50px; /* 画像のサイズは適宜調整 */
+    height: auto;
+}
