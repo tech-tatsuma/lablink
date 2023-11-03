@@ -24,7 +24,14 @@
     position: absolute;
     bottom: 10px;
     left: 0;
+}
+
+.cat-animation-moving {
     animation: walkingCat 30s linear infinite;
+}
+
+.cat-animation-stationary {
+    animation: none; /* アニメーションなし */
 }
 
 /* 必要に応じて猫の画像サイズを調整 */

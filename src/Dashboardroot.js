@@ -31,6 +31,13 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     const [isSearchpaper, setisSearchpaper] = useState(false);
     // 暇つぶしページの表示を管理する状態変数
     const [isplayground, setisplayground] = useState(false);
+    //猫が動いているかどうかの状態
+    const [isCatMoving, setIsCatMoving] = useState(true);
+
+    //猫が動いているかどうかの状態を変更する関数
+    const toggleCatAnimation = () => {
+        setIsCatMoving(!isCatMoving);
+    };
 
     let monthpay = 500;
 
@@ -168,8 +175,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                         <span>Copyright &copy; Takemura Lab</span>
                     </div>
                 </div>
-                <div className="cat-animation">
-                    <img className="cat-image" src="/img/gray_walk_8fps.gif" alt="Walking Cat" />
+                <div className={`cat-animation ${isCatMoving ? "cat-animation-moving" : "cat-animation-stationary"}`}>
+                    <img className="cat-image" src={isCatMoving ? "/img/gray_walk_8fps.gif" : "/img/gray_with_ball_8fps.gif"} alt="Walking Cat" onClick={toggleCatAnimation} />
                 </div>
                 </footer>
                 {/* <!-- Scroll to Top Button--> */}
