@@ -32,44 +32,6 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     // 暇つぶしページの表示を管理する状態変数
     const [isplayground, setisplayground] = useState(false);
 
-    const [catImageSrc, setCatImageSrc] = useState("/img/gray_walk_8fps.gif");
-    const [catPosition, setCatPosition] = useState({ bottom: '10px', left: '0px' });
-
-    // ページ読み込み時に実行
-    useEffect(() => {
-        // 猫が横たわっている画像を表示するかどうかランダムに決定
-        if (Math.random() < 0.5) {
-            // 画像の位置をランダムに設定
-            const randomPosition = {
-                bottom: `${10 + Math.random() * (window.innerHeight - 50)}px`, // 画面の高さに応じてランダムに
-                left: `${Math.random() * (window.innerWidth - 50)}px` // 画面の幅に応じてランダムに
-            };
-            setCatImageSrc("/img/gray_lie_8fps.gif");
-            setCatPosition(randomPosition);
-        }
-    }, []);
-
-    // 猫の画像が端に達したときのロジックを実行するためのフック
-    useEffect(() => {
-        const handleAnimationEnd = () => {
-            // walking catが端に達した後に実行される
-            setCatImageSrc("/img/gray_with_ball_8fps.gif");
-            // 10秒後に元の歩く猫の画像に戻す
-            setTimeout(() => {
-                setCatImageSrc("/img/gray_walk_8fps.gif");
-            }, 10000);
-        };
-
-        // イベントリスナーを追加
-        const catElement = document.querySelector('.cat-animation');
-        catElement.addEventListener('animationiteration', handleAnimationEnd);
-
-        // クリーンアップ関数
-        return () => {
-            catElement.removeEventListener('animationiteration', handleAnimationEnd);
-        };
-    }, []);
-
     let monthpay = 500;
 
 
@@ -206,8 +168,8 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                         <span>Copyright &copy; Takemura Lab</span>
                     </div>
                 </div>
-                <div className="cat-animation" style={{...catPosition}}>
-                    <img className="cat-image" src={catImageSrc} alt="Cat" />
+                <div className="cat-animation">
+                    <img className="cat-image" src="/img/gray_walk_8fps.gif" alt="Walking Cat" />
                 </div>
                 </footer>
                 {/* <!-- Scroll to Top Button--> */}
