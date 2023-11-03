@@ -33,10 +33,20 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     const [isplayground, setisplayground] = useState(false);
     //猫が動いているかどうかの状態
     const [isCatMoving, setIsCatMoving] = useState(true);
+    // 猫の左の位置を保持する状態変数
+    const [catPositionaLeft, setCatPositionLeft] = useState(0);
 
     //猫が動いているかどうかの状態を変更する関数
     const toggleCatAnimation = () => {
         setIsCatMoving(!isCatMoving);
+
+        if (isCatMoving) {
+            // 画面の幅から猫の画像の幅を引いた範囲でランダムな値を生成します
+            // この例では画像の幅を 50px と仮定していますが、適宜調整してください
+            const maxLeftPosition = window.innerWidth - 50;
+            const randomLeftPosition = Math.floor(Math.random() * maxLeftPosition);
+            setCatPositionLeft(randomLeftPosition);
+          }
     };
 
     let monthpay = 500;
@@ -176,7 +186,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                     </div>
                 </div>
                 <div className={`cat-animation ${isCatMoving ? "cat-animation-moving" : "cat-animation-stationary"}`}>
-                    <img className="cat-image" src={isCatMoving ? "/img/gray_walk_8fps.gif" : "/img/gray_with_ball_8fps.gif"} alt="Walking Cat" onClick={toggleCatAnimation} />
+                    <img className="cat-image" src={isCatMoving ? "/img/gray_walk_8fps.gif" : "/img/gray_with_ball_8fps.gif"} alt="Walking Cat" onClick={toggleCatAnimation} style={{ left: isCatMoving ? 0 : catPositionLeft }} />
                 </div>
                 </footer>
                 {/* <!-- Scroll to Top Button--> */}

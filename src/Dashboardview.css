@@ -23,7 +23,7 @@
 .cat-animation {
     position: absolute;
     bottom: 10px;
-    left: 0;
+    /* left: 0; */
 }
 
 .cat-animation-moving {
