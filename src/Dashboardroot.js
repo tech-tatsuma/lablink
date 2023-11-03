@@ -185,7 +185,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                         <span>Copyright &copy; Takemura Lab</span>
                     </div>
                 </div>
-                <div className={`cat-animation ${isCatMoving ? "cat-animation-moving" : "cat-animation-stationary"}`}>
+                <div className={`cat-animation ${isCatMoving ? "cat-animation-moving" : "cat-animation-stationary"}`} style={{ left: isCatMoving ? 0 : catPositionLeft }}>
                     <img className="cat-image" src={isCatMoving ? "/img/gray_walk_8fps.gif" : "/img/gray_with_ball_8fps.gif"} alt="Walking Cat" onClick={toggleCatAnimation} style={{ left: isCatMoving ? 0 : catPositionLeft }} />
                 </div>
                 </footer>
