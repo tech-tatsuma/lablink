@@ -54,7 +54,18 @@ const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, i
     } else {
         return (
             <>
-            <ChromeDinoGame />
+                {/* Bootstrapを使用したメッセージ表示部分 */}
+                <div className="alert alert-info" role="alert">
+                    <h4 className="alert-heading">走る恐竜ちゃん</h4>
+                    <p>
+                        PC：キーボードの上矢印ボタンを押すと恐竜ちゃんが走り出します。ジャンプも上矢印です。<br />
+                        スマホ：恐竜ちゃんをタップすると恐竜ちゃんが走り出します。ジャンプも画面タップです。<br />
+                        恐竜ちゃんが走り出したらタイミングよくジャンプして障害物を避けましょう。たまにはこんなゲームで息抜きしちゃお！！
+                    </p>
+                </div>
+
+                {/* ChromeDinoGameの呼び出し */}
+                <ChromeDinoGame />
             </>
         )
     }
