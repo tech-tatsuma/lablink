@@ -201,15 +201,14 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                 </div>
                 {/* <!-- End of Page Wrapper --> */}
                 <footer className="sticky-footer bg-white">
-                <div className="container my-auto">
-                    <div className="copyright text-center my-auto">
-                        <span>Copyright &copy; Takemura Lab</span>
-                    </div>
-                </div>
-                <div className="cat-animation" style={{ transform: catAnimation.reversed ? 'scaleX(-1)' : 'scaleX(1)' }}>
+            <div className="container my-auto">
+                {/* 中略 */}
+            </div>
+            {/* アニメーション要素にクラスを適用する */}
+            <div className={`cat-animation ${catAnimation.reversed ? "cat-animation-reversed" : ""}`} style={{ bottom: '10px', left: catAnimation.reversed ? 'auto' : '0', right: catAnimation.reversed ? '0' : 'auto' }}>
                 <img className="cat-image" src={catImage} alt="Walking Cat" />
-                </div>
-                </footer>
+            </div>
+        </footer>
                 {/* <!-- Scroll to Top Button--> */}
                 <a className="scroll-to-top rounded" href="#page-top">
                     <i className="fas fa-angle-up"></i>
