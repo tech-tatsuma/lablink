@@ -42,6 +42,7 @@ const ImageContent = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
+            console.log(response);
 
             setResponseMarkdown(response.data);
         } catch (error) {
