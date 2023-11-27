@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import "./../PaperSummary/Papsum.css";
+import {useState} from "react";
 
 const ImageContent = () => {
     const [selectedImage, setSelectedImage] = useState(null);
