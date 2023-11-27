@@ -82,9 +82,15 @@ const ImageContent = () => {
                         </textarea>
                         <button onClick={handleSubmit} disabled={loading} className="btn btn-primary">Submit</button>
                     </div>
-                    <div>
-                        <ReactMarkdown>{responseMarkdown}</ReactMarkdown>
+                    <div className="row justify-content-center"> {/* Row to center horizontally */}
+                    <div className="col-md-6"> {/* Column to define width */}
+                        <div className="summary-container">
+                            <ReactMarkdown>
+                                {responseMarkdown}
+                            </ReactMarkdown>
+                        </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
