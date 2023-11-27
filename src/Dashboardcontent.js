@@ -73,7 +73,11 @@ const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, i
         )
     }
 } else {
+    return(
+        <>
     <ImageContent />
+    </>
+    );
 }
 };
 
