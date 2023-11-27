@@ -6,13 +6,18 @@ import {useState} from "react";
 
 const ImageContent = () => {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
     const [inputText, setInputText] = useState("");
     const [responseMarkdown, setResponseMarkdown] = useState("");
     const [loading, setLoading] = useState(false);
     let summaryendpoint = 'https://lablinkback-papersum.fly.dev'
 
     const handleImageChange = (event) => {
-        setSelectedImage(event.target.files[0]);
+        if (event.target.files && event.target.files[0]) {
+            let img = event.target.files[0];
+            setSelectedImage(img);
+            setImagePreviewUrl(URL.createObjectURL(img));
+        }
     };
 
     const handleTextChange = (event) => {
@@ -65,6 +70,7 @@ const ImageContent = () => {
                     <h1>Image Description</h1>
                     <div>
                         <input type="file" onChange={handleImageChange} disabled={loading} className="form-control mb-2" />
+                        {imagePreviewUrl && <img src={imagePreviewUrl} alt="Preview" className="img-thumbnail mb-2" />}
                         <textarea 
                             className="form-control mb-2" 
                             placeholder="Enter text" 
