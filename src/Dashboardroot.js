@@ -2,49 +2,41 @@ import React from 'react';
 import './css/sb-admin-2.css';
 import './css/sb-admin-2.min.css';
 import './vendor/fontawesome-free/css/all.min.css';
-import './Dashboardview.css';
-import Dashboardcontent from './Dashboardcontent';
+import './Dashboardview.css'; //　ダッシュボード固有のCSSをインポート
+import Dashboardcontent from './Dashboardcontent'; // ダッシュボードのメインコンテンツコンポーネントをインポート
 import { useState, useEffect } from 'react';
-import Navigate from './Navigate';
-import Tab from './Tab';
+import Navigate from './Navigate'; // ナビゲーションバーのコンポーネントをインポート
+import Tab from './Tab'; // タブのコンポーネントをインポート
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+// ダッシュボードのルートコンポーネント
 const Dashboardroot = ({ user_id, baseurl }) => {
-
+    // ローカルストレージからユーザー名を取得
     const username = localStorage.getItem('T-lab_username');
-
+    // ルーティング用のフック
     const navigate = useNavigate();
 
+    // 各種状態の定義
     const [isHomeValues, setisHomeValues] = useState(true);
-
     const [showNavigateValues, setshowNavigateValues] = useState(false);
-    // ユーザーデータを格納する状態変数
     const [loginuser, setloginuser] = useState("");
-    // ユーザーがisadminかどうかを記憶する状態変数
     const [isAdmin, setisAdmin] = useState(false);
-    // 管理者ページの表示を管理する状態変数
     const [isAdminView, setisAdminView] = useState(false);
-    // 論文要約ページの表示を管理する状態変数
     const [isSummaryView, setisSummaryView] = useState(false);
-    //論文検索ぺーじの表示を管理する状態変数
     const [isSearchpaper, setisSearchpaper] = useState(false);
-    // 暇つぶしページの表示を管理する状態変数
     const [isplayground, setisplayground] = useState(false);
-    //猫が動いているかどうかの状態
+    const [isimagedescription, setisimagedescription] = useState(false);
     const [isCatMoving, setIsCatMoving] = useState(true);
-    // 猫の左の位置を保持する状態変数
     const [catPositionLeft, setCatPositionLeft] = useState(0);
-
     const [catImageSrc, setCatImageSrc] = useState("/img/gray_walk_8fps.gif");
 
-    //猫が動いているかどうかの状態を変更する関数
+    // 猫のアニメーションのトグル関数
     const toggleCatAnimation = () => {
+        // 猫のアニメーション状態を切り替え
         setIsCatMoving(!isCatMoving);
-
+        // 猫の位置と画像を更新
         if (isCatMoving) {
-            // 画面の幅から猫の画像の幅を引いた範囲でランダムな値を生成します
-            // この例では画像の幅を 50px と仮定していますが、適宜調整してください
             const maxLeftPosition = window.innerWidth - 50;
             const randomLeftPosition = Math.floor(Math.random() * maxLeftPosition);
             setCatPositionLeft(randomLeftPosition);
@@ -56,9 +48,10 @@ const Dashboardroot = ({ user_id, baseurl }) => {
           }
     };
 
+    // 月額料金の設定
     let monthpay = 500;
 
-
+    // ユーザーIDを取得する非同期関数
     async function getUserId(username) {
         try {
             console.log(baseurl + '/user')
@@ -83,6 +76,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
         }
     };
 
+    // ナビゲーションの表示制御関数
     const showNavigate = () => {
         setshowNavigateValues(true);
     };
@@ -91,10 +85,11 @@ const Dashboardroot = ({ user_id, baseurl }) => {
         setshowNavigateValues(false);
     };
 
+    // ユーザー情報取得のリクエスト
     const requests = {
         fetchloginuserinfo: `/user/get_user/${user_id}`
     };
-    // ユーザーIDからユーザーの情報を取得する
+    // ユーザー情報取得のための副作用
     useEffect(() => {
         //データを取得する非同期関数を定義し、その関数を実行する
         async function fetchData() {
@@ -122,6 +117,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
         fetchData();
     }, [user_id]);
 
+    // ユーザーIDの一致確認
     useEffect(() => {
         getUserId(username).then(id => {
             console.log(user_id !== id);
@@ -139,13 +135,14 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     }, []);
 
     return (
+        // ダッシュボードのHTML構造
         <>
             {/* <!-- Page Wrapper --> */}
             <div id="page-top">
                 <div id="wrapper">
 
                     {/* <!-- Sidebar --> */}
-                    <Navigate user_id={user_id} setisHomeValues={setisHomeValues} showNavigateValues={showNavigateValues} setshowNavigateValues={setshowNavigateValues} isAdmin={isAdmin} setisAdminView={setisAdminView} isSummaryView={isSummaryView} setisSummaryView={setisSummaryView} isSearchpaper={isSearchpaper} setisSearchpaper={setisSearchpaper} isplayground={isplayground} setisplayground={setisplayground} />
+                    <Navigate user_id={user_id} setisHomeValues={setisHomeValues} showNavigateValues={showNavigateValues} setshowNavigateValues={setshowNavigateValues} isAdmin={isAdmin} setisAdminView={setisAdminView} isSummaryView={isSummaryView} setisSummaryView={setisSummaryView} isSearchpaper={isSearchpaper} setisSearchpaper={setisSearchpaper} isplayground={isplayground} setisplayground={setisplayground} setisimagedescription={setisimagedescription} />
 
                     {/* <!-- Content Wrapper --> */}
                     <div id="content-wrapper" className="d-flex flex-column">
@@ -181,7 +178,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
                             </nav>
                             {/* ページのコンテンツ部分 */}
-                            <Dashboardcontent isHome={isHomeValues} isAdminView={isAdminView} isSummaryView={isSummaryView} isSearchpaper={isSearchpaper} isplayground={isplayground} user_id={user_id} baseurl={baseurl} monthpay={monthpay} />
+                            <Dashboardcontent isHome={isHomeValues} isAdminView={isAdminView} isSummaryView={isSummaryView} isSearchpaper={isSearchpaper} isplayground={isplayground} user_id={user_id} baseurl={baseurl} monthpay={monthpay} isimagedescription={isimagedescription} />
                         </div>
                     </div>
                 </div>

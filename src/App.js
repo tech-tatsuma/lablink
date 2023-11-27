@@ -9,11 +9,13 @@ import Dashboardinlabroot from "./Dashboardinlab/Dashboardinlabroot";
 import Attendancecontent from "./extern/Attendancecontent";
 import Logininlabcontent from "./Dashboardinlab/Logininlabcontent";
 
+// Appコンポーネントの定義
 const App = () => {
   return (
-    //BrouserRouterの中にURLを定義します。
+    // アプリケーションのルート（ページのURL）を定義します。
     <div>
       <Routes>
+        {/* 各ルート(ページ)に対応するコンポーネントを定義 */}
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
         <Route path="/dashboard/:id" element={<Dashboard />} />
@@ -27,24 +29,27 @@ const App = () => {
     </div>
   );
 }
-//Appをエクスポートします。
+
+//Appコンポーネントのエクスポート
 export default App;
 
-// QRコードがスキャンされたときにレンダリングされるコンポーネント
+// QRコードスキャン時にレンダリングされるコンポーネント
 const QRScanned = () => {
   useEffect(() => {
-    // このコンポーネントがマウントされたとき、QRコードがスキャンされたとみなします
+    // コンポーネントがマウントされた時、QRコードがスキャンされたと判定
     localStorage.setItem("qrScanned", "true");
-    // その後、/attendance-infoへリダイレクトします
+    // その後、/attendance-infoにリダイレクト
     window.location.href = "/attendance-info";
   }, []);
 
-  return null; // このコンポーネントは視覚的に何もレンダリングしません
+  return null; // このコンポーネントは何も表示しない
 };
 
+// ホーム画面のコンポーネント
 const Home = () => {
   const [isSplashScreenVisible, setIsSplashScreenVisible] = useState(true);
   useEffect(() => {
+    // スプラッシュスクリーンを3.5秒後に非表示に設定
     const timer = setTimeout(() => {
       setIsSplashScreenVisible(false);
     }, 3500);
@@ -52,15 +57,18 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // スプラッシュスクリーンの表示と非表示の処理
   return (
     <>
       {isSplashScreenVisible && (
+        // スプラッシュスクリーンが表示されている時の内容
         <div className="splash-screen">
           <img src="/img/takemura-lab-logo.png" alt="武村研究室のロゴ" />
         </div>
       )}
 
       {!isSplashScreenVisible && (
+        // スプラッシュスクリーンが非表示の時の内容
         <div className="container text-center mt-5">
           <header>
             <div className="textarea">
@@ -79,7 +87,8 @@ const Home = () => {
     </>
   );
 };
-//ユーザーログインのフォームです。
+
+// ログインフォームのコンポーネント
 const Login = () => {
   let baseurl = "https://lablinkback.fly.dev";
   return (
@@ -89,18 +98,18 @@ const Login = () => {
   );
 };
 
-// `/attendance-info`でローカルストレージのQRコード値をチェックするよう、Attendanceコンポーネントを更新
+// `/attendance-info`ページでQRコードスキャンの確認を行うAttendanceコンポーネント
 const Attendance = () => {
   const navigate = useNavigate();
   let baseurl = "https://lablinkback.fly.dev";
   
   useEffect(() => {
-    // ローカルストレージ内のqrScanned値が存在するかチェック
+    // ローカルストレージ内のqrScanned値の確認
     if (localStorage.getItem("qrScanned") !== "true") {
-      // 存在しない場合、このページからユーザーをリダイレクトします
+      // 存在しない場合、ユーザーをリダイレクト
       navigate('/notfound');
     } else {
-      // QRがスキャンされた場合、このコンポーネントをレンダリングし、次回の使用のためにローカルストレージからフラグを削除します
+      // QRコードがスキャンされている場合、ローカルストレージからフラグを削除
       localStorage.removeItem("qrScanned");
     }
   }, []);
@@ -112,6 +121,7 @@ const Attendance = () => {
   );
 }
 
+// 研究室内ログインページのコンポーネント
 const Logininlab = () => {
   let baseurl = "https://lablinkback.fly.dev";
   return (
@@ -121,26 +131,27 @@ const Logininlab = () => {
   )
 }
 
-//ユーザーのダッシュボードです。
+// ユーザーダッシュボードコンポーネント
 const Dashboard = () => {
   const params = useParams();
   const user_id = params.id;
   let baseurl = "https://lablinkback.fly.dev";
   return (
     <div>
-      {/* dashboardにuser_idを渡す */}
+      {/* ダッシュボードにユーザーIDを渡す */}
       <Dashboardroot user_id={user_id} baseurl={baseurl} />
     </div>
   );
 
 };
 
-
+// 在室状況変更用コンポーネント
 export const Atofficechange = () => {
 
   const navigate = useNavigate();
 
   const movepage = () => {
+    // ローカルストレージからトークンとユーザー名を削除し、ログインページにリダイレクト
     localStorage.removeItem('access_token');
     localStorage.removeItem('T-lab_username');
     navigate('/login')
@@ -150,12 +161,14 @@ export const Atofficechange = () => {
   let baseurl = "https://lablinkback.fly.dev";
 
   useEffect(() => {
+    // ユーザー名をローカルストレージから取得
     const username = localStorage.getItem('T-lab_username');
     if (!username) {
       navigate('/login');
       return null;
     };
 
+    // ユーザー情報の取得と更新
     axios.get(baseurl + '/user').then(res => {
       const user = res.data.find(user => user.name === username);
       if (user) {
@@ -167,7 +180,7 @@ export const Atofficechange = () => {
               "icon": userData.icon,
               "birthday": userData.birthday,
               "is_admin": userData.is_admin,
-              "at_office": !userData.at_office, // Toggle at_office value
+              "at_office": !userData.at_office, // 在室状況の切り替え
               "current": userData.current,
               "target": userData.target
             };
@@ -197,6 +210,7 @@ export const Atofficechange = () => {
   return null;
 };
 
+// 404ページ（見つからないページ）のコンポーネント
 const NotFound = () => {
   return (
     <>
@@ -214,6 +228,7 @@ const NotFound = () => {
   );
 }
 
+// 研究室内のダッシュボードコンポーネント
 const Dashboardinlab = () => {
   let baseurl = "https://lablinkback.fly.dev";
   const params = useParams();

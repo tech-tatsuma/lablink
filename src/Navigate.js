@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGitlab } from '@fortawesome/free-brands-svg-icons';
 import { faDragon } from "@fortawesome/free-solid-svg-icons";
 
-const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper, isplayground, setisplayground }) => {
+const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper, isplayground, setisplayground, setisimagedescription }) => {
     // この関数が呼び出されるとホーム画面が呼び出される
     const trueHome = () => {
         // データの取得
@@ -18,6 +18,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSummaryView(false);
         setisSearchpaper(false);
         setisplayground(false);
+        setisimagedescription(false);
     };
 
     // この関数が呼び出されると備品管理画面が表示される
@@ -27,6 +28,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSummaryView(false);
         setisSearchpaper(false);
         setisplayground(false);
+        setisimagedescription(false);
     };
 
     const trueisAdminview = () => {
@@ -35,6 +37,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSummaryView(false);
         setisSearchpaper(false);
         setisplayground(false);
+        setisimagedescription(false);
     };
 
     const showsummary = () => {
@@ -43,6 +46,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSummaryView(true);
         setisSearchpaper(false);
         setisplayground(false);
+        setisimagedescription(false);
     };
 
     const showsearchpaper = () => {
@@ -51,6 +55,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSummaryView(false);
         setisSearchpaper(true);
         setisplayground(false);
+        setisimagedescription(false);
     }
 
     const showplayground = () => {
@@ -59,6 +64,16 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSummaryView(false);
         setisSearchpaper(false);
         setisplayground(true);
+        setisimagedescription(false);
+    }
+
+    const showimagedescript = () => {
+        setisHomeValues(false);
+        setisAdminView(false);
+        setisSummaryView(false);
+        setisSearchpaper(false);
+        setisplayground(false);
+        setisimagedescription(true);
     }
 
 
@@ -134,7 +149,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <hr className="sidebar-divider" />
                             <div class="sidebar-heading">
-                                Paper
+                                Advanced Menu
                             </div>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showsummary}>
@@ -145,6 +160,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <a className="nav-link" onClick={showsearchpaper}>
                                     <i className="fas fa-fw fa-search fa-sm"></i>
                                     <span>論文検索</span></a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={showimagedescript}>
+                                    <i className="fas fa-fw fa-regular fa-image"></i>
+                                    <span>Vision API</span></a>
                             </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
@@ -252,7 +272,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
-                                Paper
+                                Advanced Menu
                             </div>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showsummary}>
@@ -263,6 +283,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <a className="nav-link" onClick={showsearchpaper}>
                                     <i className="fas fa-fw fa-search fa-sm"></i>
                                     <span>論文検索</span></a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={showimagedescript}>
+                                    <i className="fas fa-fw fa-regular fa-image"></i>
+                                    <span>Vision API</span></a>
                             </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
