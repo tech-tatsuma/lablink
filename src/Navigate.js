@@ -19,6 +19,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(false);
         setisplayground(false);
         setisimagedescription(false);
+        hideNavigate();
     };
 
     // この関数が呼び出されると備品管理画面が表示される
@@ -29,6 +30,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(false);
         setisplayground(false);
         setisimagedescription(false);
+        hideNavigate();
     };
 
     const trueisAdminview = () => {
@@ -38,6 +40,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(false);
         setisplayground(false);
         setisimagedescription(false);
+        hideNavigate();
     };
 
     const showsummary = () => {
@@ -47,6 +50,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(false);
         setisplayground(false);
         setisimagedescription(false);
+        hideNavigate();
     };
 
     const showsearchpaper = () => {
@@ -56,6 +60,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(true);
         setisplayground(false);
         setisimagedescription(false);
+        hideNavigate();
     }
 
     const showplayground = () => {
@@ -65,6 +70,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(false);
         setisplayground(true);
         setisimagedescription(false);
+        hideNavigate();
     }
 
     const showimagedescript = () => {
@@ -74,6 +80,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(false);
         setisplayground(false);
         setisimagedescription(true);
+        hideNavigate();
     }
 
 
