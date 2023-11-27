@@ -44,7 +44,7 @@ const ImageContent = () => {
             });
             console.log(response);
 
-            setResponseMarkdown(response.data.choices[0]);
+            setResponseMarkdown(response.data.choices[0].message.content);
         } catch (error) {
             console.error("Error:", error);
             setResponseMarkdown("Error: Unable to process the image.");
