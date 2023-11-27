@@ -68,7 +68,7 @@ const ImageContent = () => {
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-6 text-center"> {/* 中央揃えのためのクラス */}
-                    <h1>Image Description</h1>
+                    <h1>Vision API</h1>
                     <div>
                         <input type="file" onChange={handleImageChange} disabled={loading} className="form-control mb-2" />
                         {imagePreviewUrl && <img src={imagePreviewUrl} alt="Preview" className="img-thumbnail mb-2" />}
@@ -82,15 +82,15 @@ const ImageContent = () => {
                         </textarea>
                         <button onClick={handleSubmit} disabled={loading} className="btn btn-primary">Submit</button>
                     </div>
-                    <div className="row justify-content-center"> {/* Row to center horizontally */}
+                </div>
+                <div className="row justify-content-center"> {/* Row to center horizontally */}
                     <div className="col-md-6"> {/* Column to define width */}
                         <div className="summary-container">
                             <ReactMarkdown>
-                                {responseMarkdown}
+                                 {responseMarkdown}
                             </ReactMarkdown>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
