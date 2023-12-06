@@ -1,6 +1,6 @@
 import React from "react";
 
-const Chatwithcodercontent = ({ setmenu }) => {
+const Imagegeneratorcontent = ({ setmenu }) => {
     const chatbotlist = ["chatbot1", "chatbot2", "chatbot3", "chatbot4"]
 
     const createchat = () => {
@@ -11,7 +11,7 @@ const Chatwithcodercontent = ({ setmenu }) => {
         <div className="container my-3">
             <div className="row">
                 <h3 className="text-center mb-4">Chat With Coder</h3>
-                <div className="d-flex justify-content-center mb-4"> {/* ボタンのサイズと位置を調整 */}
+                <div className="d-flex justify-content-center mb-4"> 
                     <button type="button" className="btn btn-primary text-white" onClick={createchat}>Create Chat</button>
                 </div>
                 {chatbotlist.map((chatbot, index) => (
@@ -26,4 +26,4 @@ const Chatwithcodercontent = ({ setmenu }) => {
     )
 }
 
-export default Chatwithcodercontent;
+export default Imagegeneratorcontent;

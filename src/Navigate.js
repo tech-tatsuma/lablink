@@ -8,6 +8,9 @@ import Atofficechange from "./App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGitlab } from '@fortawesome/free-brands-svg-icons';
 import { faDragon } from "@fortawesome/free-solid-svg-icons";
+import { GoCopilot } from "react-icons/go";
+import { GiDinosaurRex } from "react-icons/gi";
+import { SiNotion } from "react-icons/si";
 
 const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper, isplayground, setisplayground, setisimagedescription, setisAssistant }) => {
     // この関数が呼び出されるとホーム画面が呼び出される
@@ -196,7 +199,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showassistantmenu}>
-                                    <i className="fas fa-fw fa-regular fa-image"></i>
+                                    <GoCopilot />
                                     <span>Chat Assistants</span></a>
                             </li>
                             <hr className="sidebar-divider" />
@@ -205,7 +208,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </div>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showplayground}>
-                                    <FontAwesomeIcon icon={faDragon} />
+                                    <GiDinosaurRex />
                                     <span> 恐竜ちゃん</span></a>
                             </li>
                             {/* <!-- Divider --> */}
@@ -217,7 +220,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </div>
                             <li className="nav-item">
                                 <a className="nav-link" href='https://www.notion.so/takemura-lab/Takemura-Lab-82850b93f7944170ad2f2dcd33c14831?pvs=4'>
-                                    <i className="fas fa-solid fa-book"></i>
+                                    <SiNotion />
                                     <span>Notion</span></a>
                             </li>
                             <li className="nav-item">
@@ -324,7 +327,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showassistantmenu}>
-                                    <i className="fas fa-fw fa-regular fa-image"></i>
+                                    <GoCopilot />
                                     <span>Chat Assistants</span></a>
                             </li>
                             <hr className="sidebar-divider" />
@@ -333,7 +336,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </div>
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showplayground}>
-                                    <FontAwesomeIcon icon={faDragon} />
+                                    <GiDinosaurRex />
                                     <span> 恐竜ちゃん</span></a>
                             </li>
                             {/* <!-- Divider --> */}
@@ -345,7 +348,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             </div>
                             <li className="nav-item">
                                 <a className="nav-link" href='https://www.notion.so/takemura-lab/Takemura-Lab-82850b93f7944170ad2f2dcd33c14831?pvs=4'>
-                                    <i className="fas fa-solid fa-book"></i>
+                                    <SiNotion />
                                     <span>Notion</span></a>
                             </li>
                             <li className="nav-item">
