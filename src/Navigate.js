@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGitlab } from '@fortawesome/free-brands-svg-icons';
 import { faDragon } from "@fortawesome/free-solid-svg-icons";
 
-const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper, isplayground, setisplayground, setisimagedescription }) => {
+const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper, isplayground, setisplayground, setisimagedescription, setisAssistant }) => {
     // この関数が呼び出されるとホーム画面が呼び出される
     const trueHome = () => {
         // データの取得
@@ -19,6 +19,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(false);
         setisplayground(false);
         setisimagedescription(false);
+        setisAssistant(false);
         hideNavigate();
     };
 
@@ -30,9 +31,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(false);
         setisplayground(false);
         setisimagedescription(false);
+        setisAssistant(false);
         hideNavigate();
     };
-
+    
+    // この関数が呼び出されると管理者画面が呼び出される
     const trueisAdminview = () => {
         setisHomeValues(false);
         setisAdminView(true);
@@ -40,9 +43,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(false);
         setisplayground(false);
         setisimagedescription(false);
+        setisAssistant(false);
         hideNavigate();
     };
 
+    // この関数が呼び出されると論文要約画面が呼び出される
     const showsummary = () => {
         setisHomeValues(false);
         setisAdminView(false);
@@ -50,9 +55,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(false);
         setisplayground(false);
         setisimagedescription(false);
+        setisAssistant(false);
         hideNavigate();
     };
 
+    // この関数が呼び出されると論文検索画面が呼び出される
     const showsearchpaper = () => {
         setisHomeValues(false);
         setisAdminView(false);
@@ -60,9 +67,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(true);
         setisplayground(false);
         setisimagedescription(false);
+        setisAssistant(false);
         hideNavigate();
     }
 
+    // この関数が呼び出されるとゲームの画面が呼び出される
     const showplayground = () => {
         setisHomeValues(false);
         setisAdminView(false);
@@ -70,9 +79,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(false);
         setisplayground(true);
         setisimagedescription(false);
+        setisAssistant(false);
         hideNavigate();
     }
 
+    // この関数が呼び出されるとVision API画面が呼び出される
     const showimagedescript = () => {
         setisHomeValues(false);
         setisAdminView(false);
@@ -80,25 +91,35 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         setisSearchpaper(false);
         setisplayground(false);
         setisimagedescription(true);
+        setisAssistant(false);
         hideNavigate();
     }
 
+    // この関数が呼び出されるとChatGPTのメニューが表示される
+    const showassistantmenu = () => {
+        setisHomeValues(false);
+        setisAdminView(false);
+        setisSummaryView(false);
+        setisSearchpaper(false);
+        setisplayground(false);
+        setisimagedescription(false);
+        setisAssistant(true);
+        hideNavigate();
+    }
 
+    // ナビゲーションバーを隠すための関数
     const hideNavigate = () => {
         setshowNavigateValues(false);
     };
 
     const navigate = useNavigate();
 
+    // ログアウトのために利用される関数
     const movepage = () => {
         localStorage.removeItem('access_token');
         localStorage.removeItem('T-lab_username');
         navigate('/login')
     };
-
-    const switchatoffice = () => {
-        navigate('/atofficechange')
-    }
 
     if (showNavigateValues === true) {
         if (isAdmin === false) {
@@ -172,6 +193,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <a className="nav-link" onClick={showimagedescript}>
                                     <i className="fas fa-fw fa-regular fa-image"></i>
                                     <span>Vision API</span></a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={showassistantmenu}>
+                                    <i className="fas fa-fw fa-regular fa-image"></i>
+                                    <span>Chat Assistants</span></a>
                             </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
@@ -295,6 +321,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <a className="nav-link" onClick={showimagedescript}>
                                     <i className="fas fa-fw fa-regular fa-image"></i>
                                     <span>Vision API</span></a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={showassistantmenu}>
+                                    <i className="fas fa-fw fa-regular fa-image"></i>
+                                    <span>Chat Assistants</span></a>
                             </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">

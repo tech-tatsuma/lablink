@@ -27,6 +27,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     const [isSearchpaper, setisSearchpaper] = useState(false);
     const [isplayground, setisplayground] = useState(false);
     const [isimagedescription, setisimagedescription] = useState(false);
+    const [isAssistant, setisAssistant] = useState(false);
     const [isCatMoving, setIsCatMoving] = useState(true);
     const [catPositionLeft, setCatPositionLeft] = useState(0);
     const [catImageSrc, setCatImageSrc] = useState("/img/gray_walk_8fps.gif");
@@ -142,7 +143,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                 <div id="wrapper">
 
                     {/* <!-- Sidebar --> */}
-                    <Navigate user_id={user_id} setisHomeValues={setisHomeValues} showNavigateValues={showNavigateValues} setshowNavigateValues={setshowNavigateValues} isAdmin={isAdmin} setisAdminView={setisAdminView} isSummaryView={isSummaryView} setisSummaryView={setisSummaryView} isSearchpaper={isSearchpaper} setisSearchpaper={setisSearchpaper} isplayground={isplayground} setisplayground={setisplayground} setisimagedescription={setisimagedescription} />
+                    <Navigate user_id={user_id} setisHomeValues={setisHomeValues} showNavigateValues={showNavigateValues} setshowNavigateValues={setshowNavigateValues} isAdmin={isAdmin} setisAdminView={setisAdminView} isSummaryView={isSummaryView} setisSummaryView={setisSummaryView} isSearchpaper={isSearchpaper} setisSearchpaper={setisSearchpaper} isplayground={isplayground} setisplayground={setisplayground} setisimagedescription={setisimagedescription} setisAssistant={setisAssistant} />
 
                     {/* <!-- Content Wrapper --> */}
                     <div id="content-wrapper" className="d-flex flex-column">
@@ -178,7 +179,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
                             </nav>
                             {/* ページのコンテンツ部分 */}
-                            <Dashboardcontent isHome={isHomeValues} isAdminView={isAdminView} isSummaryView={isSummaryView} isSearchpaper={isSearchpaper} isplayground={isplayground} user_id={user_id} baseurl={baseurl} monthpay={monthpay} isimagedescription={isimagedescription} />
+                            <Dashboardcontent isHome={isHomeValues} isAdminView={isAdminView} isSummaryView={isSummaryView} isSearchpaper={isSearchpaper} isplayground={isplayground} user_id={user_id} baseurl={baseurl} monthpay={monthpay} isimagedescription={isimagedescription} isAssistant={isAssistant} />
                         </div>
                     </div>
                 </div>
