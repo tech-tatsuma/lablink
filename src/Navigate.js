@@ -328,7 +328,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             <li className="nav-item">
                                 <a className="nav-link" onClick={showassistantmenu}>
                                     <GoCopilot />
-                                    <span>Chat Assistants</span></a>
+                                    <span> Chat Assistants</span></a>
                             </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
@@ -349,7 +349,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                             <li className="nav-item">
                                 <a className="nav-link" href='https://www.notion.so/takemura-lab/Takemura-Lab-82850b93f7944170ad2f2dcd33c14831?pvs=4'>
                                     <SiNotion />
-                                    <span>Notion</span></a>
+                                    <span> Notion</span></a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='http://192.168.109.252:5000/'>
