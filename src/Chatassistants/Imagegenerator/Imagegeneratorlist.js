@@ -10,7 +10,7 @@ const Imagegeneratorcontent = ({ setmenu }) => {
     return (
         <div className="container my-3">
             <div className="row">
-                <h3 className="text-center mb-4">Chat With Coder</h3>
+                <h3 className="text-center mb-4">Image Generator</h3>
                 <div className="d-flex justify-content-center mb-4"> 
                     <button type="button" className="btn btn-primary text-white" onClick={createchat}>Create Chat</button>
                 </div>
