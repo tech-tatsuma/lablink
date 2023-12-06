@@ -7,9 +7,9 @@ const Chatwithcodercontent = ({setmenu}) => {
         <div className="container">
             <div className="row">
                 {chatbotlist.map((chatbot, index) => (
-                    <div key={index} className="col-6" style={{ backgroundColor: "#87cefa" }}> 
-                        <div className="p-3 border">
-                            {chatbot}
+                    <div key={index} className="col-6">
+                        <div className="p-3 border shadow" style={{ backgroundColor: "#f5f5f5" }}>
+                            <p className="lead">{chatbot}</p>
                         </div>
                     </div>
                 ))}

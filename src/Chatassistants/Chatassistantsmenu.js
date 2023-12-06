@@ -35,9 +35,9 @@ const Chatassistantsmenu = () => {
         <>
             {menu && (
                 <>
-                    <h1>Chat Assistants Menu</h1>
-                    <p>いろんなチャットボットがあなたを助けてくれます。どのチャットボットくんを呼び出しますか？</p>
-                    <div className="btn-group" role="group" aria-label="Chat options">
+                    <h1 className="text-center">Chat Assistants Menu</h1>
+                    <p className="text-center">いろんなチャットボットがあなたを助けてくれます。どのチャットボットくんを呼び出しますか？</p>
+                    <div className="d-flex justify-content-center gap-3">
                         <button type="button" className="btn btn-warning text-white" onClick={callSimpleChat}>Simple Chat</button>
                         <button type="button" className="btn btn-danger text-white" onClick={callChatWithDoc}>Chat with Doc</button>
                         <button type="button" className="btn btn-primary text-white" onClick={callChatWithCoder}>Chat with Coder</button>
