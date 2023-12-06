@@ -14,7 +14,7 @@ const Simplechatcontent = ({ setmenu }) => {
                     <button type="button" className="btn btn-warning text-white" onClick={createchat}>Create Chat</button>
                 </div>
                 {chatbotlist.map((chatbot, index) => (
-                    <div key={index} className="col-6 mb-3">
+                    <div key={index} className="col-md-6 col-12 mb-3">
                         <div className="p-3 border shadow rounded" style={{ backgroundColor: "#f5f5f5" }}>
                             <p className="h2">{chatbot}</p>
                         </div>

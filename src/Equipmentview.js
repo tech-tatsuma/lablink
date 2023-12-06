@@ -7,6 +7,7 @@ import axios from 'axios';
 import Totalcost from "./Totalcost";
 import Remainingmoney from "./Remainingmoney";
 
+// 研究室備品を表示するページのビュー
 const Equipmentview = ({ user_id, baseurl, monthpay }) => {
     const [switchview, setswitchview] = useState(true);
     const [switchlack, setswitchlack] = useState(true);

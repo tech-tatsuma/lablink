@@ -136,13 +136,11 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     }, []);
 
     return (
-        // ダッシュボードのHTML構造
         <>
-            {/* <!-- Page Wrapper --> */}
             <div id="page-top">
                 <div id="wrapper">
 
-                    {/* <!-- Sidebar --> */}
+                    {/* サイドのナビゲーションバー */}
                     <Navigate user_id={user_id} setisHomeValues={setisHomeValues} showNavigateValues={showNavigateValues} setshowNavigateValues={setshowNavigateValues} isAdmin={isAdmin} setisAdminView={setisAdminView} isSummaryView={isSummaryView} setisSummaryView={setisSummaryView} isSearchpaper={isSearchpaper} setisSearchpaper={setisSearchpaper} isplayground={isplayground} setisplayground={setisplayground} setisimagedescription={setisimagedescription} setisAssistant={setisAssistant} />
 
                     {/* <!-- Content Wrapper --> */}
@@ -154,13 +152,11 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                             {/* <!-- Topbar --> */}
                             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                                {/* <!-- Sidebar Toggle (Topbar) --> */}
+                                {/* ページトップのタブ */}
                                 <Tab showNavigateValues={showNavigateValues} showNavigate={showNavigate} />
-
 
                                 {/* <!-- Topbar Navbar --> */}
                                 <ul className="navbar-nav ml-auto">
-
 
                                     <div className="topbar-divider d-none d-sm-block"></div>
 
@@ -169,8 +165,6 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                                         <a className="nav-link dropdown-toggle" id="userDropdown" role="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={hideNavigate}>
                                             <span className="mr-2 d-none d-lg-inline text-gray-600 small">{loginuser}</span>
-                                            {/* <img class="img-profile rounded-circle" */}
-                                            {/* src="#" /> */}
                                             <i className="fas fa-solid fa-user fa-2s text-gray-300"></i>
                                         </a>
                                     </li>
@@ -183,21 +177,18 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                         </div>
                     </div>
                 </div>
-                {/* <!-- End of Page Wrapper --> */}
+                {/* ページのフッター部分 */}
                 <footer className="sticky-footer bg-white">
                 <div className="container my-auto">
                     <div className="copyright text-center my-auto">
                         <span>Copyright &copy; Takemura Lab</span>
                     </div>
                 </div>
+                {/* ページのフッターに住むトトロ */}
                 <div className={`cat-animation ${isCatMoving ? "cat-animation-moving" : "cat-animation-stationary"}`} style={{ left: isCatMoving ? 0 : catPositionLeft }}>
                     <img className="cat-image" src={catImageSrc} alt="Walking Cat" onClick={toggleCatAnimation} style={{ left: isCatMoving ? 0 : catPositionLeft }} />
                 </div>
                 </footer>
-                {/* <!-- Scroll to Top Button--> */}
-                <a className="scroll-to-top rounded" href="#page-top">
-                    <i className="fas fa-angle-up"></i>
-                </a>
             </div>
         </>
     );
