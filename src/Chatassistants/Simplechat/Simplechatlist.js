@@ -50,6 +50,12 @@ const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
         setmenu(false);
     };
 
+    // assistant_nameから#@以降を除去する関数
+    const formatAssistantName = (name) => {
+        const atIndex = name.indexOf('#@');
+        return atIndex !== -1 ? name.substring(0, atIndex) : name;
+    };
+
     // パブリックかどうかのフラグを切り替える関数
     const toggleChatVisibility = () => {
         setPublicflag(!publicflag);
@@ -64,7 +70,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
     
     // チャット作成画面を表示する変数
     if (showCreateChat) {
-        return <CreateChatContent baseurl={baseurl} setShowCreateChat={setShowCreateChat} setmenu={setmenu} setShowchatbot={setShowchatbot} showchatbot={showchatbot} />;
+        return <CreateChatContent baseurl={baseurl} setShowCreateChat={setShowCreateChat} setmenu={setmenu} setShowchatbot={setShowchatbot} showchatbot={showchatbot}　setSelectedChat={setSelectedChat} />;
     }
 
     // チャット画面を表示する変数
@@ -98,7 +104,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
                     privatechat.map((chat, index) => (
                         <div key={index} className="col-md-6 col-12 mb-3" onClick={() => selectChat(chat)}>
                             <div className="p-3 border shadow rounded" style={{ backgroundColor: "#f5f5f5" }}>
-                                <p className="h2">{chat.assistant_name}</p>
+                                <p className="h2">{formatAssistantName(chat.assistant_name)}</p>
                             </div>
                         </div>
                     ))

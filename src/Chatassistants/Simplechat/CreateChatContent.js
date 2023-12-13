@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import ChatBotContent from "./ChatBotContent";
 
-const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot, showchatbot}) => {
+const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot, showchatbot, setSelectedChat}) => {
     // チャット名を格納する変数
     const [chatname, setChatName] = useState("");
     // instructionsを格納する変数
@@ -41,6 +41,13 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
             if (response.data.error) {
                 alert('Error: ' + response.data.error);
             } else { // リクエストが成功
+                const newSelectedChat = {
+                    thread_id: response.data.threadID,
+                    assistant_id: response.data.assistantID,
+                    assistant_name: chatname, // この部分はchatnameを使用
+                    model: gptVersion // gptVersionを使用
+                };
+                setSelectedChat(newSelectedChat);
                 // 取得した情報を状態変数に格納
                 setThreadID(response.data.threadID);
                 setAssistantID(response.data.assistantID);

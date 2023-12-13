@@ -20,6 +20,12 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
         }
     };
 
+    // assistant_nameから#@以降を除去する関数
+    const formatAssistantName = (name) => {
+        const atIndex = name.indexOf('#@');
+        return atIndex !== -1 ? name.substring(0, atIndex) : name;
+    };
+
     // ページの読み込み時に実行
     useEffect(() => {
         fetchHistory();
@@ -66,7 +72,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                     >
                         Back to Menu
                     </button>
-                    <h2>{assistantname}</h2>
+                    <h2>{formatAssistantName(assistantname)}</h2>
                     <p>{model}</p>
                     <div className="mb-3">
                         <label htmlFor="questionInput" className="form-label">Your Question</label>
