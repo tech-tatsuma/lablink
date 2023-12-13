@@ -44,6 +44,21 @@ const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
         fetchChats();
     }, [showCreateChat, showchatbot, menu]);
 
+    useEffect(() => {
+        // パブリックチャットとプライベートチャットの取得
+        const fetchChats = async () => {
+            try {
+                const publicResponse = await axios.get(`${baseurl}simplechat/get_public_chats`);
+                setPublicchat(publicResponse.data.public_chats);
+                const privateResponse = await axios.get(`${baseurl}simplechat/get_private_chats`, { params: { user: username } });
+                setPrivatechat(privateResponse.data.private_chats);
+            } catch (error) {
+                console.error("Chats fetching error:", error);
+            }
+        };
+        fetchChats();
+    }, []);
+
     // チャットボットを選択した時に実行
     const selectChat = (chat) => {
         // 選択されたチャットをselectedChatに格納
