@@ -45,7 +45,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
         // チャット作成画面を非表示
         setShowCreateChat(false);
         // チャット画面を表示
-        setShowChatBot(true);
+        setShowchatbot(true);
         // メニューを非表示
         setmenu(false);
     };
@@ -68,7 +68,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
     }
 
     // チャット画面を表示する変数
-    if (showChatBot) {
+    if (showchatbot) {
         return <ChatBotContent baseurl={baseurl} threadid={selectedChat.thread_id} assistantid={selectedChat.assistant_id} assistantname={selectedChat.assistant_name} model={selectedChat.model} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} />;
     }
 

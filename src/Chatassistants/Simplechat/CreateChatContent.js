@@ -5,13 +5,13 @@ import ChatBotContent from "./ChatBotContent";
 
 const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot, showchatbot}) => {
     // チャット名を格納する変数
-    const [chatname, setChatname] = useState("");
+    const [chatname, setChatName] = useState("");
     // instructionsを格納する変数
     const [instructions, setInstructions] = useState("");
     // ユーザーネームの設定
     let username = localStorage.getItem('T-lab_username');
     // gptversionを格納する変数
-    const [gptversion, setGptversion] = useState("");
+    const [gptVersion, setGptVersion] = useState("");
     // チャットの公開範囲を格納する変数
     const [chatVisibility, setChatVisibility] = useState(true);
     // スレッドIDを格納する変数
@@ -31,7 +31,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
             name: chatname,
             tools: "code_interpreter",
             model: gptVersion === "gpt3" ? "gpt-3.5-turbo" : "gpt-4",
-            public: visibility === chatvisibility,
+            public: chatVisibility === chatvisibility,
             user: username
         };
 
@@ -59,7 +59,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
 
     // チャットが作成された時に実行
     if (!isChatCreated) {
-        return <ChatBotContent baseurl={baseurl} threadid={threadID} assistantid={assistantID} assistantname={chatName} model={gptVersion} setShowCreateChat={setShowCreateChat} setShowchatbot={setShowchatbot} setmenu={setmenu} />;
+        return <ChatBotContent baseurl={baseurl} threadid={threadID} assistantid={assistantID} assistantname={chatname} model={gptVersion} setShowCreateChat={setShowCreateChat} setShowchatbot={setShowchatbot} setmenu={setmenu} />;
     }
 
     // チャット作成画面を表示
