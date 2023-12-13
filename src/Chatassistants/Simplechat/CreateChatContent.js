@@ -58,7 +58,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
     };
 
     // チャットが作成された時に実行
-    if (!isChatCreated) {
+    if (isChatCreated) {
         return <ChatBotContent baseurl={baseurl} threadid={threadID} assistantid={assistantID} assistantname={chatname} model={gptVersion} setShowCreateChat={setShowCreateChat} setShowchatbot={setShowchatbot} setmenu={setmenu} />;
     }
 
