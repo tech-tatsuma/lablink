@@ -53,7 +53,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
             try {
                 const publicResponse = await axios.get(`${baseurl}simplechat/get_public_chats`);
                 setPublicchat(publicResponse.data.public_chats);
-                const privateResponse = await axios.get(`${baseurl}simplechat/get_private_chats`, { params: { user: username } });
+                const privateResponse = await axios.get(`${baseurl}simplechat/get_private_chats`, { params: { user: formatUsername(username) } });
                 setPrivatechat(privateResponse.data.private_chats);
             } catch (error) {
                 console.error("Chats fetching error:", error);

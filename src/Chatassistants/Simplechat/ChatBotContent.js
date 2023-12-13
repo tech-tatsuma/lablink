@@ -55,9 +55,9 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
         try {
             // chatbotへの質問を送信
             const response = await axios.post(`${baseurl}simplechat/ask_simplechat`, {
-                assistantID: assistantid,
-                threadID: threadid,
-                question: question
+                assistantID: String(assistantid),
+                threadID: String(threadid),
+                question: String(question)
             });
             // chatbotからレスポンスが取れた場合
             if (response.data.messages) {
