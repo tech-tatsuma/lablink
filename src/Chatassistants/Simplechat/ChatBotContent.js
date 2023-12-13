@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ReactMarkdown from 'react-markdown';
 
-import "./../PaperSummary/Papsum.css";
+import "./../../PaperSummary/Papsum.css";
 
 const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, setShowCreateChat, setShowchatbot, setmenu }) => {
     // 質問内容を格納する変数
