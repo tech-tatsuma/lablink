@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import CreateChatContent from "./CreateChatContent";
 import ChatBotContent from "./ChatBotContent";
 
+import "./chatbot.css";
+
 const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
 
     const formatUsername = (name) => {

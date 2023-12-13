@@ -1,6 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ReactMarkdown from 'react-markdown';
+
+import "./../PaperSummary/Papsum.css";
 
 const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, setShowCreateChat, setShowchatbot, setmenu }) => {
     // 質問内容を格納する変数
@@ -8,13 +11,27 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
     // チャットとの会話履歴を格納する変数
     const [history, setHistory] = useState([]);
 
+    const [loading, setLoading] = useState(false);
+
+    // 履歴の順序を調整する関数
+    const rearrangeHistory = (messages) => {
+        if (messages.length < 2) return messages;
+        let newOrder = [];
+        // 最初のユーザーの質問を探す
+        const userQuestion = messages.find(message => message.user);
+        if (userQuestion) newOrder.push(userQuestion);
+        // その他のメッセージを追加
+        newOrder = newOrder.concat(messages.filter(message => !message.user));
+        return newOrder;
+    };
+
     // threadidとassistantidから情報を取得する関数
     const fetchHistory = async () => {
         try {
-            const response = await axios.get(`${baseurl}get_messages`, {
+            const response = await axios.get(`${baseurl}simplechat/get_messages`, {
                 params: { assistantID: assistantid, threadID: threadid }
             });
-            setHistory(response.data.messages);
+            setHistory(rearrangeHistory(response.data.messages));
         } catch (error) {
             console.error('Failed to fetch history:', error);
         }
@@ -33,6 +50,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
 
     // 質問を送信する関数
     const handleQuestionSubmit = async () => {
+        setLoading(true);
         if (!question) return;  // 質問が空の場合は処理を行わない
         try {
             // chatbotへの質問を送信
@@ -52,6 +70,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
         } catch (error) {
             console.error('Failed to send question:', error);
         }
+        setLoading(false);
     };
 
     // メニューに戻る関数
@@ -62,6 +81,17 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
     };
 
     return (
+        <>
+        { loading && 
+            <div className="overlay" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <div className="my-container">
+                <span></span>
+                <span></span>
+                <span></span>
+                <p>LOADING</p>
+            </div>
+        </div> 
+        }
         <div className="container my-4">
             <div className="row">
                 <div className="col-md-8 offset-md-2">
@@ -90,20 +120,14 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                     >
                         Ask
                     </button>
-                    {/* <div className="mb-3">
-                        <label className="form-label">Response</label>
-                        <div className="p-3 border" style={{ minHeight: '100px' }}>
-                            {response}
-                        </div>
-                    </div> */}
                     <div className="mb-3">
                         <label className="form-label">Conversation History</label>
                         <div className="p-3 border" style={{ minHeight: '200px' }}>
                             {history.map((entry, index) => (
                                 <div key={index}>
-                                    <strong>Q:</strong> {entry.user}
+                                    <strong>Q:</strong> <ReactMarkdown>{entry.user}</ReactMarkdown>
                                     <br />
-                                    <strong>A:</strong> {entry.assistant}
+                                    <strong>A:</strong> <ReactMarkdown>{entry.assistant}</ReactMarkdown>
                                     <hr />
                                 </div>
                             ))}
@@ -112,6 +136,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
