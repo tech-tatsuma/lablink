@@ -1,6 +1,6 @@
 import React from "react";
 
-const Imagegeneratorcontent = ({ setmenu }) => {
+const Imagegeneratorcontent = ({ setmenu, baseurl }) => {
     const chatbotlist = ["chatbot1", "chatbot2", "chatbot3", "chatbot4"]
 
     const createchat = () => {

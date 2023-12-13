@@ -5,11 +5,16 @@ import Chatwithdoccontent from "./Chatwithdoc/Chatwithdoclist";
 import Imagegeneratorcontent from "./Imagegenerator/Imagegeneratorlist";
 
 const Chatassistantsmenu = () => {
+    // バックエンドのベースURL
+    let baseurl = 'https://dry-dawn-729.fly.dev/';
+    // 表示するチャットを制御する変数
     const [simplechat, setsimplechat] = useState(false);
     const [chatwithdoc, setchatwithdoc] = useState(false);
     const [imagegenerator, setimagegenerator] = useState(false);
+    // メニューバーを表示するかどうかを制御する変数
     const [menu, setmenu] = useState(true);
 
+    // Simple Chatを呼び出す関数
     const callSimpleChat = () => {
         setsimplechat(true);
         setchatwithdoc(false);
@@ -17,6 +22,7 @@ const Chatassistantsmenu = () => {
         setimagegenerator(false);
     };
 
+    // ChatWithDocを呼び出す関数
     const callChatWithDoc = () => {
         setsimplechat(false);
         setchatwithdoc(true);
@@ -24,6 +30,7 @@ const Chatassistantsmenu = () => {
         setimagegenerator(false);
     };
 
+    // Image Generatorを呼び出す関数
     const callimagegenerator = () => {
         setsimplechat(false);
         setchatwithdoc(false);
@@ -33,6 +40,7 @@ const Chatassistantsmenu = () => {
 
     return (
         <>
+        {/* menuがtrueの時のみに表示される */}
             {menu && (
                 <>
                     <h1 className="text-center">Chat Assistants Menu</h1>
@@ -44,9 +52,9 @@ const Chatassistantsmenu = () => {
                     </div>
                 </>
             )}
-            {simplechat && <Simplechatcontent setmenu={setmenu} />}
-            {chatwithdoc && <Chatwithdoccontent setmenu={setmenu} />}
-            {imagegenerator && <Imagegeneratorcontent setmenu={setmenu} />}
+            {simplechat && <Simplechatcontent setmenu={setmenu} baseurl={baseurl} menu={menu} />}
+            {chatwithdoc && <Chatwithdoccontent setmenu={setmenu} baseurl={baseurl} />}
+            {imagegenerator && <Imagegeneratorcontent setmenu={setmenu} baseurl={baseurl} />}
         </>
     );
 }
