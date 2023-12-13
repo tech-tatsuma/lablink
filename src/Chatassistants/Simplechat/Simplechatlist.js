@@ -105,16 +105,6 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
 
     return (
         <>
-        { loading && 
-            <div className="overlay" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <div className="my-container">
-                <span></span>
-                <span></span>
-                <span></span>
-                <p>LOADING</p>
-            </div>
-        </div> 
-        }
         <div className="container my-3">
             <div className="row">
                 <h3 className="text-center mb-4">Simple Chat</h3>
