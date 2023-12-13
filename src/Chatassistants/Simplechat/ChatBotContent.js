@@ -30,7 +30,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
         if (!question) return;  // 質問が空の場合は処理を行わない
         try {
             // chatbotへの質問を送信
-            const response = await axios.post(`${baseurl}ask_simplechat`, {
+            const response = await axios.post(`${baseurl}simplechat/ask_simplechat`, {
                 assistantID: assistantid,
                 threadID: threadid,
                 question: question

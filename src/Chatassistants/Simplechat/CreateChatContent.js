@@ -37,7 +37,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
 
         try {
             // APIにリクエストを送信
-            const response = await axios.post(`${baseurl}create_simplechat`, requestData);
+            const response = await axios.post(`${baseurl}simplechat/create_simplechat`, requestData);
             if (response.data.error) {
                 alert('Error: ' + response.data.error);
             } else { // リクエストが成功
