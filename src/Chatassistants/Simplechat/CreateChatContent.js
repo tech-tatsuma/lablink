@@ -63,7 +63,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
     }
 
     // チャット作成画面を表示
-    if (showchatbot) {
+    if (!isChatCreated) {
         return (
             <div className="container my-4">
                 <div className="row">
