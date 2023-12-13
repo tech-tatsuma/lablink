@@ -7,8 +7,12 @@ import ChatBotContent from "./ChatBotContent";
 
 const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
 
+    const formatUsername = (name) => {
+        return name.replace(/\s/g, '').toLowerCase();
+    };
+
     // ユーザーネームの取得
-    let username = localStorage.getItem('T-lab_username');
+    let username = formatUsername(localStorage.getItem('T-lab_username') || '');
     // publicのチャットを表示するかどうかのフラグ
     const [publicflag, setPublicflag] = useState(true);
     // プライベートのチャットを格納する変数

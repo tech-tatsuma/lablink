@@ -4,12 +4,15 @@ import axios from "axios";
 import ChatBotContent from "./ChatBotContent";
 
 const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot, showchatbot, setSelectedChat}) => {
+    const formatUsername = (name) => {
+        return name.replace(/\s/g, '').toLowerCase();
+    };
     // チャット名を格納する変数
     const [chatname, setChatName] = useState("");
     // instructionsを格納する変数
     const [instructions, setInstructions] = useState("");
     // ユーザーネームの設定
-    let username = localStorage.getItem('T-lab_username');
+    let username = formatUsername(localStorage.getItem('T-lab_username') || '');
     // gptversionを格納する変数
     const [gptVersion, setGptVersion] = useState("");
     // チャットの公開範囲を格納する変数
