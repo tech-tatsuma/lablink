@@ -4,6 +4,8 @@ import Simplechatcontent from "./Simplechat/Simplechatlist";
 import Chatwithdoccontent from "./Chatwithdoc/Chatwithdoclist";
 import Imagegeneratorcontent from "./Imagegenerator/Imagegeneratorlist";
 
+import "./../PaperSummary/Papsum.css"; 
+
 const Chatassistantsmenu = () => {
     // バックエンドのベースURL
     let baseurl = 'https://dry-dawn-729.fly.dev/';
@@ -13,6 +15,8 @@ const Chatassistantsmenu = () => {
     const [imagegenerator, setimagegenerator] = useState(false);
     // メニューバーを表示するかどうかを制御する変数
     const [menu, setmenu] = useState(true);
+
+    const [loading, setLoading] = useState(false);
 
     // Simple Chatを呼び出す関数
     const callSimpleChat = () => {
@@ -52,7 +56,7 @@ const Chatassistantsmenu = () => {
                     </div>
                 </>
             )}
-            {simplechat && <Simplechatcontent setmenu={setmenu} baseurl={baseurl} menu={menu} />}
+            {simplechat && <Simplechatcontent setmenu={setmenu} baseurl={baseurl} menu={menu} setLoading={setLoading} />}
             {chatwithdoc && <Chatwithdoccontent setmenu={setmenu} baseurl={baseurl} />}
             {imagegenerator && <Imagegeneratorcontent setmenu={setmenu} baseurl={baseurl} />}
         </>

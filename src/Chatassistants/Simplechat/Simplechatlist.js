@@ -7,7 +7,7 @@ import ChatBotContent from "./ChatBotContent";
 
 import "./chatbot.css";
 
-const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
+const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
 
     const formatUsername = (name) => {
         return name.replace(/\s/g, '').toLowerCase();
@@ -32,6 +32,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
     useEffect(() => {
         // パブリックチャットとプライベートチャットの取得
         const fetchChats = async () => {
+            setLoading(true);
             try {
                 const publicResponse = await axios.get(`${baseurl}simplechat/get_public_chats`);
                 setPublicchat(publicResponse.data.public_chats);
@@ -40,6 +41,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
             } catch (error) {
                 console.error("Chats fetching error:", error);
             }
+            setLoading(false);
         };
         fetchChats();
     }, [showCreateChat, showchatbot, menu]);
@@ -47,6 +49,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
     useEffect(() => {
         // パブリックチャットとプライベートチャットの取得
         const fetchChats = async () => {
+            setLoading(true);
             try {
                 const publicResponse = await axios.get(`${baseurl}simplechat/get_public_chats`);
                 setPublicchat(publicResponse.data.public_chats);
@@ -55,6 +58,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
             } catch (error) {
                 console.error("Chats fetching error:", error);
             }
+            setLoading(false);
         };
         fetchChats();
     }, []);
@@ -100,6 +104,17 @@ const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
     }
 
     return (
+        <>
+        { loading && 
+            <div className="overlay" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <div className="my-container">
+                <span></span>
+                <span></span>
+                <span></span>
+                <p>LOADING</p>
+            </div>
+        </div> 
+        }
         <div className="container my-3">
             <div className="row">
                 <h3 className="text-center mb-4">Simple Chat</h3>
@@ -132,6 +147,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu }) => {
                 )}
             </div>
         </div>
+        </>
     );
 }
 
