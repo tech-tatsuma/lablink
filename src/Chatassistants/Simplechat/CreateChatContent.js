@@ -31,7 +31,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
             name: chatname,
             tools: "code_interpreter",
             model: gptVersion === "gpt3" ? "gpt-3.5-turbo" : "gpt-4",
-            public: chatVisibility === chatvisibility,
+            public: chatVisibility,
             user: username
         };
 
@@ -77,7 +77,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
                                     className="form-control" 
                                     id="chatName" 
                                     placeholder="Enter chat name" 
-                                    value={chatName}
+                                    value={chatname}
                                     onChange={(e) => setChatName(e.target.value)}
                                 />
                             </div>

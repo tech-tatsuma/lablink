@@ -84,12 +84,12 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                     >
                         Ask
                     </button>
-                    <div className="mb-3">
+                    {/* <div className="mb-3">
                         <label className="form-label">Response</label>
                         <div className="p-3 border" style={{ minHeight: '100px' }}>
                             {response}
                         </div>
-                    </div>
+                    </div> */}
                     <div className="mb-3">
                         <label className="form-label">Conversation History</label>
                         <div className="p-3 border" style={{ minHeight: '200px' }}>
