@@ -67,6 +67,12 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
         }
     };
 
+    const backtomenu = () => {
+        setShowCreateChat(false);
+        setShowchatbot(false);
+        setmenu(true);
+    }
+
     // チャットが作成された時に実行
     if (isChatCreated) {
         return <ChatBotContent baseurl={baseurl} threadid={threadID} assistantid={assistantID} assistantname={chatname} model={gptVersion} setShowCreateChat={setShowCreateChat} setShowchatbot={setShowchatbot} setmenu={setmenu} />;
@@ -164,6 +170,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
                             </fieldset>
                             <button type="submit" className="btn btn-primary">Create Chat</button>
                         </form>
+                        <button className="btn btn-secondary mt-3" onClick={backtomenu}>Back to Menu</button>
                     </div>
                 </div>
             </div>

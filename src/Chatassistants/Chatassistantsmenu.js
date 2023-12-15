@@ -8,7 +8,7 @@ import "./../PaperSummary/Papsum.css";
 
 const Chatassistantsmenu = () => {
     // バックエンドのベースURL
-    let baseurl = 'https://dry-dawn-729.fly.dev/';
+    let baseurl = 'lablinkgpt.azurewebsites.net/';
     // 表示するチャットを制御する変数
     const [simplechat, setsimplechat] = useState(false);
     const [chatwithdoc, setchatwithdoc] = useState(false);

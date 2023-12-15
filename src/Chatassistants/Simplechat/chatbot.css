@@ -1,3 +1,120 @@
 form {
     width: 100%!important;
 }
+
+/* 吹き出しスタイル */
+.message-bubble {
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+/* アシスタントのメッセージスタイル */
+.assistant-message {
+    background-color: #e0e0e0;
+    text-align: left;
+}
+
+/* ユーザーのメッセージスタイル */
+.user-message {
+    background-color: #4caf50;
+    color: white;
+    text-align: right;
+}
+
+/* メッセージ入力フィールドのスタイル */
+.message-input {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+}
+
+/* メッセージ表示エリアのスタイル */
+.messages-display {
+    padding-bottom: 60px; /* メッセージ入力フィールドの高さに合わせて調整 */
+}
+
+.menu-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.message-icon {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.loading-animation {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+
+    .menu-icon {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+    }
+
+    .message-input {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        z-index: 1000; /* キーボード表示時に上に表示されるように */
+    }
+
+    .messages-display {
+        padding-bottom: 80px; /* キーボード表示時のスペース確保 */
+    }
+
+    /* その他のレスポンシブ対応スタイル */
+    /* ... */
+}
+
+/* より小さい画面サイズに対応 */
+@media (max-width: 480px) {
+    /* スタイルの調整 */
+    /* ... */
+    .menu-icon, .message-icon {
+        /* メニューアイコンとメッセージアイコンのサイズを小さく調整 */
+        font-size: 20px;
+    }
+
+    .message-bubble {
+        /* 吹き出しのサイズやパディングの調整 */
+        padding: 8px 12px;
+        font-size: 14px; /* テキストのサイズを少し小さく */
+    }
+
+    .message-input {
+        /* メッセージ入力フィールドのスタイル調整 */
+        padding: 5px; /* パディングを少し小さく */
+    }
+
+    .loading-animation {
+        /* ローディングアニメーションのサイズ調整 */
+        width: 25px;
+        height: 25px;
+    }
+}

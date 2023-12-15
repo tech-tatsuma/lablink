@@ -2,6 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ReactMarkdown from 'react-markdown';
+import { FaRobot } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
+import { IoIosMenu } from "react-icons/io";
+import { IoMdSend } from "react-icons/io";
+import "./chatbot.css";
 
 import "./../../PaperSummary/Papsum.css";
 
@@ -12,6 +17,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
     const [history, setHistory] = useState([]);
 
     const [loading, setLoading] = useState(false);
+    const [showInfo, setShowInfo] = useState(false);
 
     // 履歴の順序を調整する関数
     const rearrangeHistory = (messages) => {
@@ -82,30 +88,42 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
 
     return (
         <>
-        { loading && 
-            <div className="overlay" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <div className="my-container">
-                <span></span>
-                <span></span>
-                <span></span>
-                <p>LOADING</p>
-            </div>
-        </div> 
-        }
         <div className="container my-4">
             <div className="row">
                 <div className="col-md-8 offset-md-2">
-                    <button 
-                        className="btn btn-secondary mb-3" 
-                        onClick={handleBackToMenu}
-                        style={{ marginBottom: "15px" }}
-                    >
-                        Back to Menu
-                    </button>
-                    <h2>{formatAssistantName(assistantname)}</h2>
-                    <p>{model}</p>
+                    <IoIosMenu className="menu-icon" onClick={() => setShowInfo(!showInfo)} />
+
+                    { showInfo && (
+                        <>
+                            <button 
+                                className="btn btn-secondary mb-3" 
+                                onClick={handleBackToMenu}
+                                style={{ marginBottom: "15px" }}
+                            >
+                                Back to Menu
+                            </button>
+                            <h2>{formatAssistantName(assistantname)}</h2>
+                            <p>{model}</p>
+                        </>
+                    )}
                     <div className="mb-3">
-                        <label htmlFor="questionInput" className="form-label">Your Question</label>
+                        <label className="form-label">Conversation History</label>
+                        <div className="p-3 border messages-display">
+                            {loading ? (
+                                <div className="assistant-message message-bubble">
+                                    <div className="loading-animation"></div>
+                                </div>
+                            ) : (
+                                history.map((entry, index) => (
+                                    <div key={index} className={entry.user ? "user-message message-bubble" : "assistant-message message-bubble"}>
+                                        {entry.user ? <FaUserAlt className="message-icon" /> : <FaRobot className="message-icon" />}
+                                        <ReactMarkdown>{entry.user || entry.assistant}</ReactMarkdown>
+                                    </div>
+                                ))
+                            )}
+                        </div>
+                    </div>
+                    <div className="message-input p-3 border-top">
                         <textarea 
                             className="form-control" 
                             id="questionInput" 
@@ -113,25 +131,9 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                             value={question}
                             onChange={(e) => setQuestion(e.target.value)}
                         ></textarea>
-                    </div>
-                    <button 
-                        className="btn btn-primary mb-3" 
-                        onClick={handleQuestionSubmit}
-                    >
-                        Ask
-                    </button>
-                    <div className="mb-3">
-                        <label className="form-label">Conversation History</label>
-                        <div className="p-3 border" style={{ minHeight: '200px' }}>
-                            {history.map((entry, index) => (
-                                <div key={index}>
-                                    <strong>Q:</strong> <ReactMarkdown>{entry.user}</ReactMarkdown>
-                                    <br />
-                                    <strong>A:</strong> <ReactMarkdown>{entry.assistant}</ReactMarkdown>
-                                    <hr />
-                                </div>
-                            ))}
-                        </div>
+                        <button className="btn btn-primary mt-2" onClick={handleQuestionSubmit}>
+                            <IoMdSend />
+                        </button>
                     </div>
                 </div>
             </div>
