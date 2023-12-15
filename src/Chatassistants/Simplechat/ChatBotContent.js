@@ -21,14 +21,33 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
 
     // 履歴の順序を調整する関数
     const rearrangeHistory = (messages) => {
-        if (messages.length < 2) return messages;
-        let newOrder = [];
-        // 最初のユーザーの質問を探す
-        const userQuestion = messages.find(message => message.user);
-        if (userQuestion) newOrder.push(userQuestion);
-        // その他のメッセージを追加
-        newOrder = newOrder.concat(messages.filter(message => !message.user));
-        return newOrder;
+        let formatted_messages = [];
+        let temp_message = {};
+    
+        messages.forEach(message => {
+            if (message.user) {
+                temp_message.user = message.user;
+                // アシスタントの回答が既にある場合、それを含める
+                if (temp_message.assistant) {
+                    formatted_messages.push({...temp_message});
+                    temp_message = { user: message.user }; // ユーザーメッセージのリセット
+                }
+            } else if (message.assistant) {
+                temp_message.assistant = message.assistant;
+                // ユーザーの質問が既にある場合、それを含める
+                if (temp_message.user) {
+                    formatted_messages.push({...temp_message});
+                    temp_message = {}; // リセット
+                }
+            }
+        });
+    
+        // 最後のメッセージを追加
+        if (temp_message.user || temp_message.assistant) {
+            formatted_messages.push(temp_message);
+        }
+    
+        return formatted_messages;
     };
 
     // threadidとassistantidから情報を取得する関数
@@ -85,6 +104,26 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
         setLoadinginchat(false);
     };
 
+    const deletechat = async () => {
+        try {
+            const response = await axios.post(`${baseurl}simplechat/delete_chat`, {
+                assistantID: assistantid,
+                threadID: threadid
+            });
+            if (response.data.error) {
+                alert('Error: ' + response.data.error);
+            } else {
+                alert('Chat deleted successfully.');
+                setShowchatbot(false);
+                setmenu(true);
+                setShowCreateChat(false);
+            }
+        } catch (error) {
+            console.error('API request failed:', error);
+            alert('Failed to delete chat.');
+        }
+    }
+
     // メニューに戻る関数
     const handleBackToMenu = () => {
         setShowchatbot(false);
@@ -107,6 +146,13 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                                 style={{ marginBottom: "15px" }}
                             >
                                 Back to Menu
+                            </button>
+                            <button 
+                                className="btn btn-danger mb-3" 
+                                onClick={deletechat}
+                                style={{ marginBottom: "15px" }}
+                            >
+                                Delete Chat
                             </button>
                             <h2>{formatAssistantName(assistantname)}</h2>
                             <p>{model}</p>
