@@ -62,10 +62,13 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
         if (!question) return;  // 質問が空の場合は処理を行わない
         try {
             // chatbotへの質問を送信
+            console.log('assistantid: '+assistantid);
+            console.log('threadid: '+threadid);
+            console.log('question: '+question);
             const response = await axios.post(`${baseurl}simplechat/ask_simplechat`, {
-                assistantID: String(assistantid),
-                threadID: String(threadid),
-                question: String(question)
+                assistantID: assistantid,
+                threadID: threadid,
+                question: question
             }, {
                 headers: {
                     'Content-Type': 'application/json'
@@ -133,7 +136,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                         <textarea 
                             className="form-control" 
                             id="questionInput" 
-                            rows="3"
+                            rows="2"
                             value={question}
                             onChange={(e) => setQuestion(e.target.value)}
                         ></textarea>
