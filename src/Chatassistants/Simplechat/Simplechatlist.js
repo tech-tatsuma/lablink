@@ -34,6 +34,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
         const fetchChats = async () => {
             setLoading(true);
             try {
+                console.log(`${baseurl}simplechat/get_public_chats`)
                 const publicResponse = await axios.get(`${baseurl}simplechat/get_public_chats`);
                 setPublicchat(publicResponse.data.public_chats);
                 const privateResponse = await axios.get(`${baseurl}simplechat/get_private_chats`, { params: { user: formatUsername(username) } });
@@ -49,15 +50,21 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
     useEffect(() => {
         // パブリックチャットとプライベートチャットの取得
         const fetchChats = async () => {
+            // ladingをtrueにし、非同期処理を開始
             setLoading(true);
             try {
+                // パブリックチャットの取得
                 const publicResponse = await axios.get(`${baseurl}simplechat/get_public_chats`);
+                console.log(publicResponse.data.public_chats);
                 setPublicchat(publicResponse.data.public_chats);
+                // プライベートチャットの取得
                 const privateResponse = await axios.get(`${baseurl}simplechat/get_private_chats`, { params: { user: formatUsername(username) } });
+                console.log(privateResponse.data.private_chats);
                 setPrivatechat(privateResponse.data.private_chats);
             } catch (error) {
                 console.error("Chats fetching error:", error);
             }
+            // loadingをfalseにし、非同期処理を終了
             setLoading(false);
         };
         fetchChats();
