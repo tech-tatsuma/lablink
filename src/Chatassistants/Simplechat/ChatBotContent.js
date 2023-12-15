@@ -33,6 +33,8 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
 
     // threadidとassistantidから情報を取得する関数
     const fetchHistory = async () => {
+        console.log('assistantid: '+assistantid);
+        console.log('threadid: '+threadid);
         try {
             const response = await axios.get(`${baseurl}simplechat/get_messages`, {
                 params: { assistantID: assistantid, threadID: threadid }

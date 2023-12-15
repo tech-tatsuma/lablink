@@ -111,7 +111,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
 
     // チャット画面を表示する変数
     if (showchatbot) {
-        return <ChatBotContent baseurl={baseurl} threadid={selectedChat.thread_id} assistantid={selectedChat.assistant_id} assistantname={selectedChat.assistant_name} model={selectedChat.model} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} />;
+        return <ChatBotContent baseurl={baseurl} threadid={selectedChat.threadid} assistantid={selectedChat.assistantid} assistantname={selectedChat.chatname} model={selectedChat.model} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} />;
     }
 
     return (
