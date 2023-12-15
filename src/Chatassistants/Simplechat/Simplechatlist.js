@@ -55,11 +55,11 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
             try {
                 // パブリックチャットの取得
                 const publicResponse = await axios.get(`${baseurl}simplechat/get_public_chats`);
-                console.log(publicResponse.data.public_chats);
+                console.log('public'+publicResponse.data.public_chats);
                 setPublicchat(publicResponse.data.public_chats);
                 // プライベートチャットの取得
                 const privateResponse = await axios.get(`${baseurl}simplechat/get_private_chats`, { params: { user: formatUsername(username) } });
-                console.log(privateResponse.data.private_chats);
+                console.log('private: '+privateResponse.data.private_chats);
                 setPrivatechat(privateResponse.data.private_chats);
             } catch (error) {
                 console.error("Chats fetching error:", error);
@@ -84,6 +84,10 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
 
     // assistant_nameから#@以降を除去する関数
     const formatAssistantName = (name) => {
+        console.log('name'+name);
+        if (!name || typeof name !== 'string') {
+            return ''; // 無効な値が渡された場合は空文字列を返す
+        }
         const atIndex = name.indexOf('#@');
         return atIndex !== -1 ? name.substring(0, atIndex) : name;
     };
