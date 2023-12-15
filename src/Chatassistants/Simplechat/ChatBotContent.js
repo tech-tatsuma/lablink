@@ -66,9 +66,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
             console.log('threadid: '+threadid);
             console.log('question: '+question);
             const response = await axios.post(`${baseurl}simplechat/ask_simplechat`, {
-                assistantID: assistantid,
-                threadID: threadid,
-                question: question
+                params: {assistantID: assistantid, threadID: threadid, question: question}
             }, {
                 headers: {
                     'Content-Type': 'application/json'

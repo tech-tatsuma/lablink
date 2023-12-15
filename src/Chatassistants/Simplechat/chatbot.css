@@ -12,13 +12,14 @@ form {
 
 /* アシスタントのメッセージスタイル */
 .assistant-message {
-    background-color: #e0e0e0;
+    background-color: #494473;
     text-align: left;
+    color: white;
 }
 
 /* ユーザーのメッセージスタイル */
 .user-message {
-    background-color: #4caf50;
+    background-color: #9d5655;
     color: white;
     text-align: right;
 }
