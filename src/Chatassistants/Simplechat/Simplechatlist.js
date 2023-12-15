@@ -133,7 +133,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
                     publicchat.map((chat, index) => (
                         <div key={index} className="col-md-6 col-12 mb-3" onClick={() => selectChat(chat)}>
                             <div className="p-3 border shadow rounded" style={{ backgroundColor: "#f5f5f5" }}>
-                                <p className="h2">{chat.assistant_name}</p>
+                                <p className="h2">{chat.chatname}</p>
                             </div>
                         </div>
                     ))
@@ -141,7 +141,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
                     privatechat.map((chat, index) => (
                         <div key={index} className="col-md-6 col-12 mb-3" onClick={() => selectChat(chat)}>
                             <div className="p-3 border shadow rounded" style={{ backgroundColor: "#f5f5f5" }}>
-                                <p className="h2">{formatAssistantName(chat.assistant_name)}</p>
+                                <p className="h2">{formatAssistantName(chat.chatname)}</p>
                             </div>
                         </div>
                     ))
