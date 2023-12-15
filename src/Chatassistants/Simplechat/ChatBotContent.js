@@ -16,8 +16,8 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
     // チャットとの会話履歴を格納する変数
     const [history, setHistory] = useState([]);
 
-    const [loading, setLoading] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
+    const [loadinginchat, setLoadinginchat] = useState(false);
 
     // 履歴の順序を調整する関数
     const rearrangeHistory = (messages) => {
@@ -56,7 +56,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
 
     // 質問を送信する関数
     const handleQuestionSubmit = async () => {
-        setLoading(true);
+        setLoadinginchat(true);
         if (!question) return;  // 質問が空の場合は処理を行わない
         try {
             // chatbotへの質問を送信
@@ -64,6 +64,10 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                 assistantID: String(assistantid),
                 threadID: String(threadid),
                 question: String(question)
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
             // chatbotからレスポンスが取れた場合
             if (response.data.messages) {
@@ -76,7 +80,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
         } catch (error) {
             console.error('Failed to send question:', error);
         }
-        setLoading(false);
+        setLoadinginchat(false);
     };
 
     // メニューに戻る関数
@@ -108,8 +112,8 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                     )}
                     <div className="mb-3">
                         <label className="form-label">Conversation History</label>
-                        <div className="p-3 border messages-display">
-                            {loading ? (
+                        <div className="p-3 messages-display">
+                            {loadinginchat ? (
                                 <div className="assistant-message message-bubble">
                                     <div className="loading-animation"></div>
                                 </div>
@@ -131,7 +135,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                             value={question}
                             onChange={(e) => setQuestion(e.target.value)}
                         ></textarea>
-                        <button className="btn btn-primary mt-2" onClick={handleQuestionSubmit}>
+                        <button className="btn btn-primary mt-2 send-button" onClick={handleQuestionSubmit}>
                             <IoMdSend />
                         </button>
                     </div>
