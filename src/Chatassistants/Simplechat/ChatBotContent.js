@@ -25,26 +25,18 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
     const rearrangeHistory = (messages) => {
         const reversedMessages = [...messages].reverse();
         const list = [];
-        let tempMessage = {};
     
         reversedMessages.forEach(message => {
             if (message.assistant) {
-                // アシスタントのメッセージを一時的なオブジェクトに格納
-                tempMessage.assistant = message.assistant;
+                // アシスタントのメッセージをリストに追加
+                list.push({ assistant: message.assistant });
             }
     
             if (message.user) {
-                // ユーザーのメッセージがある場合、アシスタントのメッセージを含めてリストに追加
-                tempMessage.user = message.user;
-                list.push({ ...tempMessage });
-                tempMessage = {}; // 一時的なオブジェクトをリセット
+                // ユーザーのメッセージをリストに追加
+                list.push({ user: message.user });
             }
         });
-    
-        // 最後のメッセージがアシスタントのみの場合、それもリストに追加
-        if (tempMessage.assistant) {
-            list.push(tempMessage);
-        }
     
         return list;
     };
