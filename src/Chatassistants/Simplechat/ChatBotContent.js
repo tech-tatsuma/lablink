@@ -23,13 +23,30 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
 
     // 履歴の順序を調整する関数
     const rearrangeHistory = (messages) => {
-        return messages.map(message => {
-            // メッセージオブジェクトの構造をそのまま返す
-            return { 
-                user: message.user, 
-                assistant: message.assistant 
-            };
+        const reversedMessages = [...messages].reverse();
+        const list = [];
+        let tempMessage = {};
+    
+        reversedMessages.forEach(message => {
+            if (message.assistant) {
+                // アシスタントのメッセージを一時的なオブジェクトに格納
+                tempMessage.assistant = message.assistant;
+            }
+    
+            if (message.user) {
+                // ユーザーのメッセージがある場合、アシスタントのメッセージを含めてリストに追加
+                tempMessage.user = message.user;
+                list.push({ ...tempMessage });
+                tempMessage = {}; // 一時的なオブジェクトをリセット
+            }
         });
+    
+        // 最後のメッセージがアシスタントのみの場合、それもリストに追加
+        if (tempMessage.assistant) {
+            list.push(tempMessage);
+        }
+    
+        return list;
     };
 
     const scrollToBottom = () => {
@@ -51,6 +68,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
             const response = await axios.get(`${baseurl}simplechat/get_messages`, {
                 params: { assistantID: assistantid, threadID: threadid }
             });
+            console.log(rearrangeHistory(response.data.messages));
             setHistory(rearrangeHistory(response.data.messages));
         } catch (error) {
             console.error('Failed to fetch history:', error);
@@ -154,19 +172,19 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                         </>
                     )}
                     <div className="mb-3">
-                        <div className="p-3 messages-display">
-                                {history.map((entry, index) => (
-                                    <div key={index} className={entry.user ? "user-message message-bubble" : "assistant-message message-bubble"}>
-                                        {entry.user ? <FaUserAlt className="message-icon" /> : <FaRobot className="message-icon" />}
-                                        <ReactMarkdown>{entry.user || entry.assistant}</ReactMarkdown>
-                                    </div>
-                                ))}
-                                {isSubmitting && (
-                                    <div className="assistant-message message-bubble">
-                                        <div className="loading-animation"></div>
-                                    </div>
-                                )}
-                        </div>
+                    <div className="p-3 messages-display">
+                        {history.map((entry, index) => (
+                            <div key={index} className={entry.user ? "user-message message-bubble" : "assistant-message message-bubble"}>
+                                {entry.user ? <FaUserAlt className="message-icon" /> : <FaRobot className="message-icon" />}
+                                <ReactMarkdown>{entry.user || entry.assistant}</ReactMarkdown>
+                            </div>
+                        ))}
+                        {isSubmitting && (
+                            <div className="assistant-message message-bubble">
+                                <div className="loading-animation"></div>
+                            </div>
+                        )}
+                    </div>
                     </div>
                     <div className="message-input p-3 border-top">
                         <textarea 

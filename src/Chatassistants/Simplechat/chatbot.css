@@ -22,7 +22,8 @@ form {
     background-color: #9d5655;
     color: white;
     text-align: right; /* テキストを右寄せ */
-    margin-left: auto; /* 左側のマージンを自動調整して右寄せにする */
+    display: flex; /* フレックスボックスにする */
+    justify-content: flex-end; /* 右寄せ */
 }
 
 /* メッセージ入力フィールドのスタイル */
@@ -38,6 +39,8 @@ form {
 /* メッセージ表示エリアのスタイル */
 .messages-display {
     padding-bottom: 60px; /* メッセージ入力フィールドの高さに合わせて調整 */
+    display: flex; /* フレックスボックスにする */
+    flex-direction: column; /* 縦並びにする */
 }
 
 .menu-icon {
