@@ -34,7 +34,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
             name: String(chatname),
             tools: "code_interpreter",
             model: gptVersion === "gpt3" ? "gpt-3.5-turbo" : "gpt-4",
-            public: String(chatVisibility),
+            public: chatVisibility,
             user: String(username)
         };
 
@@ -49,8 +49,8 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
                 const newSelectedChat = {
                     thread_id: response.data.threadID,
                     assistant_id: response.data.assistantID,
-                    assistant_name: chatname, // この部分はchatnameを使用
-                    model: gptVersion // gptVersionを使用
+                    assistant_name: response.data.assistantName, 
+                    model: response.data.model 
                 };
                 setSelectedChat(newSelectedChat);
                 // 取得した情報を状態変数に格納
