@@ -21,7 +21,8 @@ form {
 .user-message {
     background-color: #9d5655;
     color: white;
-    text-align: right;
+    text-align: right; /* テキストを右寄せ */
+    margin-left: auto; /* 左側のマージンを自動調整して右寄せにする */
 }
 
 /* メッセージ入力フィールドのスタイル */

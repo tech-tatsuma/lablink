@@ -19,36 +19,29 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
     const [showInfo, setShowInfo] = useState(false);
     const [loadinginchat, setLoadinginchat] = useState(false);
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     // 履歴の順序を調整する関数
     const rearrangeHistory = (messages) => {
-        let formatted_messages = [];
-        let temp_message = {};
-    
-        messages.forEach(message => {
-            if (message.user) {
-                temp_message.user = message.user;
-                // アシスタントの回答が既にある場合、それを含める
-                if (temp_message.assistant) {
-                    formatted_messages.push({...temp_message});
-                    temp_message = { user: message.user }; // ユーザーメッセージのリセット
-                }
-            } else if (message.assistant) {
-                temp_message.assistant = message.assistant;
-                // ユーザーの質問が既にある場合、それを含める
-                if (temp_message.user) {
-                    formatted_messages.push({...temp_message});
-                    temp_message = {}; // リセット
-                }
-            }
+        return messages.map(message => {
+            // メッセージオブジェクトの構造をそのまま返す
+            return { 
+                user: message.user, 
+                assistant: message.assistant 
+            };
         });
-    
-        // 最後のメッセージを追加
-        if (temp_message.user || temp_message.assistant) {
-            formatted_messages.push(temp_message);
-        }
-    
-        return formatted_messages;
     };
+
+    const scrollToBottom = () => {
+        const messagesDisplay = document.querySelector(".messages-display");
+        messagesDisplay.scrollTop = messagesDisplay.scrollHeight;
+    };
+
+    useEffect(() => {
+        if (!isSubmitting) {
+            scrollToBottom();  // スクロールを実行
+        }
+    }, [isSubmitting]);
 
     // threadidとassistantidから情報を取得する関数
     const fetchHistory = async () => {
@@ -77,6 +70,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
 
     // 質問を送信する関数
     const handleQuestionSubmit = async () => {
+        setIsSubmitting(true);
         setLoadinginchat(true);
         const requestData = {
             assistantID: assistantid,
@@ -92,7 +86,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
             const response = await axios.post(`${baseurl}simplechat/ask_simplechat`, requestData);
             // chatbotからレスポンスが取れた場合
             if (response.data.messages) {
-                setHistory(response.data.messages);
+                fetchHistory();
             } else if (response.data.error) { //エラー処理
                 console.error('Error:', response.data.error);
             }
@@ -101,12 +95,13 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
         } catch (error) {
             console.error('Failed to send question:', error);
         }
+        setIsSubmitting(false);
         setLoadinginchat(false);
     };
 
     const deletechat = async () => {
         try {
-            const response = await axios.post(`${baseurl}simplechat/delete_chat`, {
+            const response = await axios.delete(`${baseurl}simplechat/delete_chat`, {
                 assistantID: assistantid,
                 threadID: threadid
             });
@@ -160,18 +155,17 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                     )}
                     <div className="mb-3">
                         <div className="p-3 messages-display">
-                            {loadinginchat ? (
-                                <div className="assistant-message message-bubble">
-                                    <div className="loading-animation"></div>
-                                </div>
-                            ) : (
-                                history.map((entry, index) => (
+                                {history.map((entry, index) => (
                                     <div key={index} className={entry.user ? "user-message message-bubble" : "assistant-message message-bubble"}>
                                         {entry.user ? <FaUserAlt className="message-icon" /> : <FaRobot className="message-icon" />}
                                         <ReactMarkdown>{entry.user || entry.assistant}</ReactMarkdown>
                                     </div>
-                                ))
-                            )}
+                                ))}
+                                {isSubmitting && (
+                                    <div className="assistant-message message-bubble">
+                                        <div className="loading-animation"></div>
+                                    </div>
+                                )}
                         </div>
                     </div>
                     <div className="message-input p-3 border-top">

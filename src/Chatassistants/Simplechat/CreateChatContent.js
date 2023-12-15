@@ -75,10 +75,9 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
         setmenu(true);
     }
 
-    // チャットが作成された時に実行
-    if (isChatCreated) {
-        return <ChatBotContent baseurl={baseurl} threadid={threadID} assistantid={assistantID} assistantname={chatname} model={gptVersion} setShowCreateChat={setShowCreateChat} setShowchatbot={setShowchatbot} setmenu={setmenu} />;
-    }
+    // if (isChatCreated) {
+    //     return <ChatBotContent baseurl={baseurl} threadid={threadID} assistantid={assistantID} assistantname={chatname} model={gptVersion} setShowCreateChat={setShowCreateChat} setShowchatbot={setShowchatbot} setmenu={setmenu} />;
+    // }
 
     // チャット作成画面を表示
     if (!isChatCreated) {
