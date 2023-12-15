@@ -30,13 +30,15 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
 
         // APIリクエストデータの構築
         const requestData = {
-            instruction: instructions,
-            name: chatname,
+            instruction: String(instructions),
+            name: String(chatname),
             tools: "code_interpreter",
             model: gptVersion === "gpt3" ? "gpt-3.5-turbo" : "gpt-4",
-            public: chatVisibility,
-            user: username
+            public: String(chatVisibility),
+            user: String(username)
         };
+
+        console.log(requestData);
 
         try {
             // APIにリクエストを送信
