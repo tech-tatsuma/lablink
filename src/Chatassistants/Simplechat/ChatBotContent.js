@@ -59,21 +59,18 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
     // 質問を送信する関数
     const handleQuestionSubmit = async () => {
         setLoadinginchat(true);
+        const requestData = {
+            assistantID: assistantid,
+            threadID: threadid,
+            question: question
+        };
         if (!question) return;  // 質問が空の場合は処理を行わない
         try {
             // chatbotへの質問を送信
             console.log('assistantid: '+assistantid);
             console.log('threadid: '+threadid);
             console.log('question: '+question);
-            const response = await axios.post(`${baseurl}simplechat/ask_simplechat`, {
-                assistantid,
-                threadid,
-                question
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+            const response = await axios.post(`${baseurl}simplechat/ask_simplechat`, requestData);
             // chatbotからレスポンスが取れた場合
             if (response.data.messages) {
                 setHistory(response.data.messages);
@@ -116,7 +113,6 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                         </>
                     )}
                     <div className="mb-3">
-                        <label className="form-label">Conversation History</label>
                         <div className="p-3 messages-display">
                             {loadinginchat ? (
                                 <div className="assistant-message message-bubble">
