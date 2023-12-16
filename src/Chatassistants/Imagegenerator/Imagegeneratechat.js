@@ -17,7 +17,7 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
     const [generatedImages, setGeneratedImages] = useState([]);
     const [animatedMessage, setAnimatedMessage] = useState('');
     const [messageIndex, setMessageIndex] = useState(0);
-    const message = "呼び出してくれてありがとう！！ どんなイラストや画像を何枚作って欲しいかを教えてくれ。だけど一回に作れる画像は５枚までだから許してね。";
+    const message = "呼び出してくれてありがとう！！ どんなイラストや画像を何枚作って欲しいかを教えてくれ。";
 
     const handleQuestionSubmit = async () => {
         setloading(true);
@@ -97,14 +97,14 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
                 ></textarea>
-                <input
+                {/* <input
                     type="number"
                     className="form-control num-images-input"
                     value={numImages}
                     onChange={(e) => setNumImages(e.target.value)}
                     min="1"
                     max="5"
-                />
+                /> */}
             </div>
             <button className="btn btn-primary send-button" onClick={handleQuestionSubmit}>
                 <IoMdSend />

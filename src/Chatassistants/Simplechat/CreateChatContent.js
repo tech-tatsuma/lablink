@@ -59,7 +59,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
                 setThreadID(response.data.threadID);
                 setAssistantID(response.data.assistantID);
                 setModel(response.data.model);
-                Setresponsename(response.data.name);
+                Setresponsename(response.data.assistantName);
                 Setnewchatdata({
                     threadid: threadID,
                     assistantid: assistantID,
