@@ -88,14 +88,18 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
 
     const renderPagination = () => {
         const pages = [];
-        for (let i = 1; i <= totalPages; i++) {
+        const pageLimit = 5; // 表示するページ番号の最大数
+        const currentPageLimit = Math.min(currentPage + pageLimit, totalPages + 1);
+        const firstPage = Math.max(1, currentPageLimit - pageLimit);
+
+        for (let i = firstPage; i < currentPageLimit; i++) {
             pages.push(
-                <button key={i} onClick={() => setCurrentPage(i)}>
+                <button key={i} onClick={() => setCurrentPage(i)} className={currentPage === i ? "active" : ""}>
                     {i}
                 </button>
             );
         }
-        return <div>{pages}</div>;
+        return <div className="pagination">{pages}</div>;
     };
 
     // チャットボットを選択した時に実行
@@ -157,28 +161,30 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
                     <button type="button" className="btn btn-primary text-white" onClick={createchat}>Create Chat</button>
                 </div>
                 {/* パブリックフラグで表示するチャットを切り替える */}
+                <div className="chat-list">
                 {publicflag ? (
                     paginate(publicchat).map((chat, index) => (
-                        <div key={index} className="col-md-6 col-12 mb-3" onClick={() => selectChat(chat)}>
-                            <div className="p-3 border shadow rounded" style={{ backgroundColor: "#f5f5f5" }}>
-                                <p className="chattitle">{chat.chatname}</p>
-                            </div>
-                        </div>
+                        <ChatListItem key={index} chat={chat} selectChat={selectChat} />
                     ))
                 ) : (
                     paginate(privatechat).map((chat, index) => (
-                        <div key={index} className="col-md-6 col-12 mb-3" onClick={() => selectChat(chat)}>
-                            <div className="p-3 border shadow rounded" style={{ backgroundColor: "#f5f5f5" }}>
-                                <p className="chattitle">{formatAssistantName(chat.chatname)}</p>
-                            </div>
-                        </div>
+                        <ChatListItem key={index} chat={chat} selectChat={selectChat} />
                     ))
                 )}
+                </div>
                 {renderPagination()}
             </div>
         </div>
         </>
     );
 }
+
+const ChatListItem = ({ chat, selectChat }) => (
+    <div className="col-md-6 col-12 mb-3" onClick={() => selectChat(chat)}>
+        <div className="chat-item">
+            <p className="chattitle">{chat.chatname}</p>
+        </div>
+    </div>
+);
 
 export default Simplechatcontent;

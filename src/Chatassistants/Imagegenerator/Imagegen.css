@@ -53,3 +53,13 @@
     margin: 10px 0;
     text-align: center;
 }
+
+.image-preview {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    height: auto;
+}

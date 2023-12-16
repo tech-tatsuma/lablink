@@ -4,25 +4,32 @@ import { IoMdSend } from "react-icons/io";
 import { useState } from "react";
 import "./Imagegen.css";
 import axios from "axios";
+import './../../PaperSummary/Papsum.css';
 
 const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
+    const [loading, setloading] = useState(false);
     const [question, setQuestion] = useState("");
     const [numImages, setNumImages] = useState(1);
     const [selectedFile, setSelectedFile] = useState(null);
     const [generatedImages, setGeneratedImages] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
+    const [filePreviewUrl, setFilePreviewUrl] = useState(null);
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file && file.type === "image/png") {
             setSelectedFile(file);
             setErrorMessage(""); // エラーメッセージをクリア
+            setFilePreviewUrl(URL.createObjectURL(file)); // プレビューURLをセット
         } else {
+            setSelectedFile(null);
             setErrorMessage("Please select a PNG file."); // エラーメッセージを設定
+            setFilePreviewUrl(null); // プレビューURLをクリア
         }
     };
 
     const handleQuestionSubmit = async () => {
+        setloading(true);
         if (selectedFile) {
             // ファイルが選択されている場合
             const formData = new FormData();
@@ -68,6 +75,7 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
                 console.error("Error generating images:", error);
             }
         }
+        setloading(false);
     };
 
     const backtomenu = () => {
@@ -77,12 +85,27 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
 
     return (
         <>
+        { loading && 
+                <div className="overlay" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <div className="my-container">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <p>LOADING</p>
+                </div>
+            </div> 
+            }
             <div className="back-to-menu">
                 <button className="btn btn-secondary" onClick={backtomenu}>
                     Back to Menu
                 </button>
             </div>
             {errorMessage && <div className="error-message">{errorMessage}</div>}
+            {filePreviewUrl && (
+                <div className="image-preview">
+                    <img src={filePreviewUrl} alt="Preview" />
+                </div>
+            )}
             <div className="input-container">
                 <label htmlFor="file-input">
                     <MdOutlineAttachFile className="attach-icon" />

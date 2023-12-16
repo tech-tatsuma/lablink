@@ -110,12 +110,13 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
     };
 
     const deletechat = async () => {
-        const request = {
-            assistantID: assistantid,
-            threadID: threadid
-        }
         try {
-            const response = await axios.delete(`${baseurl}simplechat/delete_chat`, request);
+            const response = await axios.delete(`${baseurl}simplechat/delete_chat`, {
+                params: {
+                    assistantID: assistantid,
+                    threadID: threadid
+                }
+            });
             if (response.data.error) {
                 alert('Error: ' + response.data.error);
             } else {
