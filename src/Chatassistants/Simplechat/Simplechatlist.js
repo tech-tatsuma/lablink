@@ -154,7 +154,6 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
                 {/* パブリックフラグで表示するチャットを切り替える */}
                 {/* <div className="chat-list"> */}
                 <div class="row">
-                <div className="col-lg-4 col-md-4 col-sm-6 mb-4">
                 {publicflag ? (
                     paginate(publicchat).map((chat, index) => (
                         <ChatListItem key={index} chat={chat} selectChat={selectChat} />
@@ -164,7 +163,6 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
                         <ChatListItem key={index} chat={chat} selectChat={selectChat} />
                     ))
                 )}
-                </div>
                 </div>
                 </div>
                 {/* </div> */}
@@ -183,11 +181,13 @@ const formatAssistantName = (name) => {
 };
 
 const ChatListItem = ({ chat, selectChat }) => (
+    <div class="col-lg-4 mb-4">
         <div className="card bg-secondary text-white shadow" onClick={() => selectChat(chat)}>
             <div className="card-body text-center card-body-chatbot">
                 <div className="chat-name">{formatAssistantName(chat.chatname)}</div>
                 <div className="text-white-50 small">{chat.gpttype}</div>
             </div>
+        </div>
         </div>
 );
 
