@@ -179,7 +179,6 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                     </div>
                 </div>
                 {/* ページのフッター部分 */}
-                {showfooter && (
                         <footer className="sticky-footer bg-white">
                             <div className="container my-auto">
                                 <div className="copyright text-center my-auto">
@@ -187,11 +186,12 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                                 </div>
                             </div>
                             {/* ページのフッターに住むトトロ */}
+                            {showfooter && (
                             <div className={`cat-animation ${isCatMoving ? "cat-animation-moving" : "cat-animation-stationary"}`} style={{ left: isCatMoving ? 0 : catPositionLeft }}>
                                 <img className="cat-image" src={catImageSrc} alt="Walking Cat" onClick={toggleCatAnimation} style={{ left: isCatMoving ? 0 : catPositionLeft }} />
                             </div>
+                            )}
                         </footer>
-                    )}
             </div>
         </>
     );

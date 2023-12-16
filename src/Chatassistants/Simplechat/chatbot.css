@@ -47,7 +47,7 @@ form {
     position: relative;
     top: 10px;
     right: 10px;
-    font-size: 24px;
+    font-size: 36px;
     cursor: pointer;
 }
 
@@ -55,6 +55,17 @@ form {
     display: inline-block;
     vertical-align: top;
     margin-right: 10px;
+}
+
+.menu-content {
+    position: fixed; /* 固定位置にする */
+    top: 0; /* 画面の上部に配置 */
+    left: 0; /* 画面の左端に配置 */
+    width: 100%; /* 幅を画面幅に合わせる */
+    background-color: white; /* 背景色 */
+    padding: 20px; /* 内側の余白 */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* 影をつける */
+    z-index: 100; /* 他の要素より上に表示 */
 }
 
 .loading-animation {
@@ -85,6 +96,10 @@ form {
     justify-content: center; /* 中央揃え */
     gap: 20px; /* ボタン間の余白 */
     margin: 20px 0; /* 上下の余白 */
+}
+
+.model-info-container, .model-info, .created-at-info {
+    text-align: center; /* テキストを中央揃えにする */
 }
 
 .pagination {

@@ -114,16 +114,6 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
         setmenu(false);
     };
 
-    // assistant_nameから#@以降を除去する関数
-    const formatAssistantName = (name) => {
-        console.log('name'+name);
-        if (!name || typeof name !== 'string') {
-            return ''; // 無効な値が渡された場合は空文字列を返す
-        }
-        const atIndex = name.indexOf('#@');
-        return atIndex !== -1 ? name.substring(0, atIndex) : name;
-    };
-
     // パブリックかどうかのフラグを切り替える関数
     const toggleChatVisibility = () => {
         setPublicflag(!publicflag);
@@ -143,7 +133,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
 
     // チャット画面を表示する変数
     if (showchatbot) {
-        return <ChatBotContent baseurl={baseurl} threadid={selectedChat.threadid} assistantid={selectedChat.assistantid} assistantname={selectedChat.chatname} model={selectedChat.model} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} />;
+        return <ChatBotContent baseurl={baseurl} threadid={selectedChat.threadid} assistantid={selectedChat.assistantid} assistantname={selectedChat.chatname} model={selectedChat.gpttype} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} created_at={selectedChat.created_at} />;
     }
 
     return (
@@ -178,11 +168,22 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
         </>
     );
 }
+const formatAssistantName = (name) => {
+    console.log('name'+name);
+    if (!name || typeof name !== 'string') {
+        return ''; // 無効な値が渡された場合は空文字列を返す
+    }
+    const atIndex = name.indexOf('#@');
+    return atIndex !== -1 ? name.substring(0, atIndex) : name;
+};
 
 const ChatListItem = ({ chat, selectChat }) => (
-    <div className="col-md-6 col-12 mb-3" onClick={() => selectChat(chat)}>
-        <div className="chat-item">
-            <p className="chattitle">{chat.chatname}</p>
+    <div className="col-lg-4 mb-4" onClick={() => selectChat(chat)}>
+        <div class="card bg-light text-black shadow">
+        <div class="card-body">
+            {formatAssistantName(chat.chatname)}
+            <div class="text-white-50 small">{chat.gpttype}</div>
+        </div>
         </div>
     </div>
 );

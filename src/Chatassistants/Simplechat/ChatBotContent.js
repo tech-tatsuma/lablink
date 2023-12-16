@@ -10,7 +10,7 @@ import "./chatbot.css";
 
 import "./../../PaperSummary/Papsum.css";
 
-const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, setShowCreateChat, setShowchatbot, setmenu }) => {
+const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, setShowCreateChat, setShowchatbot, setmenu, created_at }) => {
     // 質問内容を格納する変数
     const [question, setQuestion] = useState('');
     // チャットとの会話履歴を格納する変数
@@ -143,10 +143,11 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
         <div className="container my-4">
             <div className="row">
                 <div className="col-md-8 offset-md-2">
-                    <IoIosMenu className="menu-icon" onClick={() => setShowInfo(!showInfo)} />
+                    <IoIosMenu className="menu-icon" style={{ fontSize: '28px' }} onClick={() => setShowInfo(!showInfo)} />
 
                     { showInfo && (
                         <>
+                        <div className="menu-content">
                         <div className="button-group">
                             <button 
                                 className="btn btn-secondary mb-3" 
@@ -163,8 +164,14 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                                 Delete Chat
                             </button>
                             </div>
-                            <h2>{formatAssistantName(assistantname)}</h2>
-                            <p>{model}</p>
+                            <div className="assistant-name-container">
+                                        <h2 className="assistant-name">{formatAssistantName(assistantname)}</h2>
+                            </div>
+                            <div className="model-info-container">
+                                <p className="model-info">{model}</p>
+                                <p className="created-at-info">{created_at}</p>
+                            </div>
+                            </div>
                         </>
                     )}
                     <div className="mb-3">

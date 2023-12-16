@@ -46,6 +46,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
             if (response.data.error) {
                 alert('Error: ' + response.data.error);
             } else { // リクエストが成功
+                console.log(response.data);
                 const newSelectedChat = {
                     thread_id: response.data.threadID,
                     assistant_id: response.data.assistantID,
@@ -82,7 +83,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
     }
 
     if (isChatCreated) {
-        return <ChatBotContent baseurl={baseurl} threadid={selectedChat.threadid} assistantid={selectedChat.assistantid} assistantname={selectedChat.chatname} model={selectedChat.model} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} />;
+        return <ChatBotContent baseurl={baseurl} threadid={selectedChat.threadid} assistantid={selectedChat.assistantid} assistantname={selectedChat.chatname} model={selectedChat.gpttype} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} created_at={selectedChat.created_at} />;
     }
 
     // チャット作成画面を表示
