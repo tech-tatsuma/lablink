@@ -110,7 +110,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
     };
 
     const deletechat = async () => {
-        request = {
+        const request = {
             assistantID: assistantid,
             threadID: threadid
         }
