@@ -66,6 +66,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
                 setShowCreateChat(false);
                 setShowchatbot(true);
                 setmenu(false);
+                setIsChatCreated(true);
             }
         } catch (error) {
             console.error('API request failed:', error);
@@ -73,13 +74,13 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
         }
     };
 
-    useEffect(() => {
-        // チャットが作成された場合
-        if (selectedChat) {
-            // チャットの作成処理が完了したフラグを立てる
-            setIsChatCreated(true);
-        }
-    }, [selectedChat]);
+    // useEffect(() => {
+    //     // チャットが作成された場合
+    //     if (selectedChat) {
+    //         // チャットの作成処理が完了したフラグを立てる
+    //         setIsChatCreated(true);
+    //     }
+    // }, [selectedChat]);
 
     const backtomenu = () => {
         setShowCreateChat(false);
@@ -87,12 +88,12 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
         setmenu(true);
     }
 
-    if (isChatCreated) {
+    if (showchatbot) {
         return <ChatBotContent baseurl={baseurl} threadid={threadID} assistantid={assistantID} assistantname={responsename} model={model} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} created_at={date} />;
     }
 
     // チャット作成画面を表示
-    if (!isChatCreated) {
+    if (!showchatbot) {
         return (
             <div className="container my-4">
                 <div className="row">
