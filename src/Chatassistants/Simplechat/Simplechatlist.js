@@ -34,9 +34,6 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
 
     // ページの読み込み時に実行
     useEffect(() => {
-        setSelectedChat(null);
-        setShowCreateChat(false);
-        setShowchatbot(false);
         if (showCreateChat || showchatbot) {
             setshowfooter(false);
         } else {
@@ -61,9 +58,6 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
     }, [showCreateChat, showchatbot, menu, publicflag]);
 
     useEffect(() => {
-        setSelectedChat(null);
-        setShowCreateChat(false);
-        setShowchatbot(false);
         // パブリックチャットとプライベートチャットの取得
         const fetchChats = async () => {
             // ladingをtrueにし、非同期処理を開始
@@ -185,12 +179,12 @@ const formatAssistantName = (name) => {
 };
 
 const ChatListItem = ({ chat, selectChat }) => (
-    <div className="col-lg-4 mb-4" onClick={() => selectChat(chat)}>
-        <div class="card bg-secondary text-white shadow">
-        <div class="card-body text-center card-body-chatbot">
-            <div className="chat-name">{formatAssistantName(chat.chatname)}</div>
-            <div class="text-white-50 small">{chat.gpttype}</div>
-        </div>
+    <div className="col-lg-4 col-md-4 col-sm-6 mb-4" onClick={() => selectChat(chat)}>
+        <div className="card bg-secondary text-white shadow">
+            <div className="card-body text-center card-body-chatbot">
+                <div className="chat-name">{formatAssistantName(chat.chatname)}</div>
+                <div className="text-white-50 small">{chat.gpttype}</div>
+            </div>
         </div>
     </div>
 );
