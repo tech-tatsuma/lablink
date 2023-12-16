@@ -30,6 +30,8 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
 
     const [date, Setdate] = useState("");
 
+    const [newchatdata, Setnewchatdata] = useState(null);
+
     // フォームが送信された時に実行
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -58,6 +60,13 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
                 setAssistantID(response.data.assistantID);
                 setModel(response.data.model);
                 Setresponsename(response.data.name);
+                Setnewchatdata({
+                    threadid: threadID,
+                    assistantid: assistantID,
+                    chatname: responsename,
+                    gpttype: model,
+                });
+                setSelectedChat(newchatdata);
             }
         } catch (error) {
             console.error('API request failed:', error);
@@ -66,7 +75,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
     };
 
     useEffect(() => {
-        if ((threadID!="") && (assistantID!="") && (model!="") && (responsename!="")) {
+        if ((threadID!="") && (assistantID!="") && (model!="") && (responsename!="") && selectedChat.chatname==responsename) {
             console.log('Thread ID:', threadID);
             console.log('Assistant ID:', assistantID);
             console.log('Model:', model);
@@ -78,7 +87,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
             setmenu(false);
             setIsChatCreated(true);
         }
-    }, [threadID, assistantID, model, responsename]);
+    }, [threadID, assistantID, model, responsename, selectedChat]);
 
     const backtomenu = () => {
         setShowCreateChat(false);
@@ -86,9 +95,9 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
         setmenu(true);
     }
 
-    if (showchatbot) {
-        return <ChatBotContent baseurl={baseurl} threadid={threadID} assistantid={assistantID} assistantname={responsename} model={model} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} created_at={date} />;
-    }
+    // if (showchatbot) {
+    //     return <ChatBotContent baseurl={baseurl} threadid={threadID} assistantid={assistantID} assistantname={responsename} model={model} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} created_at={date} />;
+    // }
 
     // チャット作成画面を表示
     if (!showchatbot) {
