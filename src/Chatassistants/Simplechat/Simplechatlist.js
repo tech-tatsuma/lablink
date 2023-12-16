@@ -187,7 +187,7 @@ const formatAssistantName = (name) => {
 const ChatListItem = ({ chat, selectChat }) => (
     <div className="col-lg-4 mb-4" onClick={() => selectChat(chat)}>
         <div class="card bg-secondary text-white shadow">
-        <div class="card-body text-center">
+        <div class="card-body text-center card-body-chatbot">
             <div className="chat-name">{formatAssistantName(chat.chatname)}</div>
             <div class="text-white-50 small">{chat.gpttype}</div>
         </div>

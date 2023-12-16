@@ -140,7 +140,7 @@ form {
     margin: 0;
 }
 
-.card-body {
+.card-body-chatbot {
     text-align: center!important; /* テキストを中央揃えに */
     display: flex!important; /* Flexboxを使用 */
     flex-direction: column!important; /* 子要素を縦方向に並べる */
