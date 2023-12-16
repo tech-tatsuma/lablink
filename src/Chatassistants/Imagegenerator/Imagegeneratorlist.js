@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./../Simplechat/chatbot.css";
-import Imagegeneratorchat from "./imagegeneratechat";
+import Imagegeneratorchat from "./Imagegeneratechat";
 
 const Imagegeneratorcontent = ({ setmenu, baseurl, setshowfooter}) => {
     const [showchatbot, setShowchatbot] = useState(false);
