@@ -17,7 +17,7 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
     const [generatedImages, setGeneratedImages] = useState([]);
     const [animatedMessage, setAnimatedMessage] = useState('');
     const [messageIndex, setMessageIndex] = useState(0);
-    const message = "呼び出してくれてありがとう！！ どんなイラストや画像を何枚作って欲しいかを教えてくれ。";
+    const message = "武村研のみんな！！\n今日も呼び出してくれてありがとう！！退屈してたんだー. どんなイラストや画像を作って欲しいかを教えてくれ. \n実は僕, 最近, 日本語喋れるようになったからできれば英語で話しかけてくれるとありがたいな";
 
     const handleQuestionSubmit = async () => {
         setloading(true);
