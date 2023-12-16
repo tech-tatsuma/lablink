@@ -26,6 +26,11 @@ form {
     justify-content: flex-end; /* 右寄せ */
 }
 
+.assistant-name-container {
+    text-align: center; /* テキストを中央揃えにする */
+    /* その他のスタイル（必要に応じて） */
+}
+
 /* メッセージ入力フィールドのスタイル */
 .message-input {
     position: relative; /* または static */

@@ -24,6 +24,12 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
     // チャットが作成されたかどうかを格納する変数
     const [isChatCreated, setIsChatCreated] = useState(false);
 
+    const [responsename, Setresponsename] = useState("");
+
+    const [model, setModel] = useState("");
+
+    const [date, Setdate] = useState("");
+
     // フォームが送信された時に実行
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -47,16 +53,15 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
                 alert('Error: ' + response.data.error);
             } else { // リクエストが成功
                 console.log(response.data);
-                const newSelectedChat = {
-                    thread_id: response.data.threadID,
-                    assistant_id: response.data.assistantID,
-                    assistant_name: response.data.assistantName, 
-                    model: response.data.model 
-                };
-                setSelectedChat(newSelectedChat);
                 // 取得した情報を状態変数に格納
                 setThreadID(response.data.threadID);
                 setAssistantID(response.data.assistantID);
+                setModel(response.data.model);
+                Setresponsename(response.data.name);
+                console.log(threadID);
+                console.log(assistantID);
+                console.log(model);
+                console.log(responsename);
                 // チャット画面を表示
                 setShowCreateChat(false);
                 setShowchatbot(true);
@@ -83,7 +88,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
     }
 
     if (isChatCreated) {
-        return <ChatBotContent baseurl={baseurl} threadid={selectedChat.threadid} assistantid={selectedChat.assistantid} assistantname={selectedChat.chatname} model={selectedChat.gpttype} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} created_at={selectedChat.created_at} />;
+        return <ChatBotContent baseurl={baseurl} threadid={threadID} assistantid={assistantID} assistantname={responsename} model={model} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} created_at={date} />;
     }
 
     // チャット作成画面を表示

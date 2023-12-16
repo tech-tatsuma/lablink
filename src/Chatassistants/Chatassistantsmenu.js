@@ -51,7 +51,7 @@ const Chatassistantsmenu = ({setshowfooter}) => {
                     <h1 className="text-center">Chat Assistants Menu</h1>
                     <p className="text-center">いろんなチャットボットがあなたを助けてくれます。どのチャットボットくんを呼び出しますか？</p>
                     <div className="d-flex justify-content-center gap-3">
-                        <button type="button" className="btn btn-warning text-white" onClick={callSimpleChat}>お話し侍</button>
+                        <button type="button" className="btn btn-warning text-white" onClick={callSimpleChat}>おしゃべり侍</button>
                         {/* <button type="button" className="btn btn-danger text-white" onClick={callChatWithDoc}>Chat with Doc</button> */}
                         <button type="button" className="btn btn-primary text-white" onClick={callimagegenerator}>スケッチマスター</button>
                     </div>

@@ -5,6 +5,9 @@ import { useState } from "react";
 import "./Imagegen.css";
 import axios from "axios";
 import './../../PaperSummary/Papsum.css';
+import "./../Simplechat/chatbot.css";
+import { BsEmojiSunglasses } from "react-icons/bs";
+import ReactMarkdown from 'react-markdown';
 
 const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
     const [loading, setloading] = useState(false);
@@ -12,6 +15,9 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
     const [numImages, setNumImages] = useState(1);
     const [selectedFile, setSelectedFile] = useState(null);
     const [generatedImages, setGeneratedImages] = useState([]);
+    const [animatedMessage, setAnimatedMessage] = useState('');
+    const [messageIndex, setMessageIndex] = useState(0);
+    const message = "呼び出してくれてありがとう！！ どんなイラストや画像を何枚作って欲しいかを教えてくれ。だけど一回に作れる画像は５枚までだから許してね。";
 
     const handleQuestionSubmit = async () => {
         setloading(true);
@@ -35,6 +41,15 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
         setloading(false);
     };
 
+    useEffect(() => {
+        if (messageIndex < message.length) {
+            setTimeout(() => {
+                setAnimatedMessage(animatedMessage + message[messageIndex]);
+                setMessageIndex(messageIndex + 1);
+            }, 50); // ここで文字の表示速度を調整できます
+        }
+    }, [messageIndex, animatedMessage]);
+
     const backtomenu = () => {
         setShowchatbot(false);
         setmenu(true);
@@ -56,6 +71,12 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
                 <button className="btn btn-secondary" onClick={backtomenu}>
                     Back to Menu
                 </button>
+            </div>
+            <div className="p-3 messages-display">
+                <div className="assistant-message message-bubble">
+                    <BsEmojiSunglasses className="message-icon" />
+                    <ReactMarkdown>{animatedMessage}</ReactMarkdown>
+                </div>
             </div>
             <div className="images-display">
                 {generatedImages.map((image, index) => (

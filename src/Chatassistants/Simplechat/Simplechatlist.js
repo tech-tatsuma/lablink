@@ -34,6 +34,9 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
 
     // ページの読み込み時に実行
     useEffect(() => {
+        setSelectedChat(null);
+        setShowCreateChat(false);
+        setShowchatbot(false);
         if (showCreateChat || showchatbot) {
             setshowfooter(false);
         } else {
@@ -46,6 +49,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
                 console.log(`${baseurl}simplechat/get_public_chats`)
                 const publicResponse = await axios.get(`${baseurl}simplechat/get_public_chats`);
                 setPublicchat(publicResponse.data.public_chats);
+                console.log('public'+publicResponse.data);
                 const privateResponse = await axios.get(`${baseurl}simplechat/get_private_chats`, { params: { user: formatUsername(username) } });
                 setPrivatechat(privateResponse.data.private_chats);
             } catch (error) {
@@ -57,6 +61,9 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
     }, [showCreateChat, showchatbot, menu, publicflag]);
 
     useEffect(() => {
+        setSelectedChat(null);
+        setShowCreateChat(false);
+        setShowchatbot(false);
         // パブリックチャットとプライベートチャットの取得
         const fetchChats = async () => {
             // ladingをtrueにし、非同期処理を開始
