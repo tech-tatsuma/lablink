@@ -8,7 +8,7 @@ import ChromeDinoGame from 'react-chrome-dino';
 import ImageContent from "./Imagedescription/ImageContent";
 import Chatassistantsmenu from "./Chatassistants/Chatassistantsmenu";
 
-const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, isplayground, user_id, baseurl, monthpay, isimagedescription, isAssistant }) => {
+const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, isplayground, user_id, baseurl, monthpay, isimagedescription, isAssistant, setshowfooter }) => {
     if (isAssistant === false) {
         if (isimagedescription === false) {
             if (isplayground === false) {
@@ -75,7 +75,7 @@ const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, i
     } else {
         return (
             <>
-            <Chatassistantsmenu />
+            <Chatassistantsmenu setshowfooter={setshowfooter} />
             </>
         )
     }

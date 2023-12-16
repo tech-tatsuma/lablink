@@ -12,15 +12,15 @@ form {
 
 /* アシスタントのメッセージスタイル */
 .assistant-message {
-    background-color: #494473;
+    background-color: #ecebf3;
     text-align: left;
-    color: white;
+    color: #3b3b3b;
 }
 
 /* ユーザーのメッセージスタイル */
 .user-message {
-    background-color: #9d5655;
-    color: white;
+    background-color: #f5d5d4;
+    color: #3b3b3b;
     text-align: right; /* テキストを右寄せ */
     display: flex; /* フレックスボックスにする */
     justify-content: flex-end; /* 右寄せ */
@@ -65,6 +65,9 @@ form {
     height: 30px;
     animation: spin 2s linear infinite;
 }
+.chattitle {
+    font-size: 1rem!important;
+}
 
 /* メッセージ入力エリアのスタイル調整 */
 #questionInput {
@@ -75,6 +78,17 @@ form {
 /* 送信ボタンのスタイル調整 */
 .send-button {
     flex-shrink: 0; /* 縮小させない */
+}
+
+.button-group {
+    display: flex; /* フレックスボックスにする */
+    justify-content: center; /* 中央揃え */
+    gap: 20px; /* ボタン間の余白 */
+    margin: 20px 0; /* 上下の余白 */
+}
+
+.btn {
+    margin: 0 10px; /* ボタンの左右の余白 */
 }
 
 @keyframes spin {

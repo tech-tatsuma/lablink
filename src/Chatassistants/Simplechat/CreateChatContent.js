@@ -1,9 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import ChatBotContent from "./ChatBotContent";
 
-const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot, showchatbot, setSelectedChat}) => {
+const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot, showchatbot, selectedChat, setSelectedChat}) => {
     const formatUsername = (name) => {
         return name.replace(/\s/g, '').toLowerCase();
     };
@@ -32,7 +32,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
         const requestData = {
             instruction: String(instructions),
             name: String(chatname),
-            tools: "code_interpreter",
+            tools: "",
             model: gptVersion === "gpt3" ? "gpt-3.5-turbo" : "gpt-4",
             public: chatVisibility,
             user: String(username)
@@ -56,8 +56,6 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
                 // 取得した情報を状態変数に格納
                 setThreadID(response.data.threadID);
                 setAssistantID(response.data.assistantID);
-                // チャットの作成処理が完了したフラグを立てる
-                setIsChatCreated(true);
                 // チャット画面を表示
                 setShowCreateChat(false);
                 setShowchatbot(true);
@@ -69,15 +67,23 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
         }
     };
 
+    useEffect(() => {
+        // チャットが作成された場合
+        if (selectedChat) {
+            // チャットの作成処理が完了したフラグを立てる
+            setIsChatCreated(true);
+        }
+    }, [selectedChat]);
+
     const backtomenu = () => {
         setShowCreateChat(false);
         setShowchatbot(false);
         setmenu(true);
     }
 
-    // if (isChatCreated) {
-    //     return <ChatBotContent baseurl={baseurl} threadid={threadID} assistantid={assistantID} assistantname={chatname} model={gptVersion} setShowCreateChat={setShowCreateChat} setShowchatbot={setShowchatbot} setmenu={setmenu} />;
-    // }
+    if (isChatCreated) {
+        return <ChatBotContent baseurl={baseurl} threadid={selectedChat.threadid} assistantid={selectedChat.assistantid} assistantname={selectedChat.chatname} model={selectedChat.model} setShowchatbot={setShowchatbot} setShowCreateChat={setShowCreateChat} setmenu={setmenu} />;
+    }
 
     // チャット作成画面を表示
     if (!isChatCreated) {

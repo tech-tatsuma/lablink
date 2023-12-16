@@ -110,11 +110,12 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
     };
 
     const deletechat = async () => {
+        request = {
+            assistantID: assistantid,
+            threadID: threadid
+        }
         try {
-            const response = await axios.delete(`${baseurl}simplechat/delete_chat`, {
-                assistantID: assistantid,
-                threadID: threadid
-            });
+            const response = await axios.delete(`${baseurl}simplechat/delete_chat`, request);
             if (response.data.error) {
                 alert('Error: ' + response.data.error);
             } else {
@@ -145,6 +146,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
 
                     { showInfo && (
                         <>
+                        <div className="button-group">
                             <button 
                                 className="btn btn-secondary mb-3" 
                                 onClick={handleBackToMenu}
@@ -159,6 +161,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                             >
                                 Delete Chat
                             </button>
+                            </div>
                             <h2>{formatAssistantName(assistantname)}</h2>
                             <p>{model}</p>
                         </>
@@ -182,7 +185,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                         <textarea 
                             className="form-control" 
                             id="questionInput" 
-                            rows="2"
+                            rows="1"
                             value={question}
                             onChange={(e) => setQuestion(e.target.value)}
                         ></textarea>

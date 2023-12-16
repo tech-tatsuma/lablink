@@ -7,7 +7,11 @@ import ChatBotContent from "./ChatBotContent";
 
 import "./chatbot.css";
 
-const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
+const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }) => {
+
+    // 最大表示数と現在のページの状態
+    const [currentPage, setCurrentPage] = useState(1);
+    const maxItemsPerPage = 20;
 
     const formatUsername = (name) => {
         return name.replace(/\s/g, '').toLowerCase();
@@ -30,6 +34,11 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
 
     // ページの読み込み時に実行
     useEffect(() => {
+        if (showCreateChat || showchatbot) {
+            setshowfooter(false);
+        } else {
+            setshowfooter(true);
+        }
         // パブリックチャットとプライベートチャットの取得
         const fetchChats = async () => {
             setLoading(true);
@@ -70,6 +79,25 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
         fetchChats();
     }, []);
 
+    const paginate = (items) => {
+        const startIndex = (currentPage - 1) * maxItemsPerPage;
+        return items.slice(startIndex, startIndex + maxItemsPerPage);
+    };
+
+    const totalPages = Math.ceil(publicchat.length / maxItemsPerPage);
+
+    const renderPagination = () => {
+        const pages = [];
+        for (let i = 1; i <= totalPages; i++) {
+            pages.push(
+                <button key={i} onClick={() => setCurrentPage(i)}>
+                    {i}
+                </button>
+            );
+        }
+        return <div>{pages}</div>;
+    };
+
     // チャットボットを選択した時に実行
     const selectChat = (chat) => {
         // 選択されたチャットをselectedChatに格納
@@ -106,7 +134,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
     
     // チャット作成画面を表示する変数
     if (showCreateChat) {
-        return <CreateChatContent baseurl={baseurl} setShowCreateChat={setShowCreateChat} setmenu={setmenu} setShowchatbot={setShowchatbot} showchatbot={showchatbot}　setSelectedChat={setSelectedChat} />;
+        return <CreateChatContent baseurl={baseurl} setShowCreateChat={setShowCreateChat} setmenu={setmenu} setShowchatbot={setShowchatbot} showchatbot={showchatbot} selectedChat={selectedChat} setSelectedChat={setSelectedChat} />;
     }
 
     // チャット画面を表示する変数
@@ -130,22 +158,23 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading }) => {
                 </div>
                 {/* パブリックフラグで表示するチャットを切り替える */}
                 {publicflag ? (
-                    publicchat.map((chat, index) => (
+                    paginate(publicchat).map((chat, index) => (
                         <div key={index} className="col-md-6 col-12 mb-3" onClick={() => selectChat(chat)}>
                             <div className="p-3 border shadow rounded" style={{ backgroundColor: "#f5f5f5" }}>
-                                <p className="h2">{chat.chatname}</p>
+                                <p className="chattitle">{chat.chatname}</p>
                             </div>
                         </div>
                     ))
                 ) : (
-                    privatechat.map((chat, index) => (
+                    paginate(privatechat).map((chat, index) => (
                         <div key={index} className="col-md-6 col-12 mb-3" onClick={() => selectChat(chat)}>
                             <div className="p-3 border shadow rounded" style={{ backgroundColor: "#f5f5f5" }}>
-                                <p className="h2">{formatAssistantName(chat.chatname)}</p>
+                                <p className="chattitle">{formatAssistantName(chat.chatname)}</p>
                             </div>
                         </div>
                     ))
                 )}
+                {renderPagination()}
             </div>
         </div>
         </>

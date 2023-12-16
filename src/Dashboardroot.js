@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 // ダッシュボードのルートコンポーネント
 const Dashboardroot = ({ user_id, baseurl }) => {
+    const [showfooter, setshowfooter] = useState(true);
     // ローカルストレージからユーザー名を取得
     const username = localStorage.getItem('T-lab_username');
     // ルーティング用のフック
@@ -173,22 +174,24 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
                             </nav>
                             {/* ページのコンテンツ部分 */}
-                            <Dashboardcontent isHome={isHomeValues} isAdminView={isAdminView} isSummaryView={isSummaryView} isSearchpaper={isSearchpaper} isplayground={isplayground} user_id={user_id} baseurl={baseurl} monthpay={monthpay} isimagedescription={isimagedescription} isAssistant={isAssistant} />
+                            <Dashboardcontent isHome={isHomeValues} isAdminView={isAdminView} isSummaryView={isSummaryView} isSearchpaper={isSearchpaper} isplayground={isplayground} user_id={user_id} baseurl={baseurl} monthpay={monthpay} isimagedescription={isimagedescription} isAssistant={isAssistant} setshowfooter={setshowfooter} />
                         </div>
                     </div>
                 </div>
                 {/* ページのフッター部分 */}
-                <footer className="sticky-footer bg-white">
-                <div className="container my-auto">
-                    <div className="copyright text-center my-auto">
-                        <span>Copyright &copy; Takemura Lab</span>
-                    </div>
-                </div>
-                {/* ページのフッターに住むトトロ */}
-                <div className={`cat-animation ${isCatMoving ? "cat-animation-moving" : "cat-animation-stationary"}`} style={{ left: isCatMoving ? 0 : catPositionLeft }}>
-                    <img className="cat-image" src={catImageSrc} alt="Walking Cat" onClick={toggleCatAnimation} style={{ left: isCatMoving ? 0 : catPositionLeft }} />
-                </div>
-                </footer>
+                {showfooter && (
+                        <footer className="sticky-footer bg-white">
+                            <div className="container my-auto">
+                                <div className="copyright text-center my-auto">
+                                    <span>Copyright &copy; Takemura Lab</span>
+                                </div>
+                            </div>
+                            {/* ページのフッターに住むトトロ */}
+                            <div className={`cat-animation ${isCatMoving ? "cat-animation-moving" : "cat-animation-stationary"}`} style={{ left: isCatMoving ? 0 : catPositionLeft }}>
+                                <img className="cat-image" src={catImageSrc} alt="Walking Cat" onClick={toggleCatAnimation} style={{ left: isCatMoving ? 0 : catPositionLeft }} />
+                            </div>
+                        </footer>
+                    )}
             </div>
         </>
     );
