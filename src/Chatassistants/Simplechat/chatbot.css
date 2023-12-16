@@ -140,6 +140,19 @@ form {
     margin: 0;
 }
 
+.card-body {
+    text-align: center!important; /* テキストを中央揃えに */
+    display: flex!important; /* Flexboxを使用 */
+    flex-direction: column!important; /* 子要素を縦方向に並べる */
+    justify-content: center!important; /* 子要素を中央揃えに */
+    align-items: center!important; /* 子要素を中央揃えに */
+    height: 100%!important; /* カードの高さを100%に設定 */
+}
+
+.chat-name {
+    font-size: 1.25rem; /* フォントサイズを大きく */
+    margin-bottom: 0.5rem; /* 下の余白 */
+}
 
 .btn {
     margin: 0 10px; /* ボタンの左右の余白 */

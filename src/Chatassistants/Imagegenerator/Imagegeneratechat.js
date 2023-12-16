@@ -1,7 +1,7 @@
 import React from "react";
 import { MdOutlineAttachFile } from "react-icons/md";
 import { IoMdSend } from "react-icons/io";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Imagegen.css";
 import axios from "axios";
 import './../../PaperSummary/Papsum.css';

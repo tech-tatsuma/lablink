@@ -147,7 +147,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
         <>
         <div className="container my-3">
             <div className="row">
-                <h3 className="text-center mb-4">Simple Chat</h3>
+                <h3 className="text-center mb-4">おしゃべり侍</h3>
                 <div className="d-flex justify-content-center mb-4"> 
                 {/* パブリックかどうかのフラグを切り替えるボタン */}
                     <button type="button" className="btn btn-warning text-white" onClick={toggleChatVisibility}>
@@ -186,9 +186,9 @@ const formatAssistantName = (name) => {
 
 const ChatListItem = ({ chat, selectChat }) => (
     <div className="col-lg-4 mb-4" onClick={() => selectChat(chat)}>
-        <div class="card bg-light text-black shadow">
-        <div class="card-body">
-            {formatAssistantName(chat.chatname)}
+        <div class="card bg-secondary text-white shadow">
+        <div class="card-body text-center">
+            <div className="chat-name">{formatAssistantName(chat.chatname)}</div>
             <div class="text-white-50 small">{chat.gpttype}</div>
         </div>
         </div>
