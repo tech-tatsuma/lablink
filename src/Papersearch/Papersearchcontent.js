@@ -19,7 +19,7 @@ const Papersearchcontent = () => {
         setLoading(true);
         setHasSearched(true);
         try {
-            const res = await axios.get(`https://lablinkback-papersum.fly.dev/search?text=${inputText}`);
+            const res = await axios.get(`https://arxiv-summary.azurewebsites.net/search?text=${inputText}`);
             if (res.data.result) {
                 setSearchResults(res.data.result);
             } else {
