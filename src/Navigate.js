@@ -13,6 +13,9 @@ import { GiDinosaurRex } from "react-icons/gi";
 import { SiNotion } from "react-icons/si";
 
 const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, user_id, isAdmin, setisAdminView, isSummaryView, setisSummaryView, isSearchpaper, setisSearchpaper, isplayground, setisplayground, setisimagedescription, setisAssistant }) => {
+
+    const navClass = showNavigateValues ? "sidebar-open" : "sidebar-closed";
+
     // この関数が呼び出されるとホーム画面が呼び出される
     const trueHome = () => {
         // データの取得
@@ -128,6 +131,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         if (isAdmin === false) {
             return (
                 <>
+                <div id="sidebar" className={navClass}>
                     {/* <!-- Sidebar --> */}
                     <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -251,11 +255,13 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                         </div>
                     </ul>
                     {/* <!-- End of Sidebar --> */}
+                    </div>
                 </>
             );
         } else {
             return (
                 <>
+                    <div id="sidebar" className={navClass}>
                     {/* <!-- Sidebar --> */}
                     <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -384,6 +390,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                         </div>
                     </ul>
                     {/* <!-- End of Sidebar --> */}
+                    </div>
                 </>
             );
         }

@@ -149,6 +149,18 @@ form {
     height: 100%!important; /* カードの高さを100%に設定 */
 }
 
+.menu-content {
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    height: 0; /* 初期状態ではメニューを隠す */
+    /* 他に必要なスタイルをここに追加 */
+}
+
+.menu-content.open {
+    height: auto; /* メニューが開いているときの高さ */
+    /* 開いているときのスタイルをここに追加 */
+}
+
 .chat-name {
     font-size: 1.25rem; /* フォントサイズを大きく */
     margin-bottom: 0.5rem; /* 下の余白 */
