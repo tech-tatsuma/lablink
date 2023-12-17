@@ -149,7 +149,6 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
             <div className="row">
                 <div className="col-md-8 offset-md-2">
                     <IoIosMenu className="menu-icon" style={{ fontSize: '28px' }} onClick={() => setShowInfo(!showInfo)} />
-                    <div className={`menu-content ${showInfo ? 'open' : ''}`}>
 
                     { showInfo && (
                         <>
@@ -194,7 +193,6 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                             </div>
                         </>
                     )}
-                    </div>
                     <div className="mb-3">
                     <div className="p-3 messages-display">
                         {history.map((entry, index) => (

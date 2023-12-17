@@ -131,7 +131,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
         if (isAdmin === false) {
             return (
                 <>
-                <div id="sidebar" className={navClass}>
                     {/* <!-- Sidebar --> */}
                     <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -255,13 +254,11 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                         </div>
                     </ul>
                     {/* <!-- End of Sidebar --> */}
-                    </div>
                 </>
             );
         } else {
             return (
                 <>
-                    <div id="sidebar" className={navClass}>
                     {/* <!-- Sidebar --> */}
                     <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -390,7 +387,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                         </div>
                     </ul>
                     {/* <!-- End of Sidebar --> */}
-                    </div>
                 </>
             );
         }
