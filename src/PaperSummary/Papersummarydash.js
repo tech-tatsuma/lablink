@@ -13,7 +13,7 @@ const Papersummarydashboard = () => {
     const [loading, setLoading] = useState(false); // NEW: state for loading
     const inputRef = useRef(null);
     const buttonRef = useRef(null);
-    let summaryendpoint = 'https://lablinkback-papersum.fly.dev'
+    let summaryendpoint = 'https://arxiv-summary.azurewebsites.net'
 
     const handleChange = (event) => {
         setinputurl(event.target.value);
