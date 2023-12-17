@@ -7,6 +7,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { IoIosMenu } from "react-icons/io";
 import { IoMdSend } from "react-icons/io";
 import "./chatbot.css";
+import { FaArrowCircleUp } from "react-icons/fa";
 
 import "./../../PaperSummary/Papsum.css";
 
@@ -39,6 +40,10 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
         });
     
         return list;
+    };
+
+    const toggleInfoPanel = () => {
+        setShowInfo(!showInfo);
     };
 
     const scrollToBottom = () => {
@@ -170,6 +175,20 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                             <div className="model-info-container">
                                 <p className="model-info">{model}</p>
                                 <p className="created-at-info">{created_at}</p>
+                            </div>
+                            <div 
+                                className="arrow-up-container" 
+                                style={{ 
+                                    textAlign: 'center', 
+                                    marginTop: '15px' 
+                                }}
+                            >
+                                <FaArrowCircleUp 
+                                    style={{ 
+                                        cursor: 'pointer' 
+                                    }}
+                                    onClick={toggleInfoPanel}
+                                />
                             </div>
                             </div>
                         </>
