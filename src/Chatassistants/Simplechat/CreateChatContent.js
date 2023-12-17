@@ -75,7 +75,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
     };
 
     useEffect(() => {
-        if ((threadID!="") && (assistantID!="") && (model!="") && (responsename!="") && selectedChat.chatname==responsename) {
+        if ((threadID!="") && (assistantID!="") && (model!="") && (responsename!="") && selectedChat) {
             console.log('Thread ID:', threadID);
             console.log('Assistant ID:', assistantID);
             console.log('Model:', model);
