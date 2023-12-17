@@ -60,19 +60,27 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
                 setAssistantID(response.data.assistantID);
                 setModel(response.data.model);
                 Setresponsename(response.data.assistantName);
-                Setnewchatdata({
-                    threadid: threadID,
-                    assistantid: assistantID,
-                    chatname: responsename,
-                    gpttype: model,
-                });
-                setSelectedChat(newchatdata);
             }
         } catch (error) {
             console.error('API request failed:', error);
             alert('Failed to create chat.');
         }
     };
+
+    useEffect(() => {
+        Setnewchatdata({
+            threadid: threadID,
+            assistantid: assistantID,
+            chatname: responsename,
+            gpttype: model,
+        });
+    }, [threadID, assistantID, model, responsename]);
+
+    useEffect(() => {
+        if (newchatdata) {
+            setSelectedChat(newchatdata);
+        }
+    }, [newchatdata]);
 
     useEffect(() => {
         if ((threadID!="") && (assistantID!="") && (model!="") && (responsename!="") && selectedChat) {
@@ -87,7 +95,7 @@ const CreateChatContent = ({baseurl, setShowCreateChat, setmenu, setShowchatbot,
             setmenu(false);
             setIsChatCreated(true);
         }
-    }, [threadID, assistantID, model, responsename, selectedChat]);
+    }, [selectedChat]);
 
     const backtomenu = () => {
         setShowCreateChat(false);
