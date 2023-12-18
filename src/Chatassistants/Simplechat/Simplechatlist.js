@@ -153,7 +153,6 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
                 </div>
                 {/* パブリックフラグで表示するチャットを切り替える */}
                 {/* <div className="chat-list"> */}
-                <div class="row">
                 {publicflag ? (
                     paginate(publicchat).map((chat, index) => (
                         <ChatListItem key={index} chat={chat} selectChat={selectChat} />
@@ -163,7 +162,6 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
                         <ChatListItem key={index} chat={chat} selectChat={selectChat} />
                     ))
                 )}
-                </div>
                 </div>
                 {/* </div> */}
                 {renderPagination()}

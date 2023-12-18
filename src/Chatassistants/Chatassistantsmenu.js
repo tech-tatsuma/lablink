@@ -45,6 +45,16 @@ const Chatassistantsmenu = ({setshowfooter}) => {
 
     return (
         <>
+        {loading && 
+                <div className="overlay" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                    <div className="my-container">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <p>LOADING</p>
+                    </div>
+                </div> 
+            }
         {/* menuがtrueの時のみに表示される */}
             {menu && (
                 <>

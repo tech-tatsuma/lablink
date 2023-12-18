@@ -18,6 +18,7 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
     const [animatedMessage, setAnimatedMessage] = useState('');
     const [selectedMessage, setSelectedMessage] = useState("");
     const [messageIndex, setMessageIndex] = useState(0);
+    const [showView, SetshowView] = useState(false);
     const message = "武村研究室のみんな！！\n呼び出してくれてありがとう！！退屈してたんだー。どんなイラストや画像を作って欲しいかを教えてくれ。\n実は僕、最近、日本語を喋れるようになったばかりだからできれば英語で話しかけてくれると嬉しいな〜。";
     const message1 = "武村研究室の皆様、ご呼び出しいただき光栄に存じます。私、一刻も早く務めを果たしたく、退屈しておりました。どのような絵や画像を描かせていただくべきか、ご指示ください。私も最近日本語を話せるようになりましたので、英語での対話をお願い致す。";
     const message2 = "にゃんにゃん、武村研ラボのみんなー！私を呼んでくれてありがとう、ずっと退屈してたのよ。どんな可愛いイラストや画像を描いてほしいのかな？ちなみに私、最近日本語を覚えたばかりなの。英語で話してくれると嬉しいにゃ〜。";
@@ -44,13 +45,8 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
     }, []);
 
     useEffect(() => {
-        if (messageIndex < selectedMessage.length) {
-            setTimeout(() => {
-                setAnimatedMessage(animatedMessage + selectedMessage[messageIndex]);
-                setMessageIndex(messageIndex + 1);
-            }, 50);
-        }
-    }, [messageIndex, animatedMessage, selectedMessage]);
+        SetshowView(true);
+    }, []);
 
 
     const handleQuestionSubmit = async () => {

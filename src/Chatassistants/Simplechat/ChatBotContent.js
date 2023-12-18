@@ -170,7 +170,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                             </button>
                             </div>
                             <div className="assistant-name-container">
-                                        <h2 className="assistant-name">{formatAssistantName(assistantname)}</h2>
+                                <h2 className="assistant-name">{formatAssistantName(assistantname)}</h2>
                             </div>
                             <div className="model-info-container">
                                 <p className="model-info">{model}</p>
@@ -212,7 +212,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                         <textarea 
                             className="form-control" 
                             id="questionInput" 
-                            rows="1"
+                            rows="2"
                             value={question}
                             onChange={(e) => setQuestion(e.target.value)}
                         ></textarea>
