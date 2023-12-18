@@ -78,7 +78,7 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
                 setMessageIndex(messageIndex + 1);
             }, 50); // ここで文字の表示速度を調整できます
         }
-    }, [messageIndex, animatedMessage]);
+    }, [messageIndex, animatedMessage, selectedMessage]);
 
     const backtomenu = () => {
         setShowchatbot(false);
