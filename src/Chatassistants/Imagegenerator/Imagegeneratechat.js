@@ -17,9 +17,7 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
     const [generatedImages, setGeneratedImages] = useState([]);
     const [animatedMessage, setAnimatedMessage] = useState('');
     const [selectedMessage, setSelectedMessage] = useState("");
-    const [messageIndex, setMessageIndex] = useState(0);
-    const [showView, SetshowView] = useState(false);
-    const message = "武村研究室のみんな！！\n呼び出してくれてありがとう！！退屈してたんだー。どんなイラストや画像を作って欲しいかを教えてくれ。\n実は僕、最近、日本語を喋れるようになったばかりだからできれば英語で話しかけてくれると嬉しいな〜。";
+    const message = "武村研究室のみんな！！呼び出してくれてありがとう！！退屈してたんだー。どんなイラストや画像を作って欲しいかを教えてくれ。実は僕、最近、日本語を喋れるようになったばかりだからできれば英語で話しかけてくれると嬉しいな〜。";
     const message1 = "武村研究室の皆様、ご呼び出しいただき光栄に存じます。私、一刻も早く務めを果たしたく、退屈しておりました。どのような絵や画像を描かせていただくべきか、ご指示ください。私も最近日本語を話せるようになりましたので、英語での対話をお願い致す。";
     const message2 = "にゃんにゃん、武村研ラボのみんなー！私を呼んでくれてありがとう、ずっと退屈してたのよ。どんな可愛いイラストや画像を描いてほしいのかな？ちなみに私、最近日本語を覚えたばかりなの。英語で話してくれると嬉しいにゃ〜。";
     const message3 = "ワンワン、武村研のみんな！僕を呼んでくれて嬉しいよ。何か面白いイラストや画像を作らせてよ。あ、僕、最近日本語を話せるようになったんだ。だから、英語で話しかけてくれたら助かるな。";
@@ -39,15 +37,19 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
     const messages = [message, message1, message2, message3, message4, message5, message6, message7, message8, message9, message10, message11, message12, message13, message14, message15, message16];
 
     useEffect(() => {
-        // ランダムにメッセージを選択し、ステートにセット
+        // ランダムにメッセージを選択し、selectedMessageにセット
         const randomMessage = messages[Math.floor(Math.random() * messages.length)];
         setSelectedMessage(randomMessage);
     }, []);
-
+    
     useEffect(() => {
-        SetshowView(true);
-    }, []);
-
+        if (animatedMessage.length < selectedMessage.length) {
+            const nextChar = selectedMessage[animatedMessage.length];
+            setTimeout(() => {
+                setAnimatedMessage(animatedMessage + nextChar);
+            }, 50); // 文字の表示速度
+        }
+    }, [animatedMessage, selectedMessage]);
 
     const handleQuestionSubmit = async () => {
         setloading(true);
@@ -70,15 +72,6 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
         }
         setloading(false);
     };
-
-    useEffect(() => {
-        if (messageIndex < message.length) {
-            setTimeout(() => {
-                setAnimatedMessage(animatedMessage + message[messageIndex]);
-                setMessageIndex(messageIndex + 1);
-            }, 50); // ここで文字の表示速度を調整できます
-        }
-    }, [messageIndex, animatedMessage, selectedMessage]);
 
     const backtomenu = () => {
         setShowchatbot(false);
@@ -127,14 +120,6 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
                 ></textarea>
-                {/* <input
-                    type="number"
-                    className="form-control num-images-input"
-                    value={numImages}
-                    onChange={(e) => setNumImages(e.target.value)}
-                    min="1"
-                    max="5"
-                /> */}
             </div>
             <button className="btn btn-primary send-button" onClick={handleQuestionSubmit}>
                 <IoMdSend />
