@@ -9,7 +9,9 @@ const Information = ({ details, setisdetailvalue, setdetailevalue }) => {
     };
     return (
         <>
-            <p><a className="mt-1" onClick={switchisdetailvalue}>{details.title}</a></p>
+        <div className="py-2 border-bottom">
+            <p className="infolist text-dark"><a onClick={switchisdetailvalue}>{details.title}</a></p>
+            </div>
         </>
     );
 }
