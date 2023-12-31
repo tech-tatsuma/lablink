@@ -1,7 +1,7 @@
 import React from "react";
-import Dashboardview from "./Dashboardview";
-import Equipmentview from "./Equipmentview";
-import Admin from "./Admin";
+import Dashboardview from "./Dashboards/Dashboardview";
+import Equipmentview from "./Equipments/Equipmentview";
+import Admin from "./Admins/Admin";
 import Papersummarydashboard from "./PaperSummary/Papersummarydash";
 import Papersearchcontent from "./Papersearch/Papersearchcontent";
 import ChromeDinoGame from 'react-chrome-dino';
@@ -9,11 +9,17 @@ import ImageContent from "./Imagedescription/ImageContent";
 import Chatassistantsmenu from "./Chatassistants/Chatassistantsmenu";
 
 const Dashboardcontent = ({ isHome, isAdminView, isSummaryView, isSearchpaper, isplayground, user_id, baseurl, monthpay, isimagedescription, isAssistant, setshowfooter }) => {
+    // アシスタントメニューを表示するかどうかを判定
     if (isAssistant === false) {
+        // Vision APIの画面を表示するかどうかを判定
         if (isimagedescription === false) {
+            // DINO GAMEの画面を表示するかどうかを判定
             if (isplayground === false) {
+                // 論文検索の画面を表示するかどうかを判定
                 if (isSearchpaper === false) {
+                    // 論文概要の画面を表示するかどうかを判定
                     if (isSummaryView === false) {
+                        // 管理者画面を表示するかどうかを判定
                         if (isAdminView === false) {
                             if (isHome === true) {
                                 return (

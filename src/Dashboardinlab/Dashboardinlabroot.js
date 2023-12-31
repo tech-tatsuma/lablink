@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './../css/sb-admin-2.css';
 import './../css/sb-admin-2.min.css';
-import './../Dashboardview.css';
+import './../css/Dashboardview.css';
 import './../vendor/fontawesome-free/css/all.min.css';
 import Dashboardinlabcontent from "./Dashboardinlabcontent";
 

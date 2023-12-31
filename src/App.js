@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
-import './App.css';
-import Loginform from "./Loginform"
+import './css/App.css';
+import Loginform from "./Accounts/Loginform"
 import Dashboardroot from "./Dashboardroot";
 import axios from 'axios';
 import { useEffect, useState } from "react";

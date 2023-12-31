@@ -2,7 +2,7 @@ import React from 'react';
 import './css/sb-admin-2.css';
 import './css/sb-admin-2.min.css';
 import './vendor/fontawesome-free/css/all.min.css';
-import './Dashboardview.css';
+import './css/Dashboardview.css';
 
 const Tab = ({ showNavigateValues, showNavigate }) => {
     if (showNavigateValues === true) {

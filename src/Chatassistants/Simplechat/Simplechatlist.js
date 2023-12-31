@@ -141,7 +141,7 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
         <>
         <div className="container my-3">
             <div className="row">
-                <h3 className="text-center mb-4">おしゃべり侍</h3>
+                <h3 className="text-center mb-4">Simple Chat</h3>
                 <div className="d-flex justify-content-center mb-4"> 
                 {/* パブリックかどうかのフラグを切り替えるボタン */}
                     <button type="button" className="btn btn-warning text-white" onClick={toggleChatVisibility}>
@@ -153,6 +153,11 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
                 </div>
                 {/* パブリックフラグで表示するチャットを切り替える */}
                 {/* <div className="chat-list"> */}
+                {publicflag ? (
+                    <h5 className="text-center mb-4">Public</h5>
+                ) : (
+                    <h5 className="text-center mb-4">Private</h5>
+                )}
                 {publicflag ? (
                     paginate(publicchat).map((chat, index) => (
                         <ChatListItem key={index} chat={chat} selectChat={selectChat} />

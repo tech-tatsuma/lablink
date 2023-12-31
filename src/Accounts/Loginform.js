@@ -1,4 +1,4 @@
-import "./Loginform.css";
+import "./../css/Loginform.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -103,10 +103,10 @@ const Loginform = ({ baseurl }) => {
     const validate = (values) => {
         const errors = {};
         if (!values.username) {
-            errors.username = "ユーザー名を入力してください";
+            errors.username = "input your user name";
         }
         if (!values.password) {
-            errors.password = "パスワードを入力してください";
+            errors.password = "input your password";
         };
         return errors;
     };

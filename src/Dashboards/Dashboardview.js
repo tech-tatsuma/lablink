@@ -3,11 +3,11 @@ import React from "react";
 import './css/sb-admin-2.css';
 import './css/sb-admin-2.min.css';
 import './vendor/fontawesome-free/css/all.min.css';
-import './Dashboardview.css';
+import './../css/Dashboardview.css';
 import Members from './Members.js';
 import { useState } from "react";
-import Informationswitch from './Informationswitch'
-import "./Equipmentlistcontent.css";
+import Informationswitch from './Informationswitch.js'
+import "./css/Equipmentlistcontent.css";
 import { useNavigate } from "react-router-dom";
 
 const Dashboardview = ({ user_id, baseurl }) => {
@@ -40,7 +40,7 @@ const Dashboardview = ({ user_id, baseurl }) => {
                 <div className="row">
                     <div className="card-body">
                         <a className="btn btn-primary btn-icon-split" onClick={switchatoffice}>
-                            <span className="text">在室スイッチ</span>
+                            <span className="text">status switch</span>
                         </a>
                     </div>
 
@@ -53,7 +53,7 @@ const Dashboardview = ({ user_id, baseurl }) => {
                         {/* 掲示板の表示部分 */}
                         <div className="card shadow mb-4">
                             <div className="card-header py-3">
-                                <h6 className="m-0 font-weight-bold text-primary font-japanese">掲示板</h6>
+                                <h6 className="m-0 font-weight-bold text-primary font-japanese">BBS</h6>
                                 <div className="text-right">
                                     <button type="button" className="btn btn-primary font-japanese" onClick={toggleswitchview}>switch</button>
                                 </div>

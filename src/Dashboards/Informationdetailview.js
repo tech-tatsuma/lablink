@@ -1,9 +1,11 @@
 import React from "react";
-import './Equipmentdetailview.css';
+import './../css/Equipmentdetailview.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
+// 掲示板の詳細を表示するコンポーネント
 const Informationdetailview = ({ user_id, baseurl, setisdetailvalue, setdetailevalue, isdetailValue, detailvalue }) => {
+    // 投稿者のデータを格納する変数
     const [username, setusername] = useState('');
 
     const switchisdetailValue = () => {

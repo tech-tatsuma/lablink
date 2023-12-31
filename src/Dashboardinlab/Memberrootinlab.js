@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
-import './Memberrootinlab.css';
+import './css/Memberrootinlab.css';
 
 const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
 

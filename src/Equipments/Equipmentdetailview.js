@@ -3,12 +3,17 @@ import './Equipmentdetailview.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
+// 備品の詳細を表示するコンポーネント
 const Equipmentdetailview = ({ baseurl, isdetailValue, setisdetailvalue, setdetailevalue, detailvalue }) => {
+    // 備品の購入者のデータを格納する変数
     const [username, setusername] = useState('');
+
+    // 備品の詳細ページを表示する関数
     const switchisdetailValue = () => {
         setisdetailvalue(false);
     };
 
+    // 備品のデータを削除する関数
     const deletedata = async () => {
         try {
             await axios.delete(`${baseurl}/equipment/${detailvalue['id']}`);
@@ -18,6 +23,7 @@ const Equipmentdetailview = ({ baseurl, isdetailValue, setisdetailvalue, setdeta
         }
     };
 
+    // 備品を使い切ったときの処理を行う関数
     const finishequipment = async () => {
         const postdata = {
             "name": detailvalue['name'],
@@ -36,6 +42,7 @@ const Equipmentdetailview = ({ baseurl, isdetailValue, setisdetailvalue, setdeta
         }
     }
 
+    // 備品の購入者のデータを取得する関数
     useEffect(() => {
         async function getusername() {
             try {

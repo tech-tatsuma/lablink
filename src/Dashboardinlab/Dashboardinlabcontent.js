@@ -3,7 +3,7 @@ import Membersinlab from "./Membersinlab";
 import './../css/sb-admin-2.css'
 import './../css/sb-admin-2.min.css'
 import './../vendor/fontawesome-free/css/all.min.css';
-import './../Dashboardview.css';
+import './../css/Dashboardview.css';
 
 const Dashboardinlabcontent = ({ user_id, baseurl }) => {
 

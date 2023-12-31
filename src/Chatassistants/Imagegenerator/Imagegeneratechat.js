@@ -13,7 +13,6 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
     const [loading, setloading] = useState(false);
     const [question, setQuestion] = useState("");
     const [numImages, setNumImages] = useState(1);
-    const [selectedFile, setSelectedFile] = useState(null);
     const [generatedImages, setGeneratedImages] = useState([]);
     const [animatedMessage, setAnimatedMessage] = useState('');
     const [selectedMessage, setSelectedMessage] = useState("");

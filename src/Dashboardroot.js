@@ -82,7 +82,6 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     const showNavigate = () => {
         setshowNavigateValues(true);
     };
-
     const hideNavigate = () => {
         setshowNavigateValues(false);
     };
@@ -91,6 +90,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
     const requests = {
         fetchloginuserinfo: `/user/get_user/${user_id}`
     };
+
     // ユーザー情報取得のための副作用
     useEffect(() => {
         //データを取得する非同期関数を定義し、その関数を実行する
@@ -140,27 +140,19 @@ const Dashboardroot = ({ user_id, baseurl }) => {
         <>
             <div id="page-top">
                 <div id="wrapper">
-
                     {/* サイドのナビゲーションバー */}
                     <Navigate user_id={user_id} setisHomeValues={setisHomeValues} showNavigateValues={showNavigateValues} setshowNavigateValues={setshowNavigateValues} isAdmin={isAdmin} setisAdminView={setisAdminView} isSummaryView={isSummaryView} setisSummaryView={setisSummaryView} isSearchpaper={isSearchpaper} setisSearchpaper={setisSearchpaper} isplayground={isplayground} setisplayground={setisplayground} setisimagedescription={setisimagedescription} setisAssistant={setisAssistant} />
-
                     {/* <!-- Content Wrapper --> */}
                     <div id="content-wrapper" className="d-flex flex-column">
-
                         {/* <!-- Main Content --> */}
                         <div id="content">
-
                             {/* <!-- Topbar --> */}
                             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
                                 {/* ページトップのタブ */}
                                 <Tab showNavigateValues={showNavigateValues} showNavigate={showNavigate} />
-
                                 {/* <!-- Topbar Navbar --> */}
                                 <ul className="navbar-nav ml-auto">
-
                                     <div className="topbar-divider d-none d-sm-block"></div>
-
                                     {/* <!-- Nav Item - User Information --> */}
                                     <li className="nav-item dropdown no-arrow">
                                         <a className="nav-link dropdown-toggle" id="userDropdown" role="button"
@@ -169,9 +161,7 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                                             <i className="fas fa-solid fa-user fa-2s text-gray-300"></i>
                                         </a>
                                     </li>
-
                                 </ul>
-
                             </nav>
                             {/* ページのコンテンツ部分 */}
                             <Dashboardcontent isHome={isHomeValues} isAdminView={isAdminView} isSummaryView={isSummaryView} isSearchpaper={isSearchpaper} isplayground={isplayground} user_id={user_id} baseurl={baseurl} monthpay={monthpay} isimagedescription={isimagedescription} isAssistant={isAssistant} setshowfooter={setshowfooter} />
@@ -179,19 +169,19 @@ const Dashboardroot = ({ user_id, baseurl }) => {
                     </div>
                 </div>
                 {/* ページのフッター部分 */}
-                        <footer className="sticky-footer bg-white">
-                            <div className="container my-auto">
-                                <div className="copyright text-center my-auto">
-                                    <span>Copyright &copy; Takemura Lab</span>
-                                </div>
-                            </div>
-                            {/* ページのフッターに住むトトロ */}
-                            {showfooter && (
-                            <div className={`cat-animation ${isCatMoving ? "cat-animation-moving" : "cat-animation-stationary"}`} style={{ left: isCatMoving ? 0 : catPositionLeft }}>
-                                <img className="cat-image" src={catImageSrc} alt="Walking Cat" onClick={toggleCatAnimation} style={{ left: isCatMoving ? 0 : catPositionLeft }} />
-                            </div>
-                            )}
-                        </footer>
+                <footer className="sticky-footer bg-white">
+                    <div className="container my-auto">
+                        <div className="copyright text-center my-auto">
+                            <span>Copyright &copy; Takemura Lab</span>
+                        </div>
+                    </div>
+                    {/* ページのフッターに住むトトロ */}
+                    {showfooter && (
+                        <div className={`cat-animation ${isCatMoving ? "cat-animation-moving" : "cat-animation-stationary"}`} style={{ left: isCatMoving ? 0 : catPositionLeft }}>
+                            <img className="cat-image" src={catImageSrc} alt="Walking Cat" onClick={toggleCatAnimation} style={{ left: isCatMoving ? 0 : catPositionLeft }} />
+                        </div>
+                    )}
+                </footer>
             </div>
         </>
     );

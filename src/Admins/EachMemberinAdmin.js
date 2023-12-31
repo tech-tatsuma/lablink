@@ -1,7 +1,9 @@
 import React from "react";
 import axios from "axios";
 
+// 管理者画面の中のメンバー一人一人の表示を行うコンポーネント
 const EachMemberinAdmin = ({ details, baseurl, setChangeView, changeview, setUpdate, setswitchview }) => {
+    // メンバーの情報を更新する関数
     const update = () => {
         const updatedata = {
             'name': details.name,
@@ -19,7 +21,7 @@ const EachMemberinAdmin = ({ details, baseurl, setChangeView, changeview, setUpd
         })
     }
 
-
+    // メンバーの情報を表示する
     if (details.current >= details.target) {
         return (
             <div className="col-lg-6 mb-4">
