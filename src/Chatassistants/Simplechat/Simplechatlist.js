@@ -154,9 +154,9 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
                 {/* パブリックフラグで表示するチャットを切り替える */}
                 {/* <div className="chat-list"> */}
                 {publicflag ? (
-                    <h5 className="text-center mb-4 shadow">Public</h5>
+                    <h5 className="text-center mb-4">Public</h5>
                 ) : (
-                    <h5 className="text-center mb-4 shadow">Private</h5>
+                    <h5 className="text-center mb-4">Private</h5>
                 )}
                 {publicflag ? (
                     paginate(publicchat).map((chat, index) => (

@@ -158,6 +158,10 @@ form {
     margin: 0 10px; /* ボタンの左右の余白 */
 }
 
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 影の設定 */
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
