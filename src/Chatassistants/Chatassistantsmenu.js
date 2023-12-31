@@ -60,9 +60,9 @@ const Chatassistantsmenu = ({setshowfooter}) => {
                 <>
                     <h1 className="text-center text-dark shadow">Chat Assistants Menu</h1>
                     <div className="d-flex justify-content-center gap-3">
-                        <button type="button" className="btn btn-secondary text-white shadow" onClick={callSimpleChat}>Simple Chat</button>
+                        <button type="button" className="btn btn-dark text-white" onClick={callSimpleChat}>Simple Chat</button>
                         {/* <button type="button" className="btn btn-danger text-white" onClick={callChatWithDoc}>Chat with Doc</button> */}
-                        <button type="button" className="btn btn-secondary text-white shadow" onClick={callimagegenerator}>Image Generator</button>
+                        <button type="button" className="btn btn-dark text-white" onClick={callimagegenerator}>Image Generator</button>
                     </div>
                 </>
             )}
