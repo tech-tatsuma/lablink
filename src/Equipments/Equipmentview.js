@@ -4,8 +4,8 @@ import "./Equipmentlistcontent.css";
 import { useState, useEffect } from "react";
 import Lackequipmentlist from './Lackequipmentlist';
 import axios from 'axios';
-import Totalcost from "../Totalcost";
-import Remainingmoney from "../Remainingmoney";
+import Totalcost from "./Totalcost";
+import Remainingmoney from "./Remainingmoney";
 
 // 研究室備品を表示するページのビュー
 const Equipmentview = ({ user_id, baseurl, monthpay }) => {
