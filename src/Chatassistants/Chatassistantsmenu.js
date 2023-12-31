@@ -58,7 +58,7 @@ const Chatassistantsmenu = ({setshowfooter}) => {
         {/* menuがtrueの時のみに表示される */}
             {menu && (
                 <>
-                    <h1 className="text-center">Chat Assistants Menu</h1>
+                    <h1 className="text-center text-shadow">Chat Assistants Menu</h1>
                     <div className="d-flex justify-content-center gap-3">
                         <button type="button" className="btn btn-dark text-white shadow" onClick={callSimpleChat}>Simple Chat</button>
                         {/* <button type="button" className="btn btn-danger text-white" onClick={callChatWithDoc}>Chat with Doc</button> */}
