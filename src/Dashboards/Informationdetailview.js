@@ -3,37 +3,43 @@ import './../Equipments/Equipmentdetailview.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
+const DUMMY_DATA = {
+    id: 1,
+    title: "テストタイトル",
+    content: "テストコンテンツ",
+    url: "https://example.com",
+    created_at: "2023-01-01",
+    created_by: "テストユーザー"
+};
+
 // 掲示板の詳細を表示するコンポーネント
 const Informationdetailview = ({ user_id, baseurl, setisdetailvalue, setdetailevalue, isdetailValue, detailvalue }) => {
     // 投稿者のデータを格納する変数
-    const [username, setusername] = useState('');
+    const username = DUMMY_DATA.created_by;
 
     const switchisdetailValue = () => {
         setisdetailvalue(false);
     };
 
-    const deletedata = async () => {
-        try {
-            await axios.delete(`${baseurl}/information/${detailvalue['id']}`);
-            setisdetailvalue(false);
-        } catch (error) {
-            console.error(error);
-        }
+    const deletedata = () => {
+        // データ削除のシミュレーション
+        console.log("データが削除されました: ", DUMMY_DATA.id);
+        setisdetailvalue(false);
     };
 
-    useEffect(() => {
-        async function getusername() {
-            try {
-                await axios.get(`${baseurl}/user/get_user/${detailvalue['created_by']}`).then(res => {
-                    console.log(res.data.name);
-                    setusername(res.data.name);
-                })
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        getusername();
-    }, [])
+    // useEffect(() => {
+    //     async function getusername() {
+    //         try {
+    //             await axios.get(`${baseurl}/user/get_user/${detailvalue['created_by']}`).then(res => {
+    //                 console.log(res.data.name);
+    //                 setusername(res.data.name);
+    //             })
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     };
+    //     getusername();
+    // }, [])
     return (
         <>
             <table className='font-japanese'>

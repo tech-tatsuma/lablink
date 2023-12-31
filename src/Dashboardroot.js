@@ -10,6 +10,17 @@ import Tab from './Tab'; // タブのコンポーネントをインポート
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+// 擬似アカウント情報
+const TEST_ACCOUNT = {
+    username: "testuser",
+    password: "testpassword",
+    userId: "12345"
+};
+const TEST_USER_DATA = {
+    name: "testuser",
+    is_admin: false
+};
+
 // ダッシュボードのルートコンポーネント
 const Dashboardroot = ({ user_id, baseurl }) => {
     const [showfooter, setshowfooter] = useState(true);
@@ -55,28 +66,16 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
     // ユーザーIDを取得する非同期関数
     async function getUserId(username) {
-        try {
-            console.log(baseurl + '/user')
-            const response = await axios.get(baseurl + '/user');
-            const users = response.data;
-
-            const user = users.find(user => user.name === username);
-
-            if (user) {
-                return user.id;
-            } else {
-                console.log('失敗');
-                console.log(response.data);
-                return null;
-            }
-        } catch (error) {
-            console.log('そもそも取れてないよー');
-            console.error(error);
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('T-lab_username');
-            navigate('/login');
-        }
-    };
+        return new Promise(resolve => {
+            setTimeout(() => {
+                if (username === TEST_ACCOUNT.username) {
+                    resolve(TEST_ACCOUNT.userId);
+                } else {
+                    resolve(null);
+                }
+            }, 1000);
+        });
+    }
 
     // ナビゲーションの表示制御関数
     const showNavigate = () => {
@@ -121,19 +120,9 @@ const Dashboardroot = ({ user_id, baseurl }) => {
 
     // ユーザーIDの一致確認
     useEffect(() => {
-        getUserId(username).then(id => {
-            console.log(user_id !== id);
-            console.log(user_id);
-            console.log(id);
-            if (Number(user_id) !== Number(id)) {
-                console.log('user!==id');
-                console.log(typeof(user_id));
-                console.log(typeof(id));
-                localStorage.removeItem('access_token');
-                localStorage.removeItem('T-lab_username');
-                navigate('/login');
-            }
-        })
+        // テスト環境ではテストユーザーデータを使用
+        setloginuser(TEST_USER_DATA.name);
+        setisAdmin(TEST_USER_DATA.is_admin);
     }, []);
 
     return (

@@ -4,6 +4,13 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import qs from 'qs';
 
+// 擬似アカウント情報
+const TEST_ACCOUNT = {
+    username: "testuser",
+    password: "testpassword",
+    userId: "12345"
+};
+
 const Loginform = ({ baseurl }) => {
     //ユーザー情報を格納するオブジェクトを生成する
     const initialValues = { username: "", password: "" };
@@ -21,22 +28,16 @@ const Loginform = ({ baseurl }) => {
 
     //ログイン情報をサーバーに送信し、アクセストークンを取得する関数
     async function login(username, password) {
-        try {
-            const response = await axios.post(`${baseurl}/token`, qs.stringify({
-                "username": username,
-                "password": password,
-            }), {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+        return new Promise(resolve => {
+            setTimeout(() => {  // 擬似的な非同期処理
+                if (username === TEST_ACCOUNT.username && password === TEST_ACCOUNT.password) {
+                    resolve("dummy-access-token");  // 擬似アクセストークン
+                } else {
+                    resolve("");
                 }
-            });
-            const { access_token } = response.data;
-            return access_token;
-        } catch (error) {
-            console.error(error);  // エラーの詳細をログに出力
-            return "";  // エラーが発生した場合は空文字を返す
-        }
-    };
+            }, 1000);
+        });
+    }
 
     //アクセストークンをローカルストレージに保存する関数
     function saveToken(token, username) {
@@ -45,21 +46,15 @@ const Loginform = ({ baseurl }) => {
     }
 
     async function getUserId(username) {
-        try {
-            console.log('axios in loginformjs1')
-            const response = await axios.get(`${baseurl}/user`);
-            const users = response.data;
-
-            const user = users.find(user => user.name === username);
-
-            if (user) {
-                return user.id;
-            } else {
-                return null;
-            }
-        } catch (error) {
-            console.error(error);
-        }
+        return new Promise(resolve => {
+            setTimeout(() => {
+                if (username === TEST_ACCOUNT.username) {
+                    resolve(TEST_ACCOUNT.userId);
+                } else {
+                    resolve(null);
+                }
+            }, 1000);
+        });
     }
 
     //フォームに入力された値を取り出す関数

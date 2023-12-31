@@ -39,3 +39,8 @@
     width: 50px;
     height: auto;
 }
+
+.infolist {
+    margin-top: 0;
+    margin-bottom: 0!important;
+}

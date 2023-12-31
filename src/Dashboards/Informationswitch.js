@@ -4,6 +4,11 @@ import axios from 'axios';
 import Informationdetailview from "./Informationdetailview";
 import Informationlistcontent from "./Informationlistcontent";
 
+const DUMMY_INFORMATIONS = [
+    { id: 1, title: "情報1", content: "内容1", created_at: "2023-01-01" },
+    { id: 2, title: "情報2", content: "内容2", created_at: "2023-01-02" },
+    // その他のダミー情報
+];
 
 const Informationswitch = ({ switchview, setswitchview, user_id, baseurl }) => {
     const initialValues = { title: "", content: "", url: "", created_at: "" };
