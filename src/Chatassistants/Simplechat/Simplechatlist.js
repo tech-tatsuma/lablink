@@ -7,6 +7,15 @@ import ChatBotContent from "./ChatBotContent";
 
 import "./chatbot.css";
 
+const DUMMY_PUBLIC_CHATS = [
+    { threadid: 1, assistantid: "assistant1", chatname: "Public Chat 1", gpttype: "GPT-3", created_at: "2023-01-01" },
+    // 他のパブリックチャットデータ
+];
+const DUMMY_PRIVATE_CHATS = [
+    { threadid: 2, assistantid: "assistant2", chatname: "Private Chat 1", gpttype: "GPT-3", created_at: "2023-01-02" },
+    // 他のプライベートチャットデータ
+];
+
 const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }) => {
 
     // 最大表示数と現在のページの状態
@@ -58,26 +67,9 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
     }, [showCreateChat, showchatbot, menu, publicflag]);
 
     useEffect(() => {
-        // パブリックチャットとプライベートチャットの取得
-        const fetchChats = async () => {
-            // ladingをtrueにし、非同期処理を開始
-            setLoading(true);
-            try {
-                // パブリックチャットの取得
-                const publicResponse = await axios.get(`${baseurl}simplechat/get_public_chats`);
-                console.log('public'+publicResponse.data.public_chats);
-                setPublicchat(publicResponse.data.public_chats);
-                // プライベートチャットの取得
-                const privateResponse = await axios.get(`${baseurl}simplechat/get_private_chats`, { params: { user: formatUsername(username) } });
-                console.log('private: '+privateResponse.data.private_chats);
-                setPrivatechat(privateResponse.data.private_chats);
-            } catch (error) {
-                console.error("Chats fetching error:", error);
-            }
-            // loadingをfalseにし、非同期処理を終了
-            setLoading(false);
-        };
-        fetchChats();
+        // ダミーデータをセットする
+        setPublicchat(DUMMY_PUBLIC_CHATS);
+        setPrivatechat(DUMMY_PRIVATE_CHATS);
     }, []);
 
     const paginate = (items) => {
@@ -141,23 +133,23 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
         <>
         <div className="container my-3">
             <div className="row">
-                <h3 className="text-center mb-4">Simple Chat</h3>
+                <h3 className="text-center title-background">Simple Chat</h3>
                 <div className="d-flex justify-content-center mb-4"> 
                 {/* パブリックかどうかのフラグを切り替えるボタン */}
-                    <button type="button" className="btn btn-warning text-white" onClick={toggleChatVisibility}>
+                    <button type="button" className="btn btn-outline-info shadow" onClick={toggleChatVisibility}>
                         {publicflag ? "Show Private Chats" : "Show Public Chats"}
                     </button>
                 </div>
+                {publicflag ? (
+                    <h4 className="text-center public-private-background">Public</h4>
+                ) : (
+                    <h4 className="text-center public-private-background">Private</h4>
+                )}
                 <div className="d-flex justify-content-center mb-4"> 
-                    <button type="button" className="btn btn-primary text-white" onClick={createchat}>Create Chat</button>
+                    <button type="button" className="btn btn-outline-primary shadow" onClick={createchat}>Create Chat</button>
                 </div>
                 {/* パブリックフラグで表示するチャットを切り替える */}
                 {/* <div className="chat-list"> */}
-                {publicflag ? (
-                    <h5 className="text-center mb-4">Public</h5>
-                ) : (
-                    <h5 className="text-center mb-4">Private</h5>
-                )}
                 {publicflag ? (
                     paginate(publicchat).map((chat, index) => (
                         <ChatListItem key={index} chat={chat} selectChat={selectChat} />
@@ -186,7 +178,7 @@ const formatAssistantName = (name) => {
 const ChatListItem = ({ chat, selectChat }) => (
     <div class="col-lg-4 mb-4">
         <div className="card bg-secondary text-white shadow" onClick={() => selectChat(chat)}>
-            <div className="card-body text-center card-body-chatbot">
+            <div className="card-body text-center card-body-chatbot shadow">
                 <div className="chat-name">{formatAssistantName(chat.chatname)}</div>
                 <div className="text-white-50 small">{chat.gpttype}</div>
             </div>
