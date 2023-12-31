@@ -1,7 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Lackequipment from "../Lackequipment";
+import Lackequipment from "./Lackequipment";
 
 // 備品の不足リストを表示するコンポーネント
 const Equipmentlacklistcontent = ({ user_id, baseurl }) => {
