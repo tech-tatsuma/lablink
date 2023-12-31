@@ -2,7 +2,6 @@ import React from "react";
 import "./Equipmentlistcontent.css";
 import axios from 'axios';
 import { useState } from "react";
-import './Equipmentlistcontent.css';
 import Equipmentlacklistcontent from './Equipmentlacklistcontent';
 
 const Lackequipmentlist = ({ switchlack, user_id, baseurl, setswitchlack }) => {

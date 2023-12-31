@@ -1,13 +1,13 @@
 // ホーム画面の内容の定義
 import React from "react";
-import './css/sb-admin-2.css';
-import './css/sb-admin-2.min.css';
+import './../css/sb-admin-2.css';
+import './../css/sb-admin-2.min.css';
 import './vendor/fontawesome-free/css/all.min.css';
 import './../css/Dashboardview.css';
 import Members from './Members.js';
 import { useState } from "react";
 import Informationswitch from './Informationswitch.js'
-import "./css/Equipmentlistcontent.css";
+import "./../css/Equipmentlistcontent.css";
 import { useNavigate } from "react-router-dom";
 
 const Dashboardview = ({ user_id, baseurl }) => {
