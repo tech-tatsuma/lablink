@@ -2,7 +2,7 @@ import React from 'react';
 import './css/sb-admin-2.css';
 import './css/sb-admin-2.min.css';
 import './vendor/fontawesome-free/css/all.min.css';
-import './Dashboardview.css'; //　ダッシュボード固有のCSSをインポート
+import './css/Dashboardview.css'; //　ダッシュボード固有のCSSをインポート
 import Dashboardcontent from './Dashboardcontent'; // ダッシュボードのメインコンテンツコンポーネントをインポート
 import { useState, useEffect } from 'react';
 import Navigate from './Navigate'; // ナビゲーションバーのコンポーネントをインポート
