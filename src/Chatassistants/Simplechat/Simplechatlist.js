@@ -144,12 +144,12 @@ const Simplechatcontent = ({ setmenu, baseurl, menu, setLoading, setshowfooter }
                 <h3 className="text-center mb-4">Simple Chat</h3>
                 <div className="d-flex justify-content-center mb-4"> 
                 {/* パブリックかどうかのフラグを切り替えるボタン */}
-                    <button type="button" className="btn btn-secondary text-white" onClick={toggleChatVisibility}>
+                    <button type="button" className="btn btn-outline-info shadow" onClick={toggleChatVisibility}>
                         {publicflag ? "Show Private Chats" : "Show Public Chats"}
                     </button>
                 </div>
                 <div className="d-flex justify-content-center mb-4"> 
-                    <button type="button" className="btn btn-primary text-white" onClick={createchat}>Create Chat</button>
+                    <button type="button" className="btn btn-outline-primary shadow" onClick={createchat}>Create Chat</button>
                 </div>
                 {/* パブリックフラグで表示するチャットを切り替える */}
                 {/* <div className="chat-list"> */}
