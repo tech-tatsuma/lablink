@@ -1,5 +1,5 @@
 import React from "react";
-import './../css/Equipmentdetailview.css';
+import './../Equipments/Equipmentdetailview.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 

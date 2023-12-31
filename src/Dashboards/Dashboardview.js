@@ -7,7 +7,7 @@ import './../css/Dashboardview.css';
 import Members from './Members.js';
 import { useState } from "react";
 import Informationswitch from './Informationswitch.js'
-import "./../css/Equipmentlistcontent.css";
+import "./../Eqiopments/Equipmentlistcontent.css";
 import { useNavigate } from "react-router-dom";
 
 const Dashboardview = ({ user_id, baseurl }) => {
