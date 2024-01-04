@@ -119,10 +119,10 @@ const Imagegeneratorchat = ({ setmenu, baseurl, setShowchatbot }) => {
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
                 ></textarea>
+                <button className="btn btn-primary send-button" onClick={handleQuestionSubmit}>
+                    <IoMdSend />
+                </button>
             </div>
-            <button className="btn btn-primary send-button" onClick={handleQuestionSubmit}>
-                <IoMdSend />
-            </button>
         </>
     );
 };
