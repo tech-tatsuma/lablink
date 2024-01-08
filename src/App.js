@@ -24,9 +24,9 @@ const App = () => {
         <Route path="/dashboard/inlab/:id" element={<Dashboardinlab />} />
         <Route path="/inlab/login" element={<Logininlab />} />
         <Route path="/attendance-info" element={<Attendance />} />
-        <Route path="/*" element={<NotFound />} />
         <Route exect path='/qr-scanned' element={<QRScanned />} />
-        <Route path="/signup/" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
   );
