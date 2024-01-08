@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Dashboardinlabroot from "./Dashboardinlab/Dashboardinlabroot";
 import Attendancecontent from "./extern/Attendancecontent";
 import Logininlabcontent from "./Dashboardinlab/Logininlabcontent";
+import Signupform from "./Accounts/Signup";
 
 // Appコンポーネントの定義
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/attendance-info" element={<Attendance />} />
         <Route path="/*" element={<NotFound />} />
         <Route exect path='/qr-scanned' element={<QRScanned />} />
+        <Route path="/signup/" element={<SignUp />} />
       </Routes>
     </div>
   );
@@ -44,6 +46,15 @@ const QRScanned = () => {
 
   return null; // このコンポーネントは何も表示しない
 };
+
+const SignUp = () => {
+  let baseurl = "https://lablinkback.fly.dev";
+  return (
+    <div>
+      <Signupform baseurl={baseurl} />
+    </div>
+  );
+}
 
 // ホーム画面のコンポーネント
 const Home = () => {
