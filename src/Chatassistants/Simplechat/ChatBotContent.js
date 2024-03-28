@@ -145,7 +145,7 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
 
     return (
         <>
-        <div className="container my-4">
+        <div className="container chat-container my-4">
             <div className="row">
                 <div className="col-md-8 offset-md-2">
                     <IoIosMenu className="menu-icon" style={{ fontSize: '28px' }} onClick={() => setShowInfo(!showInfo)} />

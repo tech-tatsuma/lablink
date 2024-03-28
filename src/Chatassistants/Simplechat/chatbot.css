@@ -2,6 +2,11 @@ form {
     width: 100%!important;
 }
 
+.chat-container {
+    max-width: 100%!important;
+    overflow-x: hidden!important; /* 横スクロールを非表示に */
+}
+
 /* 吹き出しスタイル */
 .message-bubble {
     padding: 10px 15px;
@@ -43,9 +48,11 @@ form {
 
 /* メッセージ表示エリアのスタイル */
 .messages-display {
+    overflow-y: auto;
     padding-bottom: 60px; /* メッセージ入力フィールドの高さに合わせて調整 */
     display: flex; /* フレックスボックスにする */
     flex-direction: column; /* 縦並びにする */
+    max-height: 70vh;
 }
 
 .menu-icon {
