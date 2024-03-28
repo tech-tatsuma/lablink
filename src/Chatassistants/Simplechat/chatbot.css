@@ -13,6 +13,7 @@ form {
     border-radius: 20px;
     margin-bottom: 10px;
     display: inline-block;
+    max-width: calc(100% - 20px);
 }
 
 /* アシスタントのメッセージスタイル */
@@ -29,6 +30,9 @@ form {
     text-align: right; /* テキストを右寄せ */
     display: flex; /* フレックスボックスにする */
     justify-content: flex-end; /* 右寄せ */
+    max-width: 100%;
+    word-wrap: break-word;
+    margin-bottom: 10px; 
 }
 
 .assistant-name-container {
