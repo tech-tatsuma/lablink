@@ -228,7 +228,7 @@ const NotFound = () => {
       <div className="container text-center mt-5">
         <header>
           <div className="textarea">
-            <h1>只今メンテナンス中です</h1>
+            <h1>メンテナンス中</h1>
           </div>
           <div class="image-area">
             <img class="image" src="/img/home_background1.jpg" alt='武村研究室(takemura lab)の背景画像' />
