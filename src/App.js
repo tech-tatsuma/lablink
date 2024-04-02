@@ -17,7 +17,7 @@ const App = () => {
     <div>
       <Routes>
         {/* 各ルート(ページ)に対応するコンポーネントを定義 */}
-        {/* <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
         <Route path="/dashboard/:id" element={<Dashboard />} />
         <Route path="/atofficechange" element={<Atofficechange />} />
@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/inlab/login" element={<Logininlab />} />
         <Route path="/attendance-info" element={<Attendance />} />
         <Route exect path='/qr-scanned' element={<QRScanned />} />
-        <Route path="/signup" element={<SignUp />} /> */}
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
@@ -228,7 +228,7 @@ const NotFound = () => {
       <div className="container text-center mt-5">
         <header>
           <div className="textarea">
-            <h1>メンテナンス中</h1>
+            <h1>NotFound</h1>
           </div>
           <div class="image-area">
             <img class="image" src="/img/home_background1.jpg" alt='武村研究室(takemura lab)の背景画像' />
