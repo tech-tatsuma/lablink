@@ -195,16 +195,16 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <i className="fas fa-fw fa-search fa-sm"></i>
                                     <span>論文検索</span></a>
                             </li>
-                            {/* <li className="nav-item">
+                            <li className="nav-item">
                                 <a className="nav-link" onClick={showimagedescript}>
                                     <i className="fas fa-fw fa-regular fa-image"></i>
                                     <span>Vision API</span></a>
-                            </li> */}
-                            {/* <li className="nav-item">
+                            </li>
+                            <li className="nav-item">
                                 <a className="nav-link" onClick={showassistantmenu}>
                                     <GoCopilot />
                                     <span>Chat Assistants</span></a>
-                            </li> */}
+                            </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
                                 Games
@@ -323,16 +323,16 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <i className="fas fa-fw fa-search fa-sm"></i>
                                     <span>論文検索</span></a>
                             </li>
-                            {/* <li className="nav-item">
+                            <li className="nav-item">
                                 <a className="nav-link" onClick={showimagedescript}>
                                     <i className="fas fa-fw fa-regular fa-image"></i>
                                     <span>Vision API</span></a>
-                            </li> */}
-                            {/* <li className="nav-item">
+                            </li>
+                            <li className="nav-item">
                                 <a className="nav-link" onClick={showassistantmenu}>
                                     <GoCopilot />
                                     <span> Chat Assistants</span></a>
-                            </li> */}
+                            </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
                                 Games
