@@ -195,12 +195,16 @@ const ChatBotContent = ({ baseurl, threadid, assistantid, assistantname, model, 
                     )}
                     <div className="mb-3">
                     <div className="p-3 messages-display">
-                        {history.map((entry, index) => (
-                            <div key={index} className={entry.user ? "user-message message-bubble" : "assistant-message message-bubble"}>
-                                {entry.user ? <FaUserAlt className="message-icon" /> : <FaRobot className="message-icon" />}
-                                <ReactMarkdown>{entry.user || entry.assistant}</ReactMarkdown>
-                            </div>
-                        ))}
+                                {history.map((entry, index) => (
+                                    <div key={index} className={entry.user ? "user-message message-bubble" : "assistant-message message-bubble"}>
+                                        {entry.user ? <FaUserAlt className="message-icon" /> : <FaRobot className="message-icon" />}
+                                        {entry.user ? (
+                                            <div>{entry.user}</div>
+                                        ) : (
+                                            <ReactMarkdown>{entry.assistant}</ReactMarkdown>
+                                        )}
+                                    </div>
+                                ))}
                         {isSubmitting && (
                             <div className="assistant-message message-bubble">
                                 <div className="loading-animation"></div>

@@ -48,39 +48,39 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
         return () => clearInterval(intervalId);
     },[counter]);
     
-    if (details.name=="Noriko Takemura"){
-        if (!details.at_office) {
-            return (
-                <div className="col-lg-3 mb-3" onClick={handleClick}>
-                    <div className="card bg-secondary text-white shadow">
-                        <div className="card-body">
-                            <div className="card-body-content">
-                            {details.name}
-                            <div className="text-white-50 small">not office</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <div className="col-lg-3 mb-3" onClick={handleClick}>
-                    <div className="card bg-danger text-white shadow">
-                        <div className="card-body">
-                            <div className="card-body-content">
-                            {details.name}
-                            <div className="text-white-50 small">at office</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )
-        }
-    } else {
+    // if (details.name=="Noriko Takemura"){
+    //     if (!details.at_office) {
+    //         return (
+    //             <div className="col-lg-3 mb-3" onClick={handleClick}>
+    //                 <div className="card bg-secondary text-white shadow">
+    //                     <div className="card-body">
+    //                         <div className="card-body-content">
+    //                         {details.name}
+    //                         <div className="text-white-50 small">not office</div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         )
+    //     } else {
+    //         return (
+    //             <div className="col-lg-3 mb-3" onClick={handleClick}>
+    //                 <div className="card bg-danger text-white shadow">
+    //                     <div className="card-body">
+    //                         <div className="card-body-content">
+    //                         {details.name}
+    //                         <div className="text-white-50 small">at office</div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         )
+    //     }
+    // } else {
 
         if (!details.at_office) {
             return (
-                <div className="col-lg-3 mb-3" onClick={handleClick}>
+                <div className="col-lg-3 mb-4" onClick={handleClick}>
                     <div className="card bg-secondary text-white shadow">
                         <div className="card-body">
                             <div className="card-body-content">
@@ -93,7 +93,7 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
             )
         } else {
             return (
-                <div className="col-lg-3 mb-3" onClick={handleClick}>
+                <div className="col-lg-3 mb-4" onClick={handleClick}>
                     <div className="card bg-danger text-white shadow">
                         <div className="card-body">
                             <div className="card-body-content">
@@ -105,7 +105,7 @@ const Memberrootinlab = ({details, baseurl, user_id, counter, setCounter}) => {
                 </div>
             )
         };
-    }
+    // }
 }
 
 export default Memberrootinlab;

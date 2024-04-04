@@ -42,16 +42,16 @@ const Membersinlab = ({baseurl, user_id}) => {
             {allmembersValues.map((member, index) =>
                 <>
                 {/* Noriko Takemuraの前後に空のdivを配置 */}
-                {member.name === "Noriko Takemura" && (
+                {/* {member.name === "Noriko Takemura" && (
                     <>
                         <div className="col-lg-4 mb-4"></div>
                         <Memberrootinlab key={index} details={member} baseurl={baseurl} user_id={user_id} counter={counter} setCounter={setCounter} />
                         <div className="col-lg-4 mb-4"></div>
                     </>
-                )}
-                {member.name !== "Noriko Takemura" && (
+                )} */}
+                {/* {member.name !== "Noriko Takemura" && ( */}
                     <Memberrootinlab key={index} details={member} baseurl={baseurl} user_id={user_id} counter={counter} setCounter={setCounter} />
-                )}
+                {/* )} */}
             </>
             )}
         </div>
