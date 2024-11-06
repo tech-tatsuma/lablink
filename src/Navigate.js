@@ -195,16 +195,16 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <i className="fas fa-fw fa-search fa-sm"></i>
                                     <span>論文検索</span></a>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <a className="nav-link" onClick={showimagedescript}>
                                     <i className="fas fa-fw fa-regular fa-image"></i>
                                     <span>Vision API</span></a>
-                            </li>
-                            <li className="nav-item">
+                            </li> */}
+                            {/* <li className="nav-item">
                                 <a className="nav-link" onClick={showassistantmenu}>
                                     <GoCopilot />
                                     <span>Chat Assistants</span></a>
-                            </li>
+                            </li> */}
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
                                 Games
@@ -232,9 +232,9 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <span>NAS</span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href='http://131.206.57.161/'>
+                                <a className="nav-link" href='https://github.com/takemura-lab'>
                                     <FontAwesomeIcon icon={faGitlab} />
-                                    <span> GitLab</span></a>
+                                    <span> GitHub Organization</span></a>
                             </li>
                             <hr className="sidebar-divider" />
                             <div class="sidebar-heading">
@@ -323,16 +323,16 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <i className="fas fa-fw fa-search fa-sm"></i>
                                     <span>論文検索</span></a>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <a className="nav-link" onClick={showimagedescript}>
                                     <i className="fas fa-fw fa-regular fa-image"></i>
                                     <span>Vision API</span></a>
-                            </li>
-                            <li className="nav-item">
+                            </li> */}
+                            {/* <li className="nav-item">
                                 <a className="nav-link" onClick={showassistantmenu}>
                                     <GoCopilot />
                                     <span> Chat Assistants</span></a>
-                            </li>
+                            </li> */}
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
                                 Games
@@ -360,9 +360,9 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <span>NAS</span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href='http://131.206.57.161/'>
+                                <a className="nav-link" href='https://github.com/takemura-lab'>
                                 <FontAwesomeIcon icon={faGitlab} />
-                                    <span> GitLab</span></a>
+                                    <span> GitHub Organization</span></a>
                             </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">

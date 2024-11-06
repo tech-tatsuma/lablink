@@ -13,7 +13,7 @@ const Papersummarydashboard = () => {
     const [loading, setLoading] = useState(false); // NEW: state for loading
     const inputRef = useRef(null);
     const buttonRef = useRef(null);
-    let summaryendpoint = 'https://arxiv-summary.azurewebsites.net'
+    let summaryendpoint = 'http://172.26.15.52:8081'
 
     const handleChange = (event) => {
         setinputurl(event.target.value);

@@ -19,7 +19,7 @@ const Papersearchcontent = () => {
         setLoading(true);
         setHasSearched(true);
         try {
-            const res = await axios.get(`https://arxiv-summary.azurewebsites.net/search?text=${inputText}`);
+            const res = await axios.get(`http://172.26.15.52:8081/search?text=${inputText}`);
             if (res.data.result) {
                 setSearchResults(res.data.result);
             } else {
