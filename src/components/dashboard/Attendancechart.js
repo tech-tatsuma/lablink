@@ -90,7 +90,7 @@ const Attendancechart = ({ backendurl, switchview, setSwitchview }) => {
     <div className="row justify-content-center">
         <div className="col-md-12">
             <div className="card shadow p-3">
-                <h4 className="text-center">週間滞在時間（秒単位）</h4>
+                <h4 className="text-center">週間滞在時間</h4>
                 <div style={{ overflowX: "auto", overflowY: "hidden", maxHeight: "300px" }}>
                     <BarChart
                         width={Math.max(500, weeklydata.length * 80)}
