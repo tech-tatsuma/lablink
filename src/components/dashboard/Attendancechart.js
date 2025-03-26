@@ -87,36 +87,37 @@ const Attendancechart = ({ backendurl, switchview, setSwitchview }) => {
     if (switchview) {
         return (
             <div className="container mt-1">
-        <div className="row justify-content-center">
-            <div className="col-md-12">
-                <div className="card shadow p-3">
-                    <h4 className="text-center">週間滞在時間（秒単位）</h4>
-                    <div style={{ overflowX: "auto" }}>
-                        <BarChart
-                            width={Math.max(500, weeklydata.length * 80)} // ユーザー数に応じて横幅を動的に
-                            height={250}
-                            data={weeklydata}
-                            margin={{ top: 10, right: 30, left: 40, bottom: 50 }}
-                        >
-                            <XAxis 
-                                dataKey="user_id"
-                                label={{ value: "User Name", position: "insideBottom", dy: 30 }}
-                                angle={-45}
-                                textAnchor="end"
-                                height={60}
-                            />
-                            <YAxis 
-                                label={{ value: "Seconds", angle: -90, position: "insideLeft", offset: -10 }} 
-                                domain={[0, "dataMax + 1"]}
-                            />
-                            <Tooltip />
-                            <Bar dataKey="total_time" fill="#007bff" />
-                        </BarChart>
-                    </div>
+    <div className="row justify-content-center">
+        <div className="col-md-12">
+            <div className="card shadow p-3">
+                <h4 className="text-center">週間滞在時間（秒単位）</h4>
+                <div style={{ overflowX: "auto", overflowY: "hidden", maxHeight: "300px" }}>
+                    <BarChart
+                        width={Math.max(500, weeklydata.length * 80)}
+                        height={250}
+                        data={weeklydata}
+                        margin={{ top: 10, right: 30, left: 40, bottom: 50 }}
+                    >
+                        <XAxis
+                            dataKey="user_id"
+                            label={{ value: "", position: "insideBottom", dy: 30 }}
+                            angle={-45}
+                            textAnchor="end"
+                            height={60}
+                        />
+                        <YAxis
+                            label={{ value: "Seconds", angle: -90, position: "insideLeft", offset: -10 }}
+                            domain={[0, "dataMax + 1"]}
+                        />
+                        <Tooltip />
+                        <Bar dataKey="total_time" fill="#007bff" />
+                    </BarChart>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
         );
     } else {
         return (
