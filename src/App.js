@@ -1,16 +1,21 @@
 import React from "react";
-import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
-import './css/App.css';
-import Loginform from "./Accounts/Loginform"
-import Dashboardroot from "./Dashboardroot";
-import axios from 'axios';
-import { useEffect, useState } from "react";
-import Dashboardinlabroot from "./Dashboardinlab/Dashboardinlabroot";
-import Attendancecontent from "./extern/Attendancecontent";
-import Logininlabcontent from "./Dashboardinlab/Logininlabcontent";
-import Signupform from "./Accounts/Signup";
+import { Routes, Route, useParams, useNavigate } from "react-router-dom";
+import Root from "./components/dashboard/Root";
+import axios from "axios";
+import { useEffect } from "react";
+import Dashboardinlabroot from "./components/inlab/Dashboardinlabroot";
+import Attendancecontent from "./components/attendance/Attendancecontent";
+import Homecontent from "./components/home/homecontent"
+import RoomCreate from "./components/auth/RoomCreate";
+import RoomPassword from "./components/auth/RoomPassword";
+import Signup from "./components/auth/Signup";
+import Login from "./components/auth/Login";
+import Passwordupdate from "./components/auth/Passwordupdate";
 
-// Appコンポーネントの定義
+// 環境変数からAPIのベースURLを取得
+const baseurl = process.env.REACT_APP_BASE_URL;
+
+// アプリのルーティングを管理するメインコンポーネント
 const App = () => {
   return (
     // アプリケーションのルート（ページのURL）を定義します。
@@ -18,102 +23,84 @@ const App = () => {
       <Routes>
         {/* 各ルート(ページ)に対応するコンポーネントを定義 */}
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route path="/dashboard/:id" element={<Dashboard />} />
+        <Route exact path="/login" element={<LoginRoute />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/atofficechange" element={<Atofficechange />} />
-        <Route path="/dashboard/inlab/:id" element={<Dashboardinlab />} />
-        <Route path="/inlab/login" element={<Logininlab />} />
-        <Route path="/attendance-info" element={<Attendance />} />
-        <Route exect path='/qr-scanned-2024' element={<QRScanned />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/dashboard/inlab" element={<Dashboardinlab />} />
+        <Route path="/attendance-info/:roomname" element={<Attendance />} />
+        <Route exect path='/qr-scanned/:roomname' element={<QRScanned />} />
+        <Route path="/signup" element={<SignUpRoute />} />
+        <Route path="/roomcreate" element={<RoomCreateRoute />} />
+        <Route path="/roomcheck" element={<RoomCheckRoute />} />
+        <Route path="/passupdate" element={<PasswordUpdateRoute />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
   );
 }
 
-//Appコンポーネントのエクスポート
 export default App;
 
-// QRコードスキャン時にレンダリングされるコンポーネント
+// QRコードスキャン時に実行されるコンポーネント（画面表示なしでリダイレクト処理のみ）
 const QRScanned = () => {
-  useEffect(() => {
-    // コンポーネントがマウントされた時、QRコードがスキャンされたと判定
-    localStorage.setItem("qrScanned", "true");
-    // その後、/attendance-infoにリダイレクト
-    window.location.href = "/attendance-info";
-  }, []);
+  const { roomname } = useParams();
 
-  return null; // このコンポーネントは何も表示しない
+  useEffect(() => {
+    localStorage.setItem("qrScanned", "true");
+    window.location.href = `/attendance-info/${roomname}`;
+  }, [roomname]);
+
+  return null;
 };
 
-const SignUp = () => {
-  let baseurl = "https://lablinkback.fly.dev";
+// 新規登録ページのコンポーネント
+const SignUpRoute = () => {
   return (
     <div>
-      <Signupform baseurl={baseurl} />
+      <Signup backendurl={baseurl} />
     </div>
   );
 }
 
 // ホーム画面のコンポーネント
 const Home = () => {
-  const [isSplashScreenVisible, setIsSplashScreenVisible] = useState(true);
-  useEffect(() => {
-    // スプラッシュスクリーンを3.5秒後に非表示に設定
-    const timer = setTimeout(() => {
-      setIsSplashScreenVisible(false);
-    }, 3500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  // スプラッシュスクリーンの表示と非表示の処理
-  return (
-    <>
-      {isSplashScreenVisible && (
-        // スプラッシュスクリーンが表示されている時の内容
-        <div className="splash-screen">
-          <img src="/img/takemura-lab-logo.png" alt="武村研究室のロゴ" />
-        </div>
-      )}
-
-      {!isSplashScreenVisible && (
-        // スプラッシュスクリーンが非表示の時の内容
-        <div className="container text-center mt-5">
-          <header>
-            <div className="textarea">
-              <img className='wow animate__animated animate__fadeInUp slow-animation' src="/img/takemura-lab-logo_.png" alt="武村研究室のロゴ" style={{ maxHeight: '100%', maxWidth: '100%' }} />
-              <p>　</p>
-              <h1>LabLink</h1>
-              <p>　</p>
-              <strong style={{ color: "black" }}>made by takemura lab</strong>
-              <p>　</p>
-              <p><Link to="/login" className="button" role="button">ログイン</Link></p>
-            </div>
-            <div className="image-area"></div>
-          </header>
-        </div>
-      )}
-    </>
-  );
-};
-
-// ログインフォームのコンポーネント
-const Login = () => {
-  let baseurl = "https://lablinkback.fly.dev";
   return (
     <div>
-      <Loginform baseurl={baseurl} />
+      <Homecontent />
     </div>
   );
 };
 
-// `/attendance-info`ページでQRコードスキャンの確認を行うAttendanceコンポーネント
+// ログインフォームのコンポーネント
+const LoginRoute = () => {
+  return (
+    <div>
+      <Login backendurl={baseurl} />
+    </div>
+  );
+};
+
+const RoomCreateRoute = () => {
+  return (
+    <div>
+      <RoomCreate backendurl={baseurl} />
+    </div>
+  );
+}
+
+const RoomCheckRoute = () => {
+  return (
+    <div>
+      <RoomPassword backendurl={baseurl} />
+    </div>
+  );
+}
+
+// 出席管理のページのコンポーネント
 const Attendance = () => {
   const navigate = useNavigate();
-  let baseurl = "https://lablinkback.fly.dev";
-  
+  const { roomname } = useParams();
+
   useEffect(() => {
     // ローカルストレージ内のqrScanned値の確認
     if (localStorage.getItem("qrScanned") !== "true") {
@@ -123,131 +110,79 @@ const Attendance = () => {
       // QRコードがスキャンされている場合、ローカルストレージからフラグを削除
       localStorage.removeItem("qrScanned");
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <div>
-      <Attendancecontent baseurl={baseurl} />
+      <Attendancecontent baseurl={baseurl} roomname={roomname} />
     </div>
   );
-}
-
-// 研究室内ログインページのコンポーネント
-const Logininlab = () => {
-  let baseurl = "https://lablinkback.fly.dev";
-  return (
-    <div>
-      <Logininlabcontent baseurl={baseurl} />
-    </div>
-  )
 }
 
 // ユーザーダッシュボードコンポーネント
 const Dashboard = () => {
-  const params = useParams();
-  const user_id = params.id;
-  let baseurl = "https://lablinkback.fly.dev";
   return (
     <div>
-      {/* ダッシュボードにユーザーIDを渡す */}
-      <Dashboardroot user_id={user_id} baseurl={baseurl} />
+      <Root baseurl={baseurl} />
     </div>
   );
 
 };
 
-// 在室状況変更用コンポーネント
+// 在室状況の切り替えコンポーネント
 export const Atofficechange = () => {
-
   const navigate = useNavigate();
-
-  const movepage = () => {
-    // ローカルストレージからトークンとユーザー名を削除し、ログインページにリダイレクト
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('T-lab_username');
-    navigate('/login')
-  };
-
-
-  let baseurl = "https://lablinkback.fly.dev";
-
   useEffect(() => {
-    // ユーザー名をローカルストレージから取得
-    const username = localStorage.getItem('T-lab_username');
-    if (!username) {
-      navigate('/login');
-      return null;
-    };
-
-    // ユーザー情報の取得と更新
-    axios.get(baseurl + '/user').then(res => {
-      const user = res.data.find(user => user.name === username);
-      if (user) {
-        axios.get(baseurl + `/user/get_user/${user.id}`).then(res => {
-          const userData = res.data;
-          if (userData) {
-            const updatedUserData = {
-              "name": userData.name,
-              "icon": userData.icon,
-              "birthday": userData.birthday,
-              "is_admin": userData.is_admin,
-              "at_office": !userData.at_office, // 在室状況の切り替え
-              "current": userData.current,
-              "target": userData.target
-            };
-            axios.post(baseurl + `/user/update/${user.id}`, updatedUserData)
-              .then(res => {
-                console.log('User data updated successfully.', res.data);
-                navigate('/dashboard/' + user.id);
-              })
-              .catch(err => {
-                console.error('Error updating user data.', err);
-                movepage();
-              });
-          }
-        })
-          .catch(err => {
-            console.error('Error getting user data.', err);
-            movepage();
-          });
+    async function changestatus() {
+      const userid = localStorage.getItem('T-lab_userid') || "";
+      try {
+        const response = await axios.post(`${baseurl}/user/atoffice_switch`, {
+          user_id: userid
+        });
+        console.log(response.data);
+        navigate("/dashboard");
+      } catch (error) {
+        console.error(error);
       }
-    })
-      .catch(err => {
-        console.error('Error getting user id.', err);
-        movepage();
-      });
-  }, []);
+    }
 
+    changestatus();
+
+  }, [navigate]);
   return null;
 };
 
-// 404ページ（見つからないページ）のコンポーネント
+// 404ページのコンポーネント
 const NotFound = () => {
   return (
     <>
-      <div className="container text-center mt-5">
-        <header>
-          <div className="textarea">
-            <h1>NotFound</h1>
-          </div>
-          <div class="image-area">
-            <img class="image" src="/img/home_background1.jpg" alt='武村研究室(takemura lab)の背景画像' />
-          </div>
-        </header>
-      </div>
+      <div class="container-fluid">
+      <div class="text-center">
+      <div class="error mx-auto" data-text="404">404</div>
+      <p class="lead text-gray-800 mb-5">Page Not Found</p>
+      <p class="text-gray-500 mb-0">君は見てはいけないものを見ているね</p>
+      <p class="text-gray-500 mb-0">大人しく自分の場所に戻るんだ...</p>
+</div>
+
+</div>
     </>
   );
 }
 
-// 研究室内のダッシュボードコンポーネント
+// 研究室内のダッシュボードのコンポーネント
 const Dashboardinlab = () => {
-  let baseurl = "https://lablinkback.fly.dev";
-  const params = useParams();
-  const user_id = params.id;
 
   return (
     <div>
-      <Dashboardinlabroot user_id={user_id} baseurl={baseurl} />
+      <Dashboardinlabroot baseurl={baseurl} />
+    </div>
+  )
+}
+
+const PasswordUpdateRoute = () => {
+  return (
+    <div>
+      <Passwordupdate baseurl={baseurl} />
     </div>
   )
 }
