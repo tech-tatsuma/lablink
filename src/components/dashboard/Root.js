@@ -99,11 +99,11 @@ const Root = ({ baseurl }) => {
                                     <div className="topbar-divider d-none d-sm-block"></div>
                                     {/* <!-- Nav Item - User Information --> */}
                                     <li className="nav-item dropdown no-arrow">
-                                        <button className="nav-link dropdown-toggle" id="userDropdown" role="button"
+                                        <a className="nav-link dropdown-toggle" id="userDropdown" role="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={hideNavigate}>
                                             <span className="mr-2 d-none d-lg-inline text-gray-600 small">{loginuser}</span>
                                             <i className="fas fa-solid fa-user fa-2s text-gray-300"></i>
-                                        </button>
+                                        </a>
                                     </li>
                                 </ul>
                             </nav>
