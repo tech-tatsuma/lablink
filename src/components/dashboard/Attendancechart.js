@@ -91,28 +91,30 @@ const Attendancechart = ({ backendurl, switchview, setSwitchview }) => {
         <div className="col-md-12">
             <div className="card shadow p-3">
                 <h4 className="text-center">週間滞在時間</h4>
-                <div style={{ overflowX: "auto", overflowY: "hidden", maxHeight: "300px" }}>
-                    <BarChart
-                        width={Math.max(500, weeklydata.length * 80)}
-                        height={250}
-                        data={weeklydata}
-                        margin={{ top: 10, right: 30, left: 40, bottom: 50 }}
-                    >
-                        <XAxis
-                            dataKey="user_id"
-                            label={{ value: "", position: "insideBottom", dy: 30 }}
-                            angle={-45}
-                            textAnchor="end"
-                            height={60}
-                        />
-                        <YAxis
-                            label={{ value: "Seconds", angle: -90, position: "insideLeft", offset: -10 }}
-                            domain={[0, "dataMax + 1"]}
-                        />
-                        <Tooltip />
-                        <Bar dataKey="total_time" fill="#007bff" />
-                    </BarChart>
-                </div>
+                <div style={{ overflowX: "auto", overflowY: "hidden" }}>
+    <div style={{ width: Math.max(500, weeklydata.length * 5), height: "30vh", minHeight: "200px" }}>
+        <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+                data={weeklydata}
+                margin={{ top: 10, right: 30, left: 40, bottom: 50 }}
+            >
+                <XAxis
+                    dataKey="user_id"
+                    label={{ value: "", position: "insideBottom", dy: 30 }}
+                    angle={-45}
+                    textAnchor="end"
+                    height={60}
+                />
+                <YAxis
+                    label={{ value: "Seconds", angle: -90, position: "insideLeft", offset: -10 }}
+                    domain={[0, "dataMax + 1"]}
+                />
+                <Tooltip />
+                <Bar dataKey="total_time" fill="#007bff" />
+            </BarChart>
+        </ResponsiveContainer>
+    </div>
+</div>
             </div>
         </div>
     </div>
