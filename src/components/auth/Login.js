@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -44,7 +44,6 @@ const Login = ({ backendurl }) => {
                 localStorage.setItem("T-lab_userid", response.data.id);
                 localStorage.setItem("T-Lab_token", formData.password);
                 localStorage.setItem("T-Lab_roomname", formData.roomName);
-                console.log("ログイン成功 - ダッシュボードへ遷移");
                 navigate("/dashboard"); // ダッシュボードに遷移
             } else {
                 // 認証失敗（メッセージを表示）
@@ -56,6 +55,36 @@ const Login = ({ backendurl }) => {
             setMessage("Network error or server unreachable.");
         }
     };
+
+    // 自動でログインを行う関数
+    useEffect(() => {
+        async function autoLogin() {
+            const username = localStorage.getItem("T-lab_username");
+            const roomname = localStorage.getItem("T-Lab_roomname");
+            const password = localStorage.getItem("T-Lab_token");
+    
+            if (username && roomname && password) {
+                try {
+                    const response = await axios.post(`${backendurl}/user/auth`, {
+                        roomname: roomname,
+                        username: username,
+                        password: password
+                    });
+    
+                    if (response.data && typeof response.data === "object") {
+                        console.log("自動ログイン成功");
+                        navigate("/dashboard");
+                    } else {
+                        console.log("自動ログイン失敗:", response.data);
+                    }
+                } catch (error) {
+                    console.error("自動ログイン中のエラー:", error);
+                }
+            }
+        }
+    
+        autoLogin();
+    }, [backendurl, navigate]);
 
     return (
         <>
