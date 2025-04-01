@@ -52,8 +52,8 @@ const Dashboardview = ({ user_id, baseurl }) => {
                                     <button type="button" className="btn btn-primary font-japanese" onClick={toggleswitchview}>switch</button>
                                 </div>
                             </div>
-                            <div className="card-body">
-                                <div className="chart-area scroll">
+                            <div className="card-body" style={{ height: "50vh" }}>
+                                <div className="chart-area scroll" style={{ height: "100%" }}>
                                     <Attendancechart backendurl={baseurl} switchview={switchview} setSwitchview={setswitchview} />
                                 </div>
                             </div>

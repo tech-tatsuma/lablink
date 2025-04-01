@@ -87,68 +87,88 @@ const Attendancechart = ({ backendurl, switchview, setSwitchview }) => {
     if (switchview) {
         return (
             <div className="container mt-1">
-    <div className="row justify-content-center">
+      <div className="row justify-content-center">
         <div className="col-md-12">
-            <div className="card shadow p-3">
-                <h4 className="text-center">週間滞在時間</h4>
-                <div style={{ overflowX: "auto", overflowY: "hidden" }}>
-    <div style={{ width: Math.max(500, weeklydata.length * 5), height: "30vh", minHeight: "200px" }}>
-        <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-                data={weeklydata}
-                margin={{ top: 10, right: 30, left: 40, bottom: 50 }}
-            >
-                <XAxis
+          <div className="card shadow p-3">
+            <h4 className="text-center">週間滞在時間</h4>
+            {/* 親要素のスタイルを変更 */}
+            <div style={{ 
+                width: "100%", 
+                maxWidth: "100%", 
+                height: "30vh", 
+                minHeight: "200px", 
+                overflow: "hidden" 
+            }}>
+                
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={weeklydata}
+                  margin={{ top: 0, right: 0, left: 30, bottom: 10 }}
+                >
+                  <XAxis
                     dataKey="user_id"
                     label={{ value: "", position: "insideBottom", dy: 30 }}
                     angle={-45}
                     textAnchor="end"
                     height={60}
-                />
-                <YAxis
+                    interval={0}
+                  />
+                  <YAxis
                     label={{ value: "Seconds", angle: -90, position: "insideLeft", offset: -10 }}
                     domain={[0, "dataMax + 1"]}
-                />
-                <Tooltip />
-                <Bar dataKey="total_time" fill="#007bff" />
-            </BarChart>
-        </ResponsiveContainer>
-    </div>
-</div>
+                  />
+                  <Tooltip />
+                  <Bar dataKey="total_time" fill="#007bff" />
+                </BarChart>
+              </ResponsiveContainer>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
         );
     } else {
         return (
             <div className="container mt-1">
-                <div className="row justify-content-center">
-                    <div className="col-md-12">
-                        <div className="card shadow p-3">
-                            <h4 className="text-center">{username} の在室時間推移（秒単位）</h4>
-                            <div className="chart-container">
-                                <ResponsiveContainer width="100%" height={250}>
-                                    <LineChart data={historyData} margin={{ top: 10, right: 30, left: 40, bottom: 20 }}>
-                                        <XAxis 
-                                            dataKey="week_start" 
-                                            label={{ value: "Week Start", position: "insideBottom", dy: 15 }} 
-                                            padding={{ left: 20, right: 20 }} 
-                                        />
-                                        <YAxis 
-                                            label={{ value: "Seconds", angle: -90, position: "insideLeft", offset: -10 }} 
-                                            domain={[0, "dataMax + 1"]} 
-                                        />
-                                        <Tooltip />
-                                        <Line type="monotone" dataKey="total_time" stroke="#007bff" />
-                                    </LineChart>
-                                </ResponsiveContainer>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div className="row justify-content-center">
+        <div className="col-md-12">
+          <div className="card shadow p-3">
+            <h4 className="text-center">{username} の在室時間推移</h4>
+            {/* 親要素のスタイルを変更 */}
+            <div 
+              className="chart-container" 
+              style={{ 
+                width: "100%", 
+                maxWidth: "100%", 
+                height: "30vh", 
+                minHeight: "200px", 
+                overflow: "hidden" 
+              }}
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart 
+                  data={historyData} 
+                  margin={{ top: 0, right: 0, left: 30, bottom: 30 }}
+                >
+                  <XAxis 
+                    dataKey="week_start" 
+                    label={{ value: "Week Start", position: "insideBottom", dy: 15 }} 
+                    padding={{ left: 20, right: 20 }} 
+                  />
+                  <YAxis 
+                    label={{ value: "Seconds", angle: -90, position: "insideLeft", offset: -10 }} 
+                    domain={[0, "dataMax + 1"]} 
+                  />
+                  <Tooltip />
+                  <Line type="monotone" dataKey="total_time" stroke="#007bff" />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
         );
     }
 };
