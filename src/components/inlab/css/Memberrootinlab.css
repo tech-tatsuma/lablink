@@ -1,3 +1,5 @@
 .card-body-content {
     font-size: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
 }
