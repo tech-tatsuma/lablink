@@ -15,7 +15,14 @@ const Membersinlab = ({ baseurl, user_id }) => {
         async function fetchAllMembers() {
             const res = await axios.get(`${baseurl}/user/room_members_from_roomname/${roomname}`);
             if (res.data && Array.isArray(res.data)) {
-                res.data.sort((a, b) => b.user_id_inroom - a.user_id_inroom);
+                res.data.sort((a, b) => {
+                    // IDで降順ソート
+                    if (b.user_id_inroom !== a.user_id_inroom) {
+                      return b.user_id_inroom - a.user_id_inroom;
+                    }
+                    // IDが同じなら名前のアルファベット順（昇順）
+                    return a.name.localeCompare(b.name);
+                  });
                 setallmembersValues(res.data)
             }
         };
@@ -25,7 +32,14 @@ const Membersinlab = ({ baseurl, user_id }) => {
         async function fetchAllMembers() {
             const res = await axios.get(`${baseurl}/user/room_members_from_roomname/${roomname}`);
             if (res.data && Array.isArray(res.data)) {
-                res.data.sort((a, b) => b.user_id_inroom - a.user_id_inroom);
+                res.data.sort((a, b) => {
+                    // IDで降順ソート
+                    if (b.user_id_inroom !== a.user_id_inroom) {
+                      return b.user_id_inroom - a.user_id_inroom;
+                    }
+                    // IDが同じなら名前のアルファベット順（昇順）
+                    return a.name.localeCompare(b.name);
+                  });
                 setallmembersValues(res.data)
             }
         };
