@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import axios from "axios";
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 const Attendancechart = ({ backendurl, switchview, setSwitchview }) => {
     const [weeklydata, setWeeklyData] = useState([]);
     const [historyData, setHistoryData] = useState([]);
@@ -37,15 +39,12 @@ const Attendancechart = ({ backendurl, switchview, setSwitchview }) => {
                 // 部屋内の全てのユーザーのデータを取得
                 const res = await axios.get(`${backendurl}/user/room_members_from_roomname/${roomname}`);
                 const roomMembers = res.data;  // 例: [{id: 1, name: 'test1', ...}, {id: 2, name: 'test2', ...}]
-                console.log(roomMembers);
-                console.log(`${backendurl}/attendance/get_room_attendance`);
 
                 // 出勤情報を取得
                 const response = await axios.post(`${backendurl}/attendance/get_room_attendance`, {
                     roomname: roomname
                 });
                 const allAttendance = response.data.attendance;
-                console.log(allAttendance);
 
                 const today = getCurrentJSTDate();
                 const weekStart = getMondayOfCurrentWeek(today);

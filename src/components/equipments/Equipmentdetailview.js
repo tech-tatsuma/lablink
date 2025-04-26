@@ -3,6 +3,8 @@ import './css/Equipmentdetailview.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 // 備品の詳細を表示するコンポーネント
 const Equipmentdetailview = ({ baseurl, isdetailValue, setisdetailvalue, setdetailevalue, detailvalue }) => {
     // 備品の購入者のデータを格納する変数
@@ -34,8 +36,6 @@ const Equipmentdetailview = ({ baseurl, isdetailValue, setisdetailvalue, setdeta
             "bought_date": detailvalue['bought_date']
         }
         try {
-            console.log(`test: ${baseurl}/equipment/history`)
-            console.log(postdata);
             await axios.post(`${baseurl}/equipment/history/`, postdata).then(res => {
                 axios.delete(`${baseurl}/equipment/${detailvalue['id']}`).then(res => {
                     setisdetailvalue(false);
@@ -51,7 +51,6 @@ const Equipmentdetailview = ({ baseurl, isdetailValue, setisdetailvalue, setdeta
         async function getusername() {
             try {
                 await axios.get(`${baseurl}/user/get_user/${detailvalue['buyer_id']}`).then(res => {
-                    console.log(res.data.name);
                     setusername(res.data.name);
                 })
             } catch (error) {

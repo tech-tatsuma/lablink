@@ -5,6 +5,8 @@ import { useState } from "react";
 import axios from 'axios';
 import Equipmentdetailview from './Equipmentdetailview';
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 const Equipmentviewswitch = ({ switchview, user_id, baseurl, setswitchview }) => {
     const roomname = localStorage.getItem("T-Lab_roomname");
     const initialValues = { bihinmei: "", cost: 0, buyer: 0, bought_data: "", room_name: roomname };
@@ -32,10 +34,7 @@ const Equipmentviewswitch = ({ switchview, user_id, baseurl, setswitchview }) =>
     const postEquipmentdata = async (values) => {
         if (values.bihinmei && values.cost) {
             const postdata = { "name": values.bihinmei, "price": parseInt(values.cost), "buyer_id": parseInt(user_id), room_name: roomname, "bought_date": state.curDT };
-            console.log(postdata);
-            console.log(`${baseurl}/equipment/`);
             axios.post(`${baseurl}/equipment`, postdata).then((response) => {
-                console.log(response.data);
                 setMessage("");
                 setswitchview(true);
             })

@@ -6,6 +6,8 @@ import axios from 'axios';
 import Totalcost from "./Totalcost";
 import Remainingmoney from "./Remainingmoney";
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 // 研究室備品を表示するページのビュー
 const Equipmentview = ({ user_id, baseurl, monthpay }) => {
     const [switchview, setswitchview] = useState(true);
@@ -21,13 +23,11 @@ const Equipmentview = ({ user_id, baseurl, monthpay }) => {
         const getCurrentUserData = async () => {
             try {
                 const response = await axios.get(`${baseurl}/user/room_members_from_roomname/${roomname}`);
-                console.log(response)
                 const users = response.data;
                 let tempRecieveallmoney = recieveallmoney;
                 for (const user of users) {
                     // 会計受け取り金額を計算
                     tempRecieveallmoney += user.current_pay;
-                    console.log(user.id, Number(userid))
                     if (user.id === Number(userid)){ //もし自分のデータだった場合
                         // 現在の支払い金額を取得
                         setUsercurrentpay(user.current_pay);
@@ -47,7 +47,6 @@ const Equipmentview = ({ user_id, baseurl, monthpay }) => {
         const calctotal = async () => {
             try {
                 const equipments = await axios.get(`${baseurl}/equipment/get_allequipment/${roomname}`);
-                console.log(equipments)
                 const equipmenthistories = await axios.get(`${baseurl}/equipment/history/get_allequipment/${roomname}`);
 
                 // equipmentの金額を取得

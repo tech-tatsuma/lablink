@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import qs from 'qs';
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 const Loginform = ({ baseurl }) => {
     //ユーザー情報を格納するオブジェクトを生成する
     const initialValues = { username: "", password: "" };
@@ -47,7 +49,6 @@ const Loginform = ({ baseurl }) => {
 
     async function getUserId(username) {
         try {
-            console.log('axios in loginformjs1')
             const response = await axios.get(`${baseurl}/user`);
             const users = response.data;
 
@@ -79,12 +80,10 @@ const Loginform = ({ baseurl }) => {
         if (Object.keys(formErrors).length === 0) {
             const token = await login(formValues.username, formValues.password);
             if (token !== "") {
-                console.log('tokenはセットされています。');
                 saveToken(token, formValues.username);
                 setIsLoggedIn(true);
                 getUserId(formValues.username).then(id => {
                     if (id) {
-                        console.log(`User ID is: ${id}`);
                         navigate('/dashboard/' + id.toString());
                     } else {
                         console.log('No user with the name "string" was found.');
@@ -94,7 +93,6 @@ const Loginform = ({ baseurl }) => {
                 setFormValues(initialValues);
                 setIsSubmit(false);
                 setIsLoggedIn(false);
-                console.log('tokenが空です');
             }
         } else {
             setFormValues(initialValues);
@@ -119,7 +117,6 @@ const Loginform = ({ baseurl }) => {
         if (token) {
             getUserId(username).then(id => {
                 if (id) {
-                    console.log(`User ID is: ${id}`);
                     navigate('/dashboard/' + id.toString());
                 }
             });

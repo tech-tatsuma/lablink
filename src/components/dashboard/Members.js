@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Memberroot from './Memberroot';
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 const Members = ({ baseurl }) => {
     // room name情報を取得
     const roomname = localStorage.getItem('T-Lab_roomname') || "";

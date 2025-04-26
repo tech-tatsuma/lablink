@@ -9,6 +9,8 @@ import './../../vendor/fontawesome-free/css/all.min.css';
 import './../../css/App.css';
 import Dashboardinlabcontent from "./Dashboardinlabcontent";
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 const Dashboardinlabroot = ({baseurl}) => {
     const navigate = useNavigate();
 

@@ -5,6 +5,8 @@ import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 const RoomCreate = ({ backendurl }) => {
     const [roomName, setRoomName] = useState("");
     const [password, setPassword] = useState("");
@@ -23,7 +25,6 @@ const RoomCreate = ({ backendurl }) => {
                 name: roomName,
                 room_password: password
             });
-            console.log("Room created:", response.data);
             setRoomData(response.data);
             alert("ルームが作成されました。");
         } catch (error) {

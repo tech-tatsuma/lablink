@@ -12,6 +12,8 @@ import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Passwordupdate from "./components/auth/Passwordupdate";
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 // 環境変数からAPIのベースURLを取得
 const baseurl = process.env.REACT_APP_BASE_URL;
 

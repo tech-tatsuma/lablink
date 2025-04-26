@@ -3,6 +3,8 @@ import axios from 'axios';
 import MembersinAdmin from "./MembersinAdmin";
 import { useState, useEffect } from 'react';
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 // 管理者ページ
 const Admin = ({ baseurl }) => {
     const [update, setUpdate] = useState(false);

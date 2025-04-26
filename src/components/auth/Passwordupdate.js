@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 const Passwordupdate = ({ baseurl }) => {
     const [formData, setFormData] = useState({
         roomName: "",

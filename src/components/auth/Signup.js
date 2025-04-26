@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 const Signup = ({ backendurl }) => {
     const [formData, setFormData] = useState({
         roomName: "",

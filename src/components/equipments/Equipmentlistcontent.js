@@ -4,6 +4,8 @@ import axios from "axios";
 import Equipment from "./Equipment";
 import './css/Equipmentlistcontent.css';
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 const Equipmentlistcontent = ({ user_id, baseurl, setisdetailvalue, setdetailevalue }) => {
     const [equipmentsValues, setequipmentValues] = useState([]);
 
@@ -11,7 +13,6 @@ const Equipmentlistcontent = ({ user_id, baseurl, setisdetailvalue, setdetaileva
 
     useEffect(() => {
         async function fetchequipmentdata() {
-            console.log(baseurl + fetchequipment)
             const res = await axios.get(baseurl + fetchequipment);
             if (res.data && Array.isArray(res.data)) {
                 setequipmentValues(res.data);

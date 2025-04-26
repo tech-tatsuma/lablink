@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import EachMemberinAdmin from "./EachMemberinAdmin";
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 const MembersinAdmin = ({ baseurl, update, setUpdate }) => {
     const [allmembersValues, setallmembersValues] = useState([]);
     const [changeview, setChangeView] = useState(0)

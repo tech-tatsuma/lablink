@@ -4,6 +4,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 const Login = ({ backendurl }) => {
     const [formData, setFormData] = useState({
         roomName: "",
@@ -27,16 +29,11 @@ const Login = ({ backendurl }) => {
         setMessage("");
 
         try {
-            console.log("ログイン処理開始");
-            console.log(`${backendurl}/user/auth`);
             const response = await axios.post(`${backendurl}/user/auth`, {
                 roomname: formData.roomName,
                 username: formData.userName,
                 password: formData.password
             });
-
-            console.log("APIレスポンス:", response.data);
-            console.log("result get")
 
             // 認証成功
             if (response.data && typeof response.data === "object") {
@@ -72,7 +69,6 @@ const Login = ({ backendurl }) => {
                     });
     
                     if (response.data && typeof response.data === "object") {
-                        console.log("自動ログイン成功");
                         navigate("/dashboard");
                     } else {
                         console.log("自動ログイン失敗:", response.data);

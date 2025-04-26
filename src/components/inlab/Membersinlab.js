@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Memberrootinlab from "./Memberrootinlab";
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 const Membersinlab = ({ baseurl, user_id }) => {
     // 全てのユーザー情報を取得し、リスト化する
     const [allmembersValues, setallmembersValues] = useState([]);
@@ -16,8 +18,6 @@ const Membersinlab = ({ baseurl, user_id }) => {
                 res.data.sort((a, b) => b.user_id_inroom - a.user_id_inroom);
                 setallmembersValues(res.data)
             }
-            console.log("type: " + typeof (allmembersValues));
-            console.log("data: " + allmembersValues);
         };
         fetchAllMembers();
     }, []);
@@ -28,8 +28,6 @@ const Membersinlab = ({ baseurl, user_id }) => {
                 res.data.sort((a, b) => b.user_id_inroom - a.user_id_inroom);
                 setallmembersValues(res.data)
             }
-            console.log("type: " + typeof (allmembersValues));
-            console.log("data: " + allmembersValues);
         };
         fetchAllMembers();
     }, [counter]);

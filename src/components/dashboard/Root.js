@@ -11,6 +11,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Content from './Content';
 
+axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
 // ダッシュボードのルートコンポーネント
 const Root = ({ baseurl }) => {
     // ルーティング用のフック
