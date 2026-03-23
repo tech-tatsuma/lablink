@@ -1,8 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
-
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+} from "chart.js";
+import { Bar, Line } from "react-chartjs-2";
 axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
+
+ChartJS.register(
+    CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend
+);
 
 const Attendancechart = ({ backendurl, switchview, setSwitchview }) => {
     const [weeklydata, setWeeklyData] = useState([]);
@@ -82,92 +96,111 @@ const Attendancechart = ({ backendurl, switchview, setSwitchview }) => {
 
         fetchAttendanceData();
     }, [backendurl, switchview, roomname, username]);
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
+    const weeklyChartData = useMemo(() => ({
+        labels: weeklydata.map(item => item.user_id),
+        datasets: [
+            {
+                label: "週間滞在時間",
+                data: weeklydata.map(item => item.total_time),
+                backgroundColor: "rgba(0, 123, 255, 0.8)",
+                borderRadius: 6,
+                maxBarThickness: 48
+            }
+        ]
+    }), [weeklydata]);
+
+    const historyChartData = useMemo(() => ({
+        labels: historyData.map(item => item.week_start),
+        datasets: [
+            {
+                label: "在室時間推移",
+                data: historyData.map(item => item.total_time),
+                borderColor: "rgba(0, 123, 255, 1)",
+                backgroundColor: "rgba(0, 123, 255, 0.15)",
+                tension: 0.3,
+                fill: false,
+                pointRadius: isMobile ? 2 : 3,
+                pointHoverRadius: isMobile ? 4 : 5
+            }
+        ]
+    }), [historyData, isMobile]);
+
+    const commonOptions = useMemo(() => ({
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                enabled: true
+            }
+        },
+        layout: {
+            padding: {
+                top: 8,
+                right: 8,
+                bottom: 8,
+                left: 8
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    autoSkip: true,
+                    maxRotation: isMobile ? 90 : 45,
+                    minRotation: isMobile ? 45 : 0,
+                    font: {
+                        size: isMobile ? 10 : 12
+                    }
+                },
+                grid: {
+                    display: false
+                }
+            },
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    font: {
+                        size: isMobile ? 10 : 12
+                    }
+                },
+                title: {
+                    display: true,
+                    text: "Seconds",
+                    font: {
+                        size: isMobile ? 10 : 12
+                    }
+                }
+            }
+        }
+    }), [isMobile]);
     if (switchview) {
         return (
-            <div className="container mt-1">
-      <div className="row justify-content-center">
-        <div className="col-md-12">
-          <div className="card shadow p-3">
-            <h4 className="text-center">週間滞在時間</h4>
-            {/* 親要素のスタイルを変更 */}
-            <div style={{ 
-                width: "100%", 
-                maxWidth: "100%", 
-                height: "30vh", 
-                minHeight: "200px", 
-                overflow: "hidden" 
-            }}>
-                
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={weeklydata}
-                  margin={{ top: 0, right: 0, left: 30, bottom: 10 }}
-                >
-                  <XAxis
-                    dataKey="user_id"
-                    label={{ value: "", position: "insideBottom", dy: 30 }}
-                    angle={-45}
-                    textAnchor="end"
-                    height={60}
-                    interval={0}
-                  />
-                  <YAxis
-                    label={{ value: "Seconds", angle: -90, position: "insideLeft", offset: -10 }}
-                    domain={[0, "dataMax + 1"]}
-                  />
-                  <Tooltip />
-                  <Bar dataKey="total_time" fill="#007bff" />
-                </BarChart>
-              </ResponsiveContainer>
+            <div className="attendance-chart-panel">
+                <h4 className="text-center attendance-chart-title">週間滞在時間</h4>
+                <div className="attendance-chart-wrapper">
+                    <Bar
+                        data={weeklyChartData}
+                        options={commonOptions}
+                    />
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
         );
     } else {
         return (
-            <div className="container mt-1">
-      <div className="row justify-content-center">
-        <div className="col-md-12">
-          <div className="card shadow p-3">
-            <h4 className="text-center">{username} の在室時間推移</h4>
-            {/* 親要素のスタイルを変更 */}
-            <div 
-              className="chart-container" 
-              style={{ 
-                width: "100%", 
-                maxWidth: "100%", 
-                height: "30vh", 
-                minHeight: "200px", 
-                overflow: "hidden" 
-              }}
-            >
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart 
-                  data={historyData} 
-                  margin={{ top: 0, right: 0, left: 30, bottom: 30 }}
-                >
-                  <XAxis 
-                    dataKey="week_start" 
-                    label={{ value: "Week Start", position: "insideBottom", dy: 15 }} 
-                    padding={{ left: 20, right: 20 }} 
-                  />
-                  <YAxis 
-                    label={{ value: "Seconds", angle: -90, position: "insideLeft", offset: -10 }} 
-                    domain={[0, "dataMax + 1"]} 
-                  />
-                  <Tooltip />
-                  <Line type="monotone" dataKey="total_time" stroke="#007bff" />
-                </LineChart>
-              </ResponsiveContainer>
+            <div className="attendance-chart-panel">
+                <h4 className="text-center attendance-chart-title">{username} の在室時間推移</h4>
+                <div className="attendance-chart-wrapper">
+                    <Line
+                        data={historyChartData}
+                        options={commonOptions}
+                    />
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
         );
     }
 };

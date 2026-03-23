@@ -110,11 +110,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <span>研究室内ボード</span>
                             </Link>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
-                                    <i className="fas fa-fw fa-regular fa-image"></i>
-                                    <span>思い出</span></a>
-                            </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
                                 Games
@@ -123,28 +118,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <a className="nav-link" onClick={showplayground}>
                                     <GiDinosaurRex />
                                     <span> 恐竜ちゃん</span></a>
-                            </li>
-                            {/* <!-- Divider --> */}
-                            <hr className="sidebar-divider" />
-
-                            {/* <!-- Heading --> */}
-                            <div className="sidebar-heading">
-                                Link List
-                            </div>
-                            <li className="nav-item">
-                                <a className="nav-link" href='https://www.notion.so/takemura-lab/Takemura-Lab-82850b93f7944170ad2f2dcd33c14831?pvs=4'>
-                                    <SiNotion />
-                                    <span>Notion</span></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href='http://172.26.15.2:5000/'>
-                                    <i className="fas fa-solid fa-share"></i>
-                                    <span>NAS</span></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href='https://github.com/takemura-lab'>
-                                    <FontAwesomeIcon icon={faGitlab} />
-                                    <span> GitHub</span></a>
                             </li>
                             <hr className="sidebar-divider" />
                             <div class="sidebar-heading">
@@ -215,11 +188,6 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                 <span>研究室内ボード</span>
                             </Link>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href='https://drive.google.com/drive/folders/1EKs5oNzoV-NupyrZo-RQHkTnqeuJKXba?usp=sharing'>
-                                    <i className="fas fa-fw fa-regular fa-image"></i>
-                                    <span>思い出</span></a>
-                            </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
                                 Games
@@ -229,28 +197,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
                                     <GiDinosaurRex />
                                     <span> 恐竜ちゃん</span></a>
                             </li>
-                            {/* <!-- Divider --> */}
-                            <hr className="sidebar-divider" />
 
-                            {/* <!-- Heading --> */}
-                            <div className="sidebar-heading">
-                                Link List
-                            </div>
-                            <li className="nav-item">
-                                <a className="nav-link" href='https://www.notion.so/takemura-lab/Takemura-Lab-82850b93f7944170ad2f2dcd33c14831?pvs=4'>
-                                    <SiNotion />
-                                    <span> Notion</span></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href='http://172.26.15.2:5000/'>
-                                    <i className="fas fa-solid fa-share"></i>
-                                    <span>NAS</span></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href='https://github.com/takemura-lab'>
-                                    <FontAwesomeIcon icon={faGitlab} />
-                                    <span> GitHub</span></a>
-                            </li>
                             <hr className="sidebar-divider" />
                             <div className="sidebar-heading">
                                 Account
