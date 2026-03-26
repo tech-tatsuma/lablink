@@ -10,10 +10,16 @@
 
 .special-message-dialog {
     max-width: 560px;
+    width: calc(100% - 1.5rem);
+    margin: 0.75rem auto;
+    max-height: calc(100vh - 1.5rem);
     animation: specialModalPop 0.35s ease-out;
 }
 
 .special-message-content {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 1.5rem);
     border: none;
     border-radius: 20px;
     overflow: hidden;
@@ -22,6 +28,7 @@
 }
 
 .special-message-header {
+    flex-shrink: 0;
     border-bottom: none;
     color: #fff;
     background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 45%, #fbc2eb 100%);
@@ -40,6 +47,10 @@
 }
 
 .special-message-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     padding: 1.5rem 1.5rem 1rem;
     background:
         radial-gradient(circle at top right, rgba(255, 223, 186, 0.35), transparent 30%),
@@ -56,6 +67,7 @@
 }
 
 .special-message-text {
+    overflow-wrap: anywhere;
     white-space: pre-line;
     line-height: 1.9;
     font-size: 1rem;
@@ -68,6 +80,7 @@
 }
 
 .special-message-footer {
+    flex-shrink: 0;
     border-top: none;
     justify-content: center;
     padding: 0 1.5rem 1.5rem;
@@ -103,6 +116,7 @@
 @media (max-width: 575.98px) {
     .special-message-dialog {
         max-width: calc(100vw - 1.5rem);
+        max-height: calc(100vh - 1.5rem);
         margin: 0.75rem auto;
     }
 
