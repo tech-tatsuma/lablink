@@ -19,7 +19,7 @@ const Membersinlab = ({ baseurl, user_id }) => {
     const modalTimerRef = useRef(null);
 
     // 2026/03/31 23:59:59 まで有効
-    const MESSAGE_DEADLINE = new Date("2026-03-31T23:59:59");
+    const MESSAGE_DEADLINE = new Date("2026-04-05T23:59:59");
 
     // 名前ごとのメッセージ
     const memberMessages = {
