@@ -93,7 +93,7 @@ const Root = ({ baseurl }) => {
                         {/* <!-- Main Content --> */}
                         <div id="content">
                             {/* <!-- Topbar --> */}
-                            <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                            <nav className="navbar navbar-expand navbar-light bg-white topbar static-top">
                                 {/* ページトップのタブ */}
                                 <Tab showNavigateValues={showNavigateValues} showNavigate={showNavigate} />
                                 {/* <!-- Topbar Navbar --> */}
