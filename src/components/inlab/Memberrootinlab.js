@@ -5,7 +5,7 @@ import './css/Memberrootinlab.css';
 
 axios.defaults.headers.common["X-API-KEY"] = process.env.REACT_APP_API_KEY;
 
-const Memberrootinlab = ({ details, baseurl, user_id, counter, setCounter }) => {
+const Memberrootinlab = ({ details, baseurl, user_id, counter, setCounter, onMemberClick }) => {
 
     // 状態を在室に変更するための関数
     async function switchstatus(id) {
@@ -36,7 +36,10 @@ const Memberrootinlab = ({ details, baseurl, user_id, counter, setCounter }) => 
     }
 
     const handleClick = () => {
-        switchstatus(details.id)
+        if (onMemberClick) {
+            onMemberClick(details.name);
+        }
+        switchstatus(details.id);
     }
 
     useEffect(() => {
