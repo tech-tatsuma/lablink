@@ -85,7 +85,7 @@ const Root = ({ baseurl }) => {
     return (
         <>
             <div id="page-top">
-                <div id="wrapper">
+                <div id="wrapper" className="app-shell">
                     {/* サイドのナビゲーションバー */}
                     <Navigate user_id={user_id} setisHomeValues={setisHomeValues} showNavigateValues={showNavigateValues} setshowNavigateValues={setshowNavigateValues} isAdmin={isAdmin} setisAdminView={setisAdminView} isplayground={isplayground} setisplayground={setisplayground} />
                     {/* <!-- Content Wrapper --> */}
@@ -109,19 +109,28 @@ const Root = ({ baseurl }) => {
                                     </li>
                                 </ul>
                             </nav>
-                            {/* ページのコンテンツ部分 */}
-                            <Content isHome={isHomeValues} isAdminView={isAdminView} isplayground={isplayground} user_id={user_id} baseurl={baseurl} monthpay={monthpay} />
+                            <main className="main-scroll-area">
+                                <Content isHome={isHomeValues} isAdminView={isAdminView} isplayground={isplayground} user_id={user_id} baseurl={baseurl} monthpay={monthpay} />
+                                {/* ページのフッター部分 */}
+                                <footer className="sticky-footer bg-white">
+                                    <div className="container my-auto">
+                                        <div className="copyright text-center my-auto">
+                                            <span>Copyright &copy; Takemura Lab</span>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </main>
                         </div>
                     </div>
                 </div>
-                {/* ページのフッター部分 */}
+                {/* ページのフッター部分
                 <footer className="sticky-footer bg-white">
                     <div className="container my-auto">
                         <div className="copyright text-center my-auto">
                             <span>Copyright &copy; Takemura Lab</span>
                         </div>
                     </div>
-                </footer>
+                </footer> */}
             </div>
         </>
     );

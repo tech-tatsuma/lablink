@@ -65,7 +65,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
             return (
                 <>
                     {/* <!-- Sidebar --> */}
-                    <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                    <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sidebar-scroll-area" id="accordionSidebar">
 
                         {/* <!-- Sidebar - Brand --> */}
                         <a className="sidebar-brand d-flex align-items-center justify-content-center" href="#">
@@ -143,7 +143,7 @@ const Navigate = ({ setisHomeValues, showNavigateValues, setshowNavigateValues, 
             return (
                 <>
                     {/* <!-- Sidebar --> */}
-                    <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                    <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sidebar-scroll-area" id="accordionSidebar">
 
                         {/* <!-- Sidebar - Brand --> */}
                         <a className="sidebar-brand d-flex align-items-center justify-content-center" href="#">
